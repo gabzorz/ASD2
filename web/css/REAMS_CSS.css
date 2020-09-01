@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  right: 0px;
+  left: 0px;
+}
+
+.top_right_link_div{
+    background-color: lightgray;
+    overflow: hidden;
+    width: 100%;
+}
+
+.top_right_link_div a{
+    float: right;
+    padding: 10px 10px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.top_right_link_div a:hover{
+    background-color:white;
+}
