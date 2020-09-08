@@ -20,7 +20,7 @@
             <a href="index.jsp">Index</a>
             <a href="homepage.jsp">Homepage</a>
         </div>
-        <form action="homepage.jsp" method="post">
+        <form action="confirmAuction.jsp" method="post">
             <table>
                 <tr>
                     <td><label for="auctionStartDate">Auction Start Date:</label></td>
@@ -49,7 +49,7 @@
             </table>
             <table>
             <tr>
-                <td><a href="homepage.jsp">Cancel</a></td>
+                <td><input type="button" value="Cancel" onclick="history.back()"></td>
                 <td><input type="submit" value="Create Auction"></td>
             </tr>
             </table>
