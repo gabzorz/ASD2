@@ -6,19 +6,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/USER_REAMS.css">
-        <title>Home Page</title>
+        <title>Staff Home Page</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Staff Mode (REAMS</h1>
+        </div>
         <%
             User user = (User) session.getAttribute("user");
         %>
-    </head>
-    <body>
-        <% if (user!= null) {%>
-        <div class="header">
-            <h1>Welcome to REAMS</h1>
-        </div>
-        
 
-        
+        <% if (user.getfName() != null) {%>
 
         <div class="top_right_link_div">
             <a href="LogoutServlet"><button>Logout</button></a>
@@ -31,9 +29,6 @@
         <%
         } else {
         %>
-         <div class="header">
-            <h1>Welcome to REAMS</h1>
-        </div>
         <div class="top_right_link_div">
             <a href="index.jsp">Index</a>
         </div>

@@ -2,62 +2,46 @@ package uts.asd.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
-    
-    private String userId;
-    private String sysAdminId;
-    private String fname;
-    private String lname;
+public class User implements Serializable {
+
+
+    private String fName;
+    private String lName;
     private String address;
     private String dob;
     private String emailAddress;
-    private String number;
+    private String contactNumber;
     private String password;
-    
-    public User (){}
-    
-    public User(String userId, String sysAdminId, String fname, String lname, String address, String dob, String emailAddress, String number, String password) {
-        this.userId = userId;
-        this.sysAdminId = sysAdminId;
-        this.fname = fname;
-        this.lname = lname;
+    private int roleId;
+
+    public User( String fName, String lName, String address, String dob, String emailAddress, String contactNumber, String password, int roleId) {
+
+        this.fName = fName;
+        this.lName = lName;
         this.address = address;
         this.dob = dob;
         this.emailAddress = emailAddress;
-        this.number = number;
+        this.contactNumber = contactNumber;
         this.password = password;
+        this.roleId = roleId;
     }
 
-    public String getUserId() {
-        return userId;
+
+
+    public String getfName() {
+        return fName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public String getSysAdminId() {
-        return sysAdminId;
+    public String getlName() {
+        return lName;
     }
 
-    public void setSysAdminId(String sysAdminId) {
-        this.sysAdminId = sysAdminId;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setlName(String lName) {
+        this.lName = lName;
     }
 
     public String getAddress() {
@@ -84,12 +68,12 @@ public class User implements Serializable{
         this.emailAddress = emailAddress;
     }
 
-    public String getNumber() {
-        return number;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public String getPassword() {
@@ -100,15 +84,12 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
 }
