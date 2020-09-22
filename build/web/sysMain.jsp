@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="header">
-            <h1>Staff Mode (REAMS)</h1>
+            <h1>System Administrator Mode (REAMS)</h1>
         </div>
         <%
             User user = (User) session.getAttribute("user");
@@ -21,8 +21,6 @@
         </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
-
-        <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
     </body>
 </html>

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.asd.model.*;
 import uts.asd.model.dao.AccessDBManager;
-import uts.asd.controller.AccessValidator;
 
 public class RegisterServlet extends HttpServlet {
 
@@ -21,7 +20,7 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AccessValidator validator = new AccessValidator();
 
-        //all the textfields in the customer_register.jsp
+        //all the textfields in the register.jsp
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
         String email = request.getParameter("email");
@@ -30,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
         String number = request.getParameter("number");
         String address = request.getParameter("address");
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
-        
+
         validator.clear(session);
 
         //Input validations
@@ -54,15 +53,16 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("register.jsp").include(request, response);
         } else {
             try {
-                boolean exist = manager.checkCustomer(email);
-                if (exist == true) {                                                          //if the customer is already registered
+                boolean exist = manager.checkEmail(email);
+                //if the email address is already registered
+                if (exist == true) {
                     session.setAttribute("existErr", "User email already exists in the database");
                     request.getRequestDispatcher("register.jsp").include(request, response);
                 } else {
-                    //if customer does not exist in the CUSTOMER and USER_ACCOUNT table, add it to CUSTOMER and USER_ACCOUNT table
-                    manager.addCustomer(fname, lname, address, dob, email, number, password, 3);
+                    //email address has not been used
+                    manager.createCustomer(fname, lname, address, dob, email, number, password, 3);
                     User customer = new User(fname, lname, address, dob, email, number, password, 3);
-                    session.setAttribute("user", customer);  
+                    session.setAttribute("user", customer);
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                 }
 

@@ -21,8 +21,8 @@ public class DeleteServlet extends HttpServlet {
         try {
             User user = (User) session.getAttribute("user");
             String email = user.getEmailAddress();
-            //delete customer from CUSTOMER and USER_ACCOUNT Table
-            manager.deleteCustomer(email);
+            //delete user from the database
+            manager.deleteUser(email);
         } catch (SQLException ex) {
             Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

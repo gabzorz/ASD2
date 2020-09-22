@@ -6,7 +6,7 @@
         <title>Logout Page</title>
     </head>
     <body>
-        
+
         <%
             session.invalidate();
         %>
@@ -19,4 +19,3 @@
         <p><a href="index.jsp">Click here</a> to return to REAMS</p>
     </body>
 </html>
-<!-- This is a test comment -->

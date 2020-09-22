@@ -20,16 +20,15 @@ public class CustomerUpdateServlet extends HttpServlet {
         AccessValidator validator = new AccessValidator();
 
         String fname = request.getParameter("fname");
-        String lname = request.getParameter("lname");        
+        String lname = request.getParameter("lname");
         String password = request.getParameter("password");
         String number = request.getParameter("number");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
-        
+
         validator.clear(session);
-        
+
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
-        
 
         //Input validations
         if (validator.checkUpdateIsEmpty(fname, lname, password, number, address)) {
@@ -49,7 +48,7 @@ public class CustomerUpdateServlet extends HttpServlet {
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
         } else {
             try {
-                User user = manager.findCustomerProfile(email);
+                User user = manager.findEmail(email);
                 if (user != null) {
                     session.setAttribute("user", user);
                     manager.updateCustomer(fname, lname, address, number, password, email);

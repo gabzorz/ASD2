@@ -80,7 +80,7 @@ public class userTest {
         String password = in.nextLine();
 
         try {
-            db.addCustomer(fname, lname, address, dob, email, number, password, 3);
+            db.createCustomer(fname, lname, address, dob, email, number, password, 3);
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,7 +107,7 @@ public class userTest {
         String email = in.nextLine();
 
         try {
-            if (db.checkCustomer(email)) {
+            if (db.checkEmail(email)) {
                 System.out.print("Enter first name: ");
                 String fname = in.nextLine();
                 System.out.print("Enter last name: ");
@@ -136,8 +136,8 @@ public class userTest {
         String email = in.nextLine();
 
         try {
-            if (db.checkCustomer(email)) {
-                db.deleteCustomer(email);
+            if (db.checkEmail(email)) {
+                db.deleteUser(email);
             } else {
                 System.out.println("Customer does not exist");
             }
@@ -152,7 +152,7 @@ public class userTest {
         String email = in.nextLine();
         
         try{
-            if(db.checkCustomer(email)){
+            if(db.checkEmail(email)){
                 int role = db.checkRole(email);
                 System.out.print("Role number is: " + role);
             } else {

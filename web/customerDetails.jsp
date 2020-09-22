@@ -49,11 +49,13 @@
                 </tr>
             </table>
         </form>
-            
-            
-            
+
+        <%if (user.getRoleId() == 3) {%>
+
         <p>If you wish to delete your account click <a href="DeleteServlet"><button class="bttn">Delete</button></a></p>
 
+        <%} else {
+            }%>
 
 
 

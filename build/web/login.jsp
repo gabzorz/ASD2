@@ -16,7 +16,7 @@
         <div class="header">
             <h1>Sign in to REAMS</h1>
         </div>
-         <div class="center">
+        <div class="center">
             <p><span><%=(existErr != null ? existErr : "")%></span><span><%=(empErr != null ? empErr : "")%></span></p>
         </div>
         <div class="center">

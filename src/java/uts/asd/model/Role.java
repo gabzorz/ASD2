@@ -3,7 +3,7 @@ package uts.asd.model;
 import java.io.Serializable;
 
 public class Role implements Serializable {
-    
+
     private int id;
     private String RoleName;
 
@@ -27,7 +27,5 @@ public class Role implements Serializable {
         this.id = id;
         this.RoleName = RoleName;
     }
-    
-    
-    
+
 }

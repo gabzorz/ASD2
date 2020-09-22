@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector extends DB {
-
+    //create a connection to the database
     public DBConnector() throws ClassNotFoundException, SQLException {
         Class.forName(driver);
         super.conn = DriverManager.getConnection(URL + db, dbuser, dbpass);

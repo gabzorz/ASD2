@@ -7,10 +7,17 @@ import javax.servlet.http.HttpSession;
 
 public class AccessValidator implements Serializable {
 
-    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";
-    private String namePattern = "[A-Z][a-z]*";     
-    private String passwordPattern = "[a-zA-Z0-9]{4,}";                //password is combination of  lower and upper case letters and numbers, 4 characters minimum   
-    private String numberPattern = "[0-9]{8,10}";                      //number length must be between 8 (landline) and 10 (mobile)
+    //Email has to have a mail server and a domain name
+    private String emailPattern
+            = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})"
+            + "((([.])[a-z]{0,2})*)";
+    //First letter of the name has to be uppercase
+    private String namePattern = "[A-Z][a-z]*";
+    //password is combination of  lower and upper case letters 
+    //and numbers, 4 characters minimum
+    private String passwordPattern = "[a-zA-Z0-9]{4,}";
+    //number length must be between 8 (landline) and 10 (mobile)
+    private String numberPattern = "[0-9]{8,10}";
 
     public AccessValidator() {
     }
@@ -21,15 +28,23 @@ public class AccessValidator implements Serializable {
 
         return match.matches();
     }
-    
-    public boolean checkUpdateIsEmpty(String fname, String lname, String address, String number, String password){
-        return fname.isEmpty() || lname.isEmpty() || address.isEmpty() || number.isEmpty() || password.isEmpty();
+
+    //Function to validate the textfields when updating a profile
+    public boolean checkUpdateIsEmpty(String fname, String lname,
+            String address, String number, String password) {
+        return fname.isEmpty() || lname.isEmpty() || address.isEmpty()
+                || number.isEmpty() || password.isEmpty();
     }
-    
-    public boolean checkRegisterIsEmpty(String fname, String lname, String dob, String address, String email, String number, String password){
-        return fname.isEmpty() || lname.isEmpty() || dob.isEmpty() || address.isEmpty() || email.isEmpty() || number.isEmpty() || password.isEmpty();
+
+    //Function to check if the textfields in the register.jsp is empty
+    public boolean checkRegisterIsEmpty(String fname, String lname,
+            String dob, String address, String email,
+            String number, String password) {
+        return fname.isEmpty() || lname.isEmpty() || dob.isEmpty()
+                || address.isEmpty() || email.isEmpty() || number.isEmpty()
+                || password.isEmpty();
     }
-    
+
     //Function to check for empty textfield in the login.jsp
     public boolean checkEmpty(String email, String password) {
         return email.isEmpty() || password.isEmpty();

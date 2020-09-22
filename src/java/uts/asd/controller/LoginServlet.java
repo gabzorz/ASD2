@@ -34,13 +34,19 @@ public class LoginServlet extends HttpServlet {
             try {
                 User user = manager.findCustomer(email, password);
                 int role = manager.checkRole(email);
-                if (user != null && role == 3){
-                    session.setAttribute("user", user);                                               
+                //For customer login
+                if (user != null && role == 3) {
+                    session.setAttribute("user", user);
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
-                }else if (user!= null && role == 2){
+                    //For staff login
+                } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("staffMain.jsp").include(request, response);
-                }else {
+                    //For system administrator login
+                } else if (user != null && role == 1) {
+                    session.setAttribute("user", user);
+                    request.getRequestDispatcher("sysMain.jsp").include(request, response);
+                } else {
                     session.setAttribute("existErr", "User does not exist in the database");
                     request.getRequestDispatcher("login.jsp").include(request, response);
                 }

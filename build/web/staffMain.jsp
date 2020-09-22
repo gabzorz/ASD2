@@ -10,13 +10,11 @@
     </head>
     <body>
         <div class="header">
-            <h1>Staff Mode (REAMS</h1>
+            <h1>Staff Mode (REAMS)</h1>
         </div>
         <%
             User user = (User) session.getAttribute("user");
         %>
-
-        <% if (user.getfName() != null) {%>
 
         <div class="top_right_link_div">
             <a href="LogoutServlet"><button>Logout</button></a>
@@ -24,17 +22,7 @@
 
         <p>You're logged in as <%= user.getfName()%></p>
 
-         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
-        
-        <%
-        } else {
-        %>
-        <div class="top_right_link_div">
-            <a href="index.jsp">Index</a>
-        </div>
-        <p>You're not signed in <a href='register.jsp'>register</a> or <a href="login.jsp"> login</a></p>
-        <%}%>
+        <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
     </body>
 </html>
-<!-- This is a test comment -->

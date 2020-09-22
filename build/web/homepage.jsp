@@ -12,26 +12,22 @@
         %>
     </head>
     <body>
-        <% if (user!= null) {%>
+        <% if (user != null) {%>
         <div class="header">
             <h1>Welcome to REAMS</h1>
         </div>
-        
-
-        
 
         <div class="top_right_link_div">
             <a href="LogoutServlet"><button>Logout</button></a>
         </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
+        <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
-         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
-        
         <%
         } else {
         %>
-         <div class="header">
+        <div class="header">
             <h1>Welcome to REAMS</h1>
         </div>
         <div class="top_right_link_div">
