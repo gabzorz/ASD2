@@ -16,7 +16,7 @@ public class AccessDBManager {
     public void createCustomer(String fName, String lName, String address,
             String dob, String emailAddress, String contactNumber,
             String password, int roleId) throws SQLException {
-        st.executeUpdate("INSERT INTO ASD.USER_ACCOUNT (FNAME, LNAME, ADDRESS, "
+        st.executeUpdate("INSERT INTO ASDREAMS.USER_ACCOUNT (FNAME, LNAME, ADDRESS, "
                 + "DATEOFBIRTH, EMAILADDRESS, CONTACTNUMBER, PASSWORD, "
                 + "ROLEID) "
                 + "VALUES ('" + fName + "','" + lName + "','" + address
@@ -27,7 +27,7 @@ public class AccessDBManager {
 
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {
-        String fetch = "select * from ASD.USER_ACCOUNT where EMAILADDRESS = '"
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS = '"
                 + email + "'AND PASSWORD='" + password + "'";
         ResultSet rs = st.executeQuery(fetch);
 
@@ -50,7 +50,7 @@ public class AccessDBManager {
 
     //Function to find a user using email
     public User findEmail(String email) throws SQLException {
-        String fetch = "select * from ASD.USER_ACCOUNT where EMAILADDRESS = "
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS = "
                 + "'" + email + "'";
         ResultSet rs = st.executeQuery(fetch);
 
@@ -75,7 +75,7 @@ public class AccessDBManager {
     public void updateCustomer(String fName, String lName, String address,
             String contactNumber, String password, String email)
             throws SQLException {
-        st.executeUpdate("UPDATE ASD.USER_ACCOUNT SET FNAME='" + fName
+        st.executeUpdate("UPDATE ASDREAMS.USER_ACCOUNT SET FNAME='" + fName
                 + "', LNAME='" + lName + "', ADDRESS='" + address
                 + "', CONTACTNUMBER='" + contactNumber + "', PASSWORD='"
                 + password + "' WHERE EMAILADDRESS='" + email + "'");
@@ -83,7 +83,7 @@ public class AccessDBManager {
 
     //Function to check if a an email is used
     public boolean checkEmail(String email) throws SQLException {
-        String fetch = "select * from ASD.USER_ACCOUNT where EMAILADDRESS='"
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS='"
                 + email + "'";
         ResultSet rs = st.executeQuery(fetch);
 
@@ -98,13 +98,13 @@ public class AccessDBManager {
 
     //Function to delete a user
     public void deleteUser(String email) throws SQLException {
-        st.executeUpdate("DELETE FROM ASD.USER_ACCOUNT WHERE EMAILADDRESS='"
+        st.executeUpdate("DELETE FROM ASDREAMS.USER_ACCOUNT WHERE EMAILADDRESS='"
                 + email + "'");
     }
 
     //Function to check a user's role
     public int checkRole(String email) throws SQLException {
-        String fetch = "select * from ASD.USER_ACCOUNT where EMAILADDRESS='"
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS='"
                 + email + "'";
         ResultSet rs = st.executeQuery(fetch);
 
