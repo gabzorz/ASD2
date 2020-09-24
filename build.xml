@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="R1MergeTest" default="default" basedir=".">
-    <description>Builds, tests, and runs the project R1MergeTest.</description>
+<project name="REAMS" default="default" basedir=".">
+    <description>Builds, tests, and runs the project REAMS.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
