@@ -14,7 +14,7 @@ public class Auction_Item {
     private String itemID;
     private String propertyID;
     private String staffUserID;
-    private String userID;
+    private String sellerID;
     private String soldTo;
     private String keywordID;
     private String purchaseID;
@@ -28,11 +28,11 @@ public class Auction_Item {
     private int startingPrice;
     private String status;
 
-    public Auction_Item(String itemID, String propertyID, String staffUserID, String userID, String keywordID, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice) {
+    public Auction_Item(String itemID, String propertyID, String staffUserID, String sellerID, String keywordID, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice) {
         this.itemID = itemID;
         this.propertyID = propertyID;
         this.staffUserID = staffUserID;
-        this.userID = userID;
+        this.sellerID = sellerID;
         this.keywordID = keywordID;
         this.startDate = startDate;
         this.startTime = startTime;
@@ -53,8 +53,6 @@ public class Auction_Item {
         this.startingPrice = startingPrice;
         this.status = "ongoing";
     }
-    
-    
 
     public String getItemID() {
         return itemID;
@@ -80,12 +78,12 @@ public class Auction_Item {
         this.staffUserID = staffUserID;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getSellerID() {
+        return sellerID;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setSellerID(String sellerID) {
+        this.sellerID = sellerID;
     }
 
     public String getSoldTo() {
