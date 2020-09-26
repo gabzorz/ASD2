@@ -117,4 +117,17 @@ public class AccessDBManager {
         }
         return 0;
     }
+    
+    public void createBid(int itemId, int userId, int amount) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.BID (ITEMID, USERID, AMOUNT) "
+                + "VALUES (" + itemId + ", " + userId + ", " + amount + ")");
+    }
+    
+    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, Date startDate, Time startTime, 
+            Date endDate, Time endTime, int reservePrice, int startingPrice) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, " +
+                "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", "
+                + keywordId + ", " + startDate + ", " + startTime + ", " + endDate + ", " + endTime + ", " + reservePrice + ", " 
+                + startingPrice + ")");
+    }
 }

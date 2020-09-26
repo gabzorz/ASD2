@@ -32,7 +32,7 @@
                             <tr>
                                 <td><p>Enter Bid:</p></td>
                                 <td><input type="number" id="newBid" name="newBid" placeholder="10000"></td>
-                                <td><button>Place Bid</button></td>
+                                <td><button onclick="">Place Bid</button></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -40,8 +40,40 @@
                             </tr>
                         </table>
                     </td>
+                    <td>
+                        Time Remaining: <p id="auctionTimeRemaining"></p>
+                    </td>
                 </tr>
             </table>
         </div>
+
+        <script>
+            // Will be auction date.
+            var countDownDate = new Date("Sep 28, 2020 09:00:00").getTime();
+
+            var x = setInterval(function () {
+
+                var now = new Date().getTime();
+
+                var distance = countDownDate - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("auctionTimeRemaining").innerHTML = days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("auctionTimeRemaining").innerHTML = "Auction has ended.";
+                }
+            }, 1000);
+            
+            function placeBid(){
+                Int newBid = document.getElementById("newBid").value;
+            }
+        </script>
     </body>
 </html>
