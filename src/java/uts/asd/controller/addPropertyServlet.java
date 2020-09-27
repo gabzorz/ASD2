@@ -44,6 +44,17 @@ public class addPropertyServlet extends HttpServlet {
         
         String garage = request.getParameter("garage");
         
+        int postcodeInt = Integer.parseInt(postcode);
+
+                int bathroomInt = Integer.parseInt(bathroom);
+
+                int bedroomInt = Integer.parseInt(bedroom);
+
+                int garageInt = Integer.parseInt(garage);
+
+        
+        
+        
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
 
         User user = (User) session.getAttribute("user");
@@ -54,7 +65,9 @@ public class addPropertyServlet extends HttpServlet {
 
       try {
           manager.addProperty(suburb,address,postcode,state,desc,bathroom,bedroom,garage,email);
-          
+          int id = 0;
+          Property property = new Property (id, suburb, address, state, desc, email, postcodeInt, bathroomInt, bedroomInt, garageInt);
+          session.setAttribute("property", property);
       } catch (SQLException ex) {
           Logger.getLogger(addPropertyServlet.class.getName()).log(Level.SEVERE, null, ex);
       }

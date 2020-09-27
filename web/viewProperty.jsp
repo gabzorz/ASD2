@@ -15,11 +15,11 @@
         <% 
 
             Property property = (Property) session.getAttribute("property");
-
+            if (property != null ) {
         %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Your property:</h1>
         <table class="tab">
             <tr><td>Suburb:</td><td><input type="text" name="suburb" value="<%=property.getSuburb()%>"></td></tr>
             <tr><td>Address:</td><td><input type="text"  name="address" value="<%=property.getAddress()%>"></td></td></tr>
@@ -36,5 +36,15 @@
 
 
 
+
+<% } else { %>
+
+    <body>
+        <h1>You do not have any properties!</h1>
+        Click <a href="homepage.jsp">here</a> to return home.
+        
+            
+    </body>
+</html>
 
 <% } %>
