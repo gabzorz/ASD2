@@ -35,15 +35,15 @@
 
             <table>
                 <tr>
-                <a class="bttn" href="CancelServlet">Cancel</a>
+                <a style="text-decoration:none" class="bttn" href="CancelServlet">Cancel</a>
                 <a><input class="bttn" type="submit" value="Register"></a>
                 </tr>
 
             </table>
             <div class="center">
                 <tr>
-                    <td><a href="login.jsp">Already a member?</a></td>
-                    <td><a href="homepage.jsp">Continue as guest</a></td>
+                    <td><a style="text-decoration:none" href="login.jsp">Already a member?</a></td>
+                    <td><a style="text-decoration:none" href="homepage.jsp">Continue as guest</a></td>
                 </tr>
             </div>
         </form>

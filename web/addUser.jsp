@@ -50,7 +50,7 @@
 
             <table>
                 <tr>
-                <a class="bttn" href="sysMain.jsp">Cancel</a>
+                <a style="text-decoration:none" class="bttn" href="sysMain.jsp">Cancel</a>
                 <a><input class="bttn" type="submit" value="Register"></a>
                 </tr>
 

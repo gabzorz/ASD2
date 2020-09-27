@@ -36,14 +36,14 @@
                     </tr>
                 </table>
                 <div class="center">
-                    <a class="bttn" href="CancelServlet">Cancel</a>
+                    <a class="bttn" style="text-decoration:none" href="CancelServlet">Cancel</a>
                     <a><input class="bttn" type="submit" value="Login"></a>
                 </div>
             </form>
         </div>
         <div class="center">
-            <p>Don't have account? <a href="register.jsp">Sign up</a>
-            <p>or continue as guest <a href="homepage.jsp">click here</a> </p>
+            <p>Don't have account? <a style="text-decoration:none" href="register.jsp">Sign up</a>
+            <p>or continue as guest <a style="text-decoration:none" href="homepage.jsp">click here</a> </p>
         </div>
     </body>
 </html>

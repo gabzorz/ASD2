@@ -23,11 +23,11 @@
         <p>You're logged in as <%= user.getfName()%></p>
         
         <div> 
-        <a href="addUser.jsp">Add new user</a>
+        <a class="bttn" style="text-decoration:none" href="addUser.jsp">Add new user</a>
         </div>
         
         <div>
-         <a href="viewUsers.jsp">View all users</a>
+         <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
         </div>
 
     </body>
