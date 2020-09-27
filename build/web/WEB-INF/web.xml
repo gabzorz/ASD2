@@ -44,6 +44,10 @@
         <servlet-name>AddUserServlet</servlet-name>
         <servlet-class>uts.asd.controller.AddUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminEditServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminEditServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>AddUserServlet</servlet-name>
         <url-pattern>/AddUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminEditServlet</servlet-name>
+        <url-pattern>/AdminEditServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

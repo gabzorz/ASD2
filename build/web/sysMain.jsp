@@ -29,6 +29,8 @@
         <div>
          <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
         </div>
+        
+        <a href="AdminEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
     </body>
 </html>
