@@ -32,6 +32,10 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>uts.asd.controller.DeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AddUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
