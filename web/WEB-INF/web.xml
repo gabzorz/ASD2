@@ -56,6 +56,10 @@
         <servlet-name>AdminUpdateServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccessDBManager</servlet-name>
+        <servlet-class>uts.asd.model.dao.AccessDBManager</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <url-pattern>/AdminUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccessDBManager</servlet-name>
+        <url-pattern>/AccessDBManager</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
