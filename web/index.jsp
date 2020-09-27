@@ -13,7 +13,6 @@
             <a href="login.jsp">Login</a>
             <a href="register.jsp">Register</a>
             <a href="homepage.jsp">Continue as guest</a>
-            <a href="createAuction.jsp">Create Auction</a>
         </div>
         <h1>Real Estate Auction Management System</h1>
     </body>

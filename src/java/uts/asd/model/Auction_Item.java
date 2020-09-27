@@ -5,23 +5,19 @@
  */
 package uts.asd.model;
 
-import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 /**
  *
  * @author Hamish Lamond
  */
 public class Auction_Item {
-
-    private int itemID;
-    private int propertyID;
-    private int staffUserID;
-    private int sellerID;
-    private int soldTo;
-    private int keywordID;
-    private int purchaseID;
+    
+    private String itemID;
+    private String propertyID;
+    private String staffUserID;
+    private String sellerID;
+    private String soldTo;
+    private String keywordID;
+    private String purchaseID;
     private int soldFor;
     private String dateVerified;
     private String startDate;
@@ -32,7 +28,7 @@ public class Auction_Item {
     private int startingPrice;
     private String status;
 
-    public Auction_Item(int itemID, int propertyID, int staffUserID, int sellerID, int keywordID, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice, String status) {
+    public Auction_Item(String itemID, String propertyID, String staffUserID, String sellerID, String keywordID, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice) {
         this.itemID = itemID;
         this.propertyID = propertyID;
         this.staffUserID = staffUserID;
@@ -44,91 +40,74 @@ public class Auction_Item {
         this.endTime = endTime;
         this.reservePrice = reservePrice;
         this.startingPrice = startingPrice;
-        this.status = status;
-    }
-
-    // For R1 Functionality
-    public Auction_Item(int itemID, int propertyID, int staffUserID, int sellerID, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice, String status) {
-        this.itemID = itemID;
-        this.propertyID = propertyID;
-        this.staffUserID = staffUserID;
-        this.sellerID = sellerID;
-        this.startDate = startDate;
-        this.startTime = startTime;
-        this.endDate = endDate;
-        this.endTime = endTime;
-        this.reservePrice = reservePrice;
-        this.startingPrice = startingPrice;
-        this.status = status;
+        this.status = "ongoing";
     }
 
     // For initial testing purposes only
-    public Auction_Item(int itemId, String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice, String status) {
-        this.itemID = itemId;
+    public Auction_Item(String startDate, String startTime, String endDate, String endTime, int reservePrice, int startingPrice) {
         this.startDate = startDate;
         this.startTime = startTime;
         this.endDate = endDate;
         this.endTime = endTime;
         this.reservePrice = reservePrice;
         this.startingPrice = startingPrice;
-        this.status = status;
+        this.status = "ongoing";
     }
 
-    public int getItemID() {
+    public String getItemID() {
         return itemID;
     }
 
-    public void setItemID(int itemID) {
+    public void setItemID(String itemID) {
         this.itemID = itemID;
     }
 
-    public int getPropertyID() {
+    public String getPropertyID() {
         return propertyID;
     }
 
-    public void setPropertyID(int propertyID) {
+    public void setPropertyID(String propertyID) {
         this.propertyID = propertyID;
     }
 
-    public int getStaffUserID() {
+    public String getStaffUserID() {
         return staffUserID;
     }
 
-    public void setStaffUserID(int staffUserID) {
+    public void setStaffUserID(String staffUserID) {
         this.staffUserID = staffUserID;
     }
 
-    public int getSellerID() {
+    public String getSellerID() {
         return sellerID;
     }
 
-    public void setSellerID(int sellerID) {
+    public void setSellerID(String sellerID) {
         this.sellerID = sellerID;
     }
 
-    public int getSoldTo() {
+    public String getSoldTo() {
         return soldTo;
     }
 
-    public void setSoldTo(int soldTo) {
+    public void setSoldTo(String soldTo) {
         this.soldTo = soldTo;
     }
 
-    public int getKeywordID() {
+    public String getKeywordID() {
         return keywordID;
     }
 
-    public void setKeywordID(int keywordID) {
+    public void setKeywordID(String keywordID) {
         this.keywordID = keywordID;
     }
 
-    public int getPurchaseID() {
+    public String getPurchaseID() {
         return purchaseID;
     }
 
-    public void setPurchaseID(int purchaseID) {
+    public void setPurchaseID(String purchaseID) {
         this.purchaseID = purchaseID;
-        
     }
 
     public int getSoldFor() {
@@ -202,5 +181,6 @@ public class Auction_Item {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    
+    
 }
