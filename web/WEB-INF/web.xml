@@ -32,6 +32,14 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>uts.asd.controller.DeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PlaceBidServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PlaceBidServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateAuctionServlet</servlet-name>
+        <url-pattern>/CreateAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PlaceBidServlet</servlet-name>
+        <url-pattern>/PlaceBidServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
