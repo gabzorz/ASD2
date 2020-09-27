@@ -36,15 +36,19 @@
         <servlet-name>addPropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.addPropertyServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>viewPropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.viewPropertyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AddUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
     </servlet-mapping>
@@ -76,9 +80,13 @@
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addPropertyServlet</servlet-name>
         <url-pattern>/addPropertyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
