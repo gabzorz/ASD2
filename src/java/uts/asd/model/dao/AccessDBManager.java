@@ -11,8 +11,15 @@ public class AccessDBManager {
     public AccessDBManager(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
-
+//suburb,street,address,postcode,state,desc,bathroom,bedroom,garage,email
     //Function to create a new Customer
+    public void addProperty(String suburb, String address, String postcode, String state, String desc,
+            String bathroom, String bedroom, String garage, String email) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, EMAIL) "
+                + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "','" + email + "')");
+    }
+
+        //Function to create a new Customer
     public void createCustomer(String fName, String lName, String address,
             String dob, String emailAddress, String contactNumber,
             String password, int roleId) throws SQLException {
@@ -24,7 +31,7 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-
+    
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {
         String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS = '"
@@ -71,6 +78,34 @@ public class AccessDBManager {
         return null;
     }
 
+        public Property getProperty(String email) throws SQLException {
+        String fetch = "select * from ASDREAMS.PROPERTY where EMAIL = "
+                + "'" + email + "'";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            String customerEmail = rs.getString(6);
+            if (customerEmail.equals(email)) {
+                int id = 0;
+                String suburb = rs.getString(2);
+                String address = rs.getString(3);
+                String postcode = rs.getString(4);
+                int postcodeInt = Integer.parseInt(postcode);
+                String state = rs.getString(5);
+                String desc = rs.getString(6);
+                String bathroom = rs.getString(7);
+                int bathroomInt = Integer.parseInt(bathroom);
+                String bedroom = rs.getString(8);
+                int bedroomInt = Integer.parseInt(bedroom);
+                String garage = rs.getString(9);
+                int garageInt = Integer.parseInt(garage);
+                String userEmail = rs.getString(10);
+                return new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            }
+        }
+        return null;
+    }
+    
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,
             String contactNumber, String password, String email)

@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
             } catch (SQLException | NullPointerException ex) {
                 System.out.println(ex.getMessage() == null ? "User does not exist" : "welcome");
             }
+
         }
     }
 }
