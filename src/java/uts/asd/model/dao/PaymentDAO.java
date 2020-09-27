@@ -91,16 +91,11 @@ public class PaymentDAO {
        ResultSet rs = st.executeQuery(fetch);
        
        while(rs.next()) {
-           System.out.print("Before get int");
            int userPayment = rs.getInt(1);
-           
-           System.out.print("After get int");
            if (userPayment == paymentID) {
-               System.out.print("Return true");
                return true;
            }
        }
-       System.out.print("Return false");
        return false;
    }
 }

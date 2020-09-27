@@ -11,13 +11,5 @@
 INSERT INTO PAYMENT(FIRSTNAME, LASTNAME, ACCOUNTNUMBER, BSB)
 VALUES
 ('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
-('Susan', 'Gretch', 123456789, 55555),
+('Mark', 'Jung', 234567890, 676767),
+('Sarah', 'Peters', 345678901, 8989898)
