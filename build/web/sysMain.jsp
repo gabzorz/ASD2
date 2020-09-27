@@ -21,6 +21,14 @@
         </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
+        
+        <div> 
+        <a class="bttn" style="text-decoration:none" href="addUser.jsp">Add new user</a>
+        </div>
+        
+        <div>
+         <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
+        </div>
 
     </body>
 </html>

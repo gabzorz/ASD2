@@ -6,11 +6,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/USER_REAMS.css">
-        <title>Staff Home Page</title>
+        <title>Add User Success</title>
     </head>
     <body>
         <div class="header">
-            <h1>System Administrator Mode (REAMS)</h1>
+            <h1>Add User </h1>
         </div>
         <%
             User user = (User) session.getAttribute("user");
@@ -23,12 +23,11 @@
         <p>You're logged in as <%= user.getfName()%></p>
         
         <div> 
-        <a class="bttn" style="text-decoration:none" href="addUser.jsp">Add new user</a>
+            <p> User has has been added successfully. </p>
         </div>
-        
         <div>
-         <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
+            <a class="bttn" href="sysMain.jsp">Return</a>
         </div>
-
+                
     </body>
 </html>
