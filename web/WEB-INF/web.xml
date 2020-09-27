@@ -48,6 +48,14 @@
         <servlet-name>AdminEditServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdminEditServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>AdminEditServlet</servlet-name>
         <url-pattern>/AdminEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteServlet</servlet-name>
+        <url-pattern>/AdminDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateServlet</servlet-name>
+        <url-pattern>/AdminUpdateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

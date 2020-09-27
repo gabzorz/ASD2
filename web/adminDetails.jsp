@@ -32,7 +32,7 @@
             <span><%=(updated != null ? updated : "")%></span><span><%=(empErr != null ? empErr : "")%></span>
         </div>
 
-        <form action="CustomerUpdateServlet" method="post">
+        <form action="AdminUpdateServlet" method="post">
             <table class="tab">
                 <tr><td>First Name:</td><td><input type="text" name="fname" value="<%=user.getfName()%>"></td><td> <%=(fnameErr != null ? fnameErr : "")%></td></tr>
                 <tr><td>Last Name:</td><td><input type="text"  name="lname" value="<%=user.getlName()%>"></td><td> <%=(lnameErr != null ? lnameErr : "")%></td></tr>
@@ -49,14 +49,6 @@
                 </tr>
             </table>
         </form>
-
-        <%if (user.getRoleId() == 3) {%>
-
-        <p>If you wish to delete your account click <a href="DeleteServlet"><button class="bttn">Delete</button></a></p>
-
-        <%} else {
-            }%>
-
 
 
     </body>
