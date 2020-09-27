@@ -30,6 +30,7 @@
             <tr><td>Bedrooms: </td><td><input type="text"  name="bedroom" value="<%=property.getNumOfBedrooms()%>"></td><td> </td></tr>
             <tr><td>Garages: </td><td><input type="text"  name="garage" value="<%=property.getNumOfGarages()%>"></td><td></td></tr>
             </table>
+            Click <a href="homepage.jsp">here</a> to return home.
     </body>
 </html>
 
