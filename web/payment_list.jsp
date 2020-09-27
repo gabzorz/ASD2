@@ -10,19 +10,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Payment Information</title>
     </head>
     <body>
+        
+        <%
+            Payment payment = (Payment)session.getAttribute("payment");
+        %>
+        
         <main>
             <h1>Linked Accounts</h1>
             
             <table>
                 <tr>
-                <thead><th>Payment ID</th><th>First Name</th><th>Last Name</th><th>Account Number</th><th>BSB</th></thead>
+                  <th>Payment ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Account Number</th>
+                  <th>BSB</th>
                 </tr>
-            <tr><td>${payment.paymentID}</td><td>${payment.firstName}</td><td>${payment.lastName}</td><td>${payment.accountNumber}</td><td>${payment.bsb}</td></tr>
+                <tr>
+                  <td>${payment.paymentID}</td>
+                  <td>${payment.firstName}</td>
+                  <td>${payment.lastName}</td>
+                  <td>${payment.accountNumber}</td>
+                  <td>${payment.bsb}</td>
+                </tr>
             </table>
         </main>
         

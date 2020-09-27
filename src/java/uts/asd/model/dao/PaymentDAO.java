@@ -60,17 +60,13 @@ public class PaymentDAO {
     
     //function to update payment information
     public void updatePayment(int paymentID, String firstName, String lastName, int accountNumber, int bsb) throws SQLException{
-        st.executeUpdate("UPDATE ASDREAMS.Payment SET FIRSTNAME ='" + firstName + "', LASTNAME='" + lastName + "', ACCOUNTNUMBER=" + accountNumber +", BSB = '" + bsb + "' WHERE PAYMENTID= " +paymentID + "");
+        st.executeUpdate("UPDATE ASDREAMS.Payment SET FIRSTNAME ='" + firstName + "', LASTNAME='" + lastName + "', ACCOUNTNUMBER=" + accountNumber + ", BSB = " + bsb + " WHERE PAYMENTID= " + paymentID + "");
     }
-//        public void updatePaymentorig(int id, String firstName, String lastName, int accountNumber, int bsb) throws SQLException{
-//        st.executeUpdate("UPDATE ASDREAMS.Payment SET FIRSTNAME ='" + firstName +"', LASTNAME='" + lastName +"', ACCOUNTNUMBER=" + accountNumber +", BSB='" + bsb + "' WHERE PAYMENTID=" + id + "");
-//    }
-    
+
     //function to delete payment information from database
     public void deletePayment(int paymentID) throws SQLException {
         st.executeUpdate("DELETE FROM ASDREAMS.Payment WHERE PAYMENTID= " + paymentID + "");
     }
-    
     
     //function to return payments within the database
     public ArrayList<Payment> fetchPayments() throws SQLException {
@@ -90,31 +86,21 @@ public class PaymentDAO {
     }
     
     //function to check paymentID in the database
-    public boolean checkPayments(int paymentID) throws SQLException{
-       String fetch = "select * from ASDREAMS.Payment where PAYMENTID = '" + paymentID + "'";
-       ResultSet rs = st.executeQuery(fetch);
-       
-       while(rs.next()) {
-           String userPayment = rs.getString(1);
-           
-           if (userPayment.equals(paymentID)) {
-               return true;
-           }
-       }
-       return false;
-   }
-   
     public boolean checkPayment(int paymentID) throws SQLException{
-       String fetch = "select * from ASDREAMS.Payment where PAYMENTID = " + paymentID + "";
+       String fetch = "select * from ASDREAMS.Payment where PAYMENTID = " + paymentID + " ";
        ResultSet rs = st.executeQuery(fetch);
        
        while(rs.next()) {
-           String userPayment = rs.getString(1);
+           System.out.print("Before get int");
+           int userPayment = rs.getInt(1);
            
-           if (userPayment.equals(paymentID)) {
+           System.out.print("After get int");
+           if (userPayment == paymentID) {
+               System.out.print("Return true");
                return true;
            }
        }
+       System.out.print("Return false");
        return false;
    }
 }

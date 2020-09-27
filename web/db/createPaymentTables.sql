@@ -7,6 +7,4 @@ CREATE TABLE Payment
     lastName        varchar (30),
     accountNumber   integer,
     bsb             integer
-    userID          integer,
-    FOREIGN KEY (userID) REFERENCES Users(userID)
 );

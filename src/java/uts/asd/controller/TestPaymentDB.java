@@ -64,6 +64,9 @@ private void runQueries() throws SQLException {
             case 'S':
                 testShow();
                 break;
+            case 'T':
+                testCheck();
+                break;
             default:
                 System.out.println("Unknown Command");
         }
@@ -102,12 +105,13 @@ private void testAdd(){
         
         if (payment != null){
             for(Payment p: payment){
-                System.out.println("Paymanet ID exists in database");
                 System.out.println(p.getPaymentID());
+                System.out.println("Payment ID exists in database");
+                
             }
         }
         else {
-            System.out.println("Payment does not exist");
+            System.out.println("Payment ID does not exist");
         }  
     }
     
@@ -144,10 +148,12 @@ private void testAdd(){
     private void testDelete() throws SQLException {
         System.out.print("Payment ID: ");
         int paymentID = in.nextInt();
+        in.nextLine();
         
         try{
             if(pyd.checkPayment(paymentID)) {
                 pyd.deletePayment(paymentID);
+                System.out.println("Payment Information successfully deleted");
             } else {
                 System.out.println("Payment does not exist");
             }
@@ -161,11 +167,29 @@ private void testAdd(){
             ArrayList<Payment> payments = pyd.fetchPayments();
             System.out.println("PAYMENT TABLE: ");
             payments.stream().forEach((payment) -> {
-                System.out.printf("%-20s %-30s %-20s %10s \n", payment.getPaymentID(), payment.getFirstName(), payment.getLastName(), payment.getAccountNumber(), payment.getBsb());
+                System.out.printf("%-20s %-30s %-20s %10s %10s\n", payment.getPaymentID(), payment.getFirstName(), payment.getLastName(), payment.getAccountNumber(), payment.getBsb());
             });
             System.out.println();
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+     
+    private int testCheck() throws SQLException {
+        System.out.print("Payment ID: ");
+        int paymentID = in.nextInt();
+        //in.nextLine();
+        
+        try{
+            if(pyd.checkPayment(paymentID)) {
+                System.out.println("PaymentID found");
+                return paymentID;
+            } else {
+                System.out.println("Payment does not exist");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }
