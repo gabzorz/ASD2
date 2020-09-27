@@ -13,34 +13,59 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/Payment_Styling.css">
         <title>Payment Information</title>
     </head>
     <body>
         
         <%
-            Payment payment = (Payment)session.getAttribute("payment");
+            ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
+            String existErr = (String) session.getAttribute("existErr");
+            String deleted = (String) session.getAttribute("deleted");
         %>
         
-        <main>
-            <h1>Linked Accounts</h1>
-            
-            <table>
-                <tr>
-                  <th>Payment ID</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Account Number</th>
-                  <th>BSB</th>
-                </tr>
-                <tr>
-                  <td>${payment.paymentID}</td>
-                  <td>${payment.firstName}</td>
-                  <td>${payment.lastName}</td>
-                  <td>${payment.accountNumber}</td>
-                  <td>${payment.bsb}</td>
-                </tr>
-            </table>
-        </main>
+        <div class="header-img">
+          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+        </div>
         
+        <div class="topnav">
+             <a href="index.jsp"style="float: left;">Home</a>
+            <a style="float: left;">Find a Property</a>
+            <a style="float: left;">Find Agents</a>
+            <a style="float: left;">For Owners</a>
+            <a style="float: left;">Real Estate News</a>
+            <a style="float: right;">About</a>
+            <a style="float: right;">Contact</a>
+        </div>
+        
+        <main> 
+        <table border="1" cellpadding="5">
+            
+            <h1>Linked Accounts</h1>
+            <tr>
+                <th>Payment ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Account Number</th>
+                <th>BSB</th>
+                <th></th>
+            </tr>
+            <c:forEach var="payment" items="${payments}">
+                <tr>
+                    <td><c:out value="${payment.paymentID}" /></td>
+                    <td><c:out value="${payment.firstName}" /></td>
+                    <td><c:out value="${payment.lastName}" /></td>
+                    <td><c:out value="${payment.accountNumber}" /></td>
+                    <td><c:out value="${payment.bsb}" /></td>
+                    <td>
+                        <a href="PaymentEditServlet?id=<c:out value ="${payment.paymentID}"/>Edit Payment</a>
+                    <br>
+                        <a href="PaymentRemoveServlet?id=<c:out value ="${payment.paymentID}"/>Delete</a>      
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+                    <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
+        </main>
     </body>
 </html>

@@ -89,7 +89,7 @@ private void testAdd(){
         in.nextLine();
     
         try {
-            pyd.addPayment(firstName, lastName, accountNumber,bsb);
+            pyd.addPayment(firstName, lastName, accountNumber, bsb);
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
