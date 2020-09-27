@@ -68,9 +68,13 @@
             %>
         </table>
 
+        <table>
+            <tr>
+            <a style="text-decoration:none" class="bttn" href="sysMain.jsp">Go back</a>
+        </tr>
+    </table>
 
 
-
-    </body>
+</body>
 </html>
 <!-- This is a test comment -->

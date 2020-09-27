@@ -35,9 +35,9 @@
             <h1>Welcome to REAMS</h1>
         </div>
         <div class="top_right_link_div">
-            <a href="index.jsp">Index</a>
+            <a style="text-decoration:none" href="index.jsp">Index</a>
         </div>
-        <p>You're not signed in <a href='register.jsp'>register</a> or <a href="login.jsp"> login</a></p>
+        <p>You're not signed in <a style="text-decoration:none" href='register.jsp'>register</a> or <a style="text-decoration:none" href="login.jsp"> login</a></p>
         <%}%>
 
     </body>

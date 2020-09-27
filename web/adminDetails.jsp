@@ -44,7 +44,7 @@
 
             <table>
                 <tr>
-                <a class="bttn" href="sysMain.jsp">Go back</a>
+                <a style="text-decoration:none" class="bttn" href="sysMain.jsp">Go back</a>
                 <a><input class="bttn" type="submit" value="Update"></a>
                 </tr>
             </table>
