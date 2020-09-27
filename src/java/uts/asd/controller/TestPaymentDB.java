@@ -137,6 +137,8 @@ private void testAdd(){
                 in.nextLine();
                 
                 pyd.updatePayment(paymentID, firstName, lastName, accountNumber, bsb);
+                
+                System.out.println("Payment Information successfully updated");
             } else {
                 System.out.println("Payment ID does not exist");
             }

@@ -28,7 +28,7 @@
         </div>
         
         <main>
-            <form method="post" action="PaymentAddServlet" style="text-align: center;">
+            <form method="post" action="payment_list.jsp" style="text-align: center;">
                 <h1>Payment Account Information</h1>
                 <h2 style="color:red">* marks required fields</h2>
                 
