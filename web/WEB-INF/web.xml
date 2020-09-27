@@ -33,6 +33,33 @@
         <servlet-class>uts.asd.controller.DeleteServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>addPropertyServlet</servlet-name>
+        <servlet-class>uts.asd.controller.addPropertyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewPropertyServlet</servlet-name>
+        <servlet-class>uts.asd.controller.viewPropertyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminEditServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewPropertyServlet</servlet-name>
+        <url-pattern>/viewPropertyServlet</url-pattern>
+    </servlet-mapping>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
     </servlet>
@@ -73,6 +100,24 @@
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>addPropertyServlet</servlet-name>
+        <url-pattern>/addPropertyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminEditServlet</servlet-name>
+        <url-pattern>/AdminEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteServlet</servlet-name>
+        <url-pattern>/AdminDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateServlet</servlet-name>
+        <url-pattern>/AdminUpdateServlet</url-pattern>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <url-pattern>/CreateAuctionServlet</url-pattern>
     </servlet-mapping>
