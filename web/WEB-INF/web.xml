@@ -61,6 +61,10 @@
         <url-pattern>/viewPropertyServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>CreateAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PlaceBidServlet</servlet-name>
         <servlet-class>uts.asd.controller.PlaceBidServlet</servlet-class>
     </servlet>
@@ -115,6 +119,10 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <url-pattern>/AdminUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateAuctionServlet</servlet-name>
+        <url-pattern>/CreateAuctionServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PlaceBidServlet</servlet-name>
