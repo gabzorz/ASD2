@@ -153,20 +153,14 @@ public class AccessDBManager {
         }
         return 0;
     }
-
-    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, Date startDate, Time startTime,
-            Date endDate, Time endTime, int reservePrice, int startingPrice) throws SQLException {
-        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, "
-                + "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", "
-                + keywordId + ", " + startDate + ", " + startTime + ", " + endDate + ", " + endTime + ", " + reservePrice + ", "
-                + startingPrice + ")");
-    }
-
+    
+    // Creates a bid database entry
     public void createBid(int itemId, int userId, int amount) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.BID (ITEMID, USERID, AMOUNT) "
                 + "VALUES (" + itemId + ", " + userId + ", " + amount + ")");
     }
 
+    // Returns the highest bid that has been placed for an auction based on itemId
     public int readHighestBid(int itemId) throws SQLException {
         String fetch = "select MAX(AMOUNT) from ASDREAMS.BID WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
@@ -177,7 +171,7 @@ public class AccessDBManager {
         return highestBid;
     }
 
-    // With Keyword
+    // Creates a new Auction Item with Keyword
     public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, String startDate, String startTime,
             String endDate, String endTime, int reservePrice, int startingPrice) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, "
@@ -186,7 +180,7 @@ public class AccessDBManager {
                 + startingPrice + ", 'Ongoing')");
     }
 
-    // Without Keyword
+    // Creates a new Auction Item without Keyword
     public void createAuctionItem(int propertyId, int staffUserId, int sellerId, String startDate, String startTime,
             String endDate, String endTime, int reservePrice, int startingPrice) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, STARTDATE, STARTTIME, "
@@ -195,6 +189,7 @@ public class AccessDBManager {
                 + startingPrice + ", 'Ongoing')");
     }
 
+    // Updates an AuctionItem database entry
     public void updateAuctionItem(int itemId, Date startDate, Time startTime, Date endDate, Time endTime, int reservePrice,
             int startingPrice) throws SQLException {
         st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STARTDATE='" + startDate + "', STARTTIME='"
@@ -202,6 +197,7 @@ public class AccessDBManager {
                 + reservePrice + ", STARTINGPRICE=" + startingPrice + " WHERE ITEMID=" + itemId);
     }
 
+    // Returns the Auction with the highest itemId (i.e. the latest created auction)
     public int readHighestAuctionId() throws SQLException {
         String fetch = "SELECT MAX(ITEMID) FROM ASDREAMS.AUCTION_ITEM";
         ResultSet rs = st.executeQuery(fetch);
@@ -212,15 +208,18 @@ public class AccessDBManager {
         return highestId;
     }
 
+    // Updates the status of the provided Auction Item
     public void updateAuctionStatus(int itemId, String status) throws SQLException {
         st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STATUS='" + status
                 + "' WHERE ITEMID=" + itemId);
     }
 
+    // Deletes the Auction Item with itemId
     public void deleteAuctionItem(int itemId) throws SQLException {
         st.execute("DELETE FROM ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId);
     }
 
+    // Returns the start date of the Auction Item with itemId
     public Date readAuctionStartDate(int itemId) throws SQLException {
         String fetch = "select STARTDATE from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
@@ -231,6 +230,7 @@ public class AccessDBManager {
         return startDate;
     }
 
+    // Returns the end date of the Auction Item with itemId
     public Date readAuctionEndDate(int itemId) throws SQLException {
         String fetch = "select ENDDATE from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
@@ -241,6 +241,7 @@ public class AccessDBManager {
         return endDate;
     }
 
+    // Returns the start time of the Auction Item with itemId
     public Time readAuctionStartTime(int itemId) throws SQLException {
         String fetch = "select STARTTIME from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
@@ -251,6 +252,7 @@ public class AccessDBManager {
         return startTime;
     }
 
+    // Returns the end time of the Auction Item with itemId
     public Time readAuctionEndTime(int itemId) throws SQLException {
         String fetch = "select ENDTIME from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
@@ -261,6 +263,7 @@ public class AccessDBManager {
         return endTime;
     }
 
+    // Returns the Auction Item with itemId
     public Auction_Item getAuctionItem(int itemId) throws SQLException {
         String fetch = "select * from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
         ResultSet rs = st.executeQuery(fetch);
