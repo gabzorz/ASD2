@@ -13,13 +13,14 @@ public class AccessDBManager {
     }
 //suburb,street,address,postcode,state,desc,bathroom,bedroom,garage,email
     //Function to create a new Customer
+
     public void addProperty(String suburb, String address, String postcode, String state, String desc,
             String bathroom, String bedroom, String garage, String email) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, EMAIL) "
                 + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "','" + email + "')");
     }
 
-        //Function to create a new Customer
+    //Function to create a new Customer
     public void createCustomer(String fName, String lName, String address,
             String dob, String emailAddress, String contactNumber,
             String password, int roleId) throws SQLException {
@@ -31,7 +32,7 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-    
+
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {
         String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS = '"
@@ -78,7 +79,7 @@ public class AccessDBManager {
         return null;
     }
 
-        public Property getProperty(String email) throws SQLException {
+    public Property getProperty(String email) throws SQLException {
         String fetch = "select * from ASDREAMS.PROPERTY where EMAIL = "
                 + "'" + email + "'";
         ResultSet rs = st.executeQuery(fetch);
@@ -105,7 +106,7 @@ public class AccessDBManager {
         }
         return null;
     }
-    
+
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,
             String contactNumber, String password, String email)
@@ -152,17 +153,132 @@ public class AccessDBManager {
         }
         return 0;
     }
-    
+
+    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, Date startDate, Time startTime,
+            Date endDate, Time endTime, int reservePrice, int startingPrice) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, "
+                + "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", "
+                + keywordId + ", " + startDate + ", " + startTime + ", " + endDate + ", " + endTime + ", " + reservePrice + ", "
+                + startingPrice + ")");
+    }
+
     public void createBid(int itemId, int userId, int amount) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.BID (ITEMID, USERID, AMOUNT) "
                 + "VALUES (" + itemId + ", " + userId + ", " + amount + ")");
     }
-    
-    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, Date startDate, Time startTime, 
-            Date endDate, Time endTime, int reservePrice, int startingPrice) throws SQLException {
-        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, " +
-                "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", "
-                + keywordId + ", " + startDate + ", " + startTime + ", " + endDate + ", " + endTime + ", " + reservePrice + ", " 
-                + startingPrice + ")");
+
+    public int readHighestBid(int itemId) throws SQLException {
+        String fetch = "select MAX(AMOUNT) from ASDREAMS.BID WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        int highestBid = 0;
+        while (rs.next()) {
+            highestBid = rs.getInt(1);
+        }
+        return highestBid;
+    }
+
+    // With Keyword
+    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, String startDate, String startTime,
+            String endDate, String endTime, int reservePrice, int startingPrice) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, KEYWORDID, STARTDATE, STARTTIME, "
+                + "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE, STATUS) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", "
+                + keywordId + ", '" + startDate + "', '" + startTime + "', '" + endDate + "', '" + endTime + "', " + reservePrice + ", "
+                + startingPrice + ", 'Ongoing')");
+    }
+
+    // Without Keyword
+    public void createAuctionItem(int propertyId, int staffUserId, int sellerId, String startDate, String startTime,
+            String endDate, String endTime, int reservePrice, int startingPrice) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.AUCTION_ITEM (PROPERTYID, STAFFUSERID, SELLERID, STARTDATE, STARTTIME, "
+                + "ENDDATE, ENDTIME, RESERVEPRICE, STARTINGPRICE, STATUS) VALUES (" + propertyId + ", " + staffUserId + ", " + sellerId + ", '"
+                + startDate + "', '" + startTime + "', '" + endDate + "', '" + endTime + "', " + reservePrice + ", "
+                + startingPrice + ", 'Ongoing')");
+    }
+
+    public void updateAuctionItem(int itemId, Date startDate, Time startTime, Date endDate, Time endTime, int reservePrice,
+            int startingPrice) throws SQLException {
+        st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STARTDATE='" + startDate + "', STARTTIME='"
+                + startTime + "', ENDDATE='" + endDate + "', ENDTIME='" + endTime + "', RESERVEPRICE="
+                + reservePrice + ", STARTINGPRICE=" + startingPrice + " WHERE ITEMID=" + itemId);
+    }
+
+    public int readHighestAuctionId() throws SQLException {
+        String fetch = "SELECT MAX(ITEMID) FROM ASDREAMS.AUCTION_ITEM";
+        ResultSet rs = st.executeQuery(fetch);
+        int highestId = 0;
+        while (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        return highestId;
+    }
+
+    public void updateAuctionStatus(int itemId, String status) throws SQLException {
+        st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STATUS='" + status
+                + "' WHERE ITEMID=" + itemId);
+    }
+
+    public void deleteAuctionItem(int itemId) throws SQLException {
+        st.execute("DELETE FROM ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId);
+    }
+
+    public Date readAuctionStartDate(int itemId) throws SQLException {
+        String fetch = "select STARTDATE from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        Date startDate = null;
+        while (rs.next()) {
+            startDate = rs.getDate(1);
+        }
+        return startDate;
+    }
+
+    public Date readAuctionEndDate(int itemId) throws SQLException {
+        String fetch = "select ENDDATE from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        Date endDate = null;
+        while (rs.next()) {
+            endDate = rs.getDate(1);
+        }
+        return endDate;
+    }
+
+    public Time readAuctionStartTime(int itemId) throws SQLException {
+        String fetch = "select STARTTIME from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        Time startTime = null;
+        while (rs.next()) {
+            startTime = rs.getTime(1);
+        }
+        return startTime;
+    }
+
+    public Time readAuctionEndTime(int itemId) throws SQLException {
+        String fetch = "select ENDTIME from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        Time endTime = null;
+        while (rs.next()) {
+            endTime = rs.getTime(1);
+        }
+        return endTime;
+    }
+
+    public Auction_Item getAuctionItem(int itemId) throws SQLException {
+        String fetch = "select * from ASDREAMS.AUCTION_ITEM WHERE ITEMID=" + itemId;
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()) {
+            int propertyId = rs.getInt(2);
+            int staffUserId = rs.getInt(3);
+            int sellerId = rs.getInt(4);
+            String startDate = rs.getDate(9).toString();
+            String startTime = rs.getTime(10).toString();
+            String endDate = rs.getDate(11).toString();
+            String endTime = rs.getTime(12).toString();
+            int reservePrice = rs.getInt(13);
+            int startingPrice = rs.getInt(14);
+            String status = rs.getString(15);
+            return new Auction_Item(itemId, propertyId, staffUserId, sellerId,
+                    startDate, startTime, endDate, endTime, reservePrice, startingPrice,
+                    status);
+        }
+        return null;
     }
 }

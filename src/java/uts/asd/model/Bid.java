@@ -5,18 +5,21 @@
  */
 package uts.asd.model;
 
+import java.sql.*;
+
 /**
  *
  * @author Hamish Lamond
  */
 public class Bid {
-    private String itemId;
-    private String userId;
-    private String date;
-    private String time;
+
+    private int itemId;
+    private int userId;
+    private Date date;
+    private Time time;
     private int amount;
 
-    public Bid(String itemId, String userId, String date, String time, int amount) {
+    public Bid(int itemId, int userId, Date date, Time time, int amount) {
         this.itemId = itemId;
         this.userId = userId;
         this.date = date;
@@ -24,35 +27,43 @@ public class Bid {
         this.amount = amount;
     }
 
-    public String getItemId() {
+    public Bid(int itemId, int userId, int amount) {
+        this.itemId = itemId;
+        this.userId = userId;
+        this.amount = amount;
+    }
+    
+    
+
+    public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(String itemId) {
+    public void setItemId(int itemId) {
         this.itemId = itemId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -63,6 +74,5 @@ public class Bid {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    
+
 }
