@@ -32,7 +32,6 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>uts.asd.controller.DeleteServlet</servlet-class>
     </servlet>
-<<<<<<< HEAD
     <servlet>
         <servlet-name>addPropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.addPropertyServlet</servlet-class>
@@ -61,15 +60,10 @@
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
     </servlet-mapping>
-        <servlet-name>CreateAuctionServlet</servlet-name>
-        <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
-    </servlet>
     <servlet>
         <servlet-name>PlaceBidServlet</servlet-name>
         <servlet-class>uts.asd.controller.PlaceBidServlet</servlet-class>
     </servlet>
-=======
->>>>>>> parent of 12e81f7... Implemented Auction Creation and Bid Placing
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -102,7 +96,6 @@
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>addPropertyServlet</servlet-name>
         <url-pattern>/addPropertyServlet</url-pattern>
@@ -122,15 +115,11 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <url-pattern>/AdminUpdateServlet</url-pattern>
-        <servlet-name>CreateAuctionServlet</servlet-name>
-        <url-pattern>/CreateAuctionServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PlaceBidServlet</servlet-name>
         <url-pattern>/PlaceBidServlet</url-pattern>
     </servlet-mapping>
-=======
->>>>>>> parent of 12e81f7... Implemented Auction Creation and Bid Placing
     <session-config>
         <session-timeout>
             30
