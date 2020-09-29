@@ -3,36 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/staffMain.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/Role.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/createAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createUserAccessTables.sql</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/addProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createTables.sql</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/RegisterServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/sysMain.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/addPropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/LogoutServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/CustomerEditServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/Bid.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/CustomerUpdateServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/dao/DB.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/auctionPage.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/userTest.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/homepage.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/editAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/login.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/confirmAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/dao/DBConnector.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/User.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/propertyTable.sql</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/ConnServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/index.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/insertUserAccess.sql</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/ASD2/web/payment.jsp</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/ASD2/src/java/uts/asd/controller/PaymentAddServlet.java</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/ASD2/src/java/uts/asd/controller/PaymentRemoveServlet.java</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/ASD2/web/payment_list.jsp</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/ASD2/src/java/uts/asd/controller/PaymentEditServlet.java</file>
         </group>
     </open-files>
 </project-private>
