@@ -15,8 +15,19 @@ body{
     width: 100%;
 }
 
+
+
 .top_right_link_div a{
     float: right;
+    padding: 10px 10px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.top_left_link_div a{
+    float: left;
     padding: 10px 10px;
     color: black;
     text-transform: uppercase;
@@ -51,4 +62,25 @@ body{
 
 .tab{
     margin: 0 auto;
+}
+
+.calTables{
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    width: 50%;
+    table-layout: fixed;
+    
+}
+
+.calCel{
+    border: 3px solid white;
+    background-color: #f2f2f2;
+    vertical-align: top;
+    text-align: left;
+    font-size: 20px;
+}
+
+.descp{
+    font-size: 15px;
 }
