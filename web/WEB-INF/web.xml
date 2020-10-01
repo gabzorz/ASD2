@@ -119,6 +119,7 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <url-pattern>/AdminUpdateServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <url-pattern>/CreateAuctionServlet</url-pattern>
