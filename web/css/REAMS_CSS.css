@@ -27,3 +27,28 @@ body{
 .top_right_link_div a:hover{
     background-color:white;
 }
+
+.center{
+    margin-left:auto; 
+    margin-right:auto;
+    text-align: center;
+}
+
+.bttn{
+    background-color: lightgray;
+    border: black;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    padding: 20px;
+    font-family: sans-serif;
+    font-style: normal;
+    cursor: pointer;
+}
+
+.tab{
+    margin: 0 auto;
+}
