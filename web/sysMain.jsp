@@ -21,6 +21,16 @@
         </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
+        
+        <div> 
+        <a class="bttn" style="text-decoration:none" href="addUser.jsp">Add new user</a>
+        </div>
+        
+        <div>
+         <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
+        </div>
+        
+        <a href="AdminEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
     </body>
 </html>

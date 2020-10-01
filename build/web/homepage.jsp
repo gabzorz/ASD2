@@ -23,6 +23,10 @@
 
         <p>You're logged in as <%= user.getfName()%></p>
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
+        <a href="addProperty.jsp" style="color:black;">Add property</a>
+        <a href="viewProperty.jsp" style="color:black;">View property</a>
+
+        
 
         <%
         } else {
