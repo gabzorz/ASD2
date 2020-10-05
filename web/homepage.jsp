@@ -14,7 +14,7 @@
     <body>
         <% if (user != null) {%>
         <div class="header">
-            <h1>Welcome to REAMS</h1>
+            <h1>Welcome to REAMS </h1>
         </div>
 
         <div class="top_right_link_div">
@@ -25,7 +25,9 @@
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
         <a href="addProperty.jsp" style="color:black;">Add property</a>
         <a href="viewProperty.jsp" style="color:black;">View property</a>
-
+        <% if(user.getRoleId() == 2) { %>
+            <a href="propertyApprovals.jsp" style="color:black;">View property</a>
+        <% } %>
         
 
         <%
