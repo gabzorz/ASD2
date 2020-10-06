@@ -3,6 +3,9 @@ package uts.asd.model.dao;
 import uts.asd.model.*;
 import java.sql.*;
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AccessDBManager {
 
@@ -16,8 +19,8 @@ public class AccessDBManager {
 
     public void addProperty(String suburb, String address, String postcode, String state, String desc,
             String bathroom, String bedroom, String garage, String email) throws SQLException {
-        st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, EMAIL) "
-                + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "','" + email + "')");
+        st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, EMAIL, STATUS) "
+                + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "','" + email + "','pending')");
     }
 
     //Function to create a new Customer
@@ -58,8 +61,7 @@ public class AccessDBManager {
 
     //Function to find a user using email
     public User findEmail(String email) throws SQLException {
-        String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS = "
-                + "'" + email + "'";
+        String fetch = "SELECT * FROM ASDREAMS.USER_ACCOUNT where EMAILADDRESS = '" + email + "'";
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
@@ -85,9 +87,8 @@ public class AccessDBManager {
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
-            String customerEmail = rs.getString(6);
-            if (customerEmail.equals(email)) {
-                int id = 0;
+                int id = rs.getInt(1);
+                //int idInt = Integer.parseInt(id);
                 String suburb = rs.getString(2);
                 String address = rs.getString(3);
                 String postcode = rs.getString(4);
@@ -102,11 +103,40 @@ public class AccessDBManager {
                 int garageInt = Integer.parseInt(garage);
                 String userEmail = rs.getString(10);
                 return new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
-            }
         }
         return null;
     }
 
+        public HashMap<Integer, Property> getProperties() throws SQLException {
+        
+            HashMap<Integer, Property> properties = new HashMap<Integer, Property>();
+            Property property;
+            String fetch = "select * from ASDREAMS.PROPERTY where STATUS = 'pending'";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+                int id = rs.getInt(1);
+                //int idInt = Integer.parseInt(id);
+                String suburb = rs.getString(2);
+                String address = rs.getString(3);
+                String postcode = rs.getString(4);
+                int postcodeInt = Integer.parseInt(postcode);
+                String state = rs.getString(5);
+                String desc = rs.getString(6);
+                String bathroom = rs.getString(7);
+                int bathroomInt = Integer.parseInt(bathroom);
+                String bedroom = rs.getString(8);
+                int bedroomInt = Integer.parseInt(bedroom);
+                String garage = rs.getString(9);
+                int garageInt = Integer.parseInt(garage);
+                String userEmail = rs.getString(10);
+                property = new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
+                properties.put(property.getId(), property);
+        }
+        return properties;
+    }
+    
+    
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,
             String contactNumber, String password, String email)
@@ -137,6 +167,7 @@ public class AccessDBManager {
         st.executeUpdate("DELETE FROM ASDREAMS.USER_ACCOUNT WHERE EMAILADDRESS='"
                 + email + "'");
     }
+
 
     //Function to check a user's role
     public int checkRole(String email) throws SQLException {
@@ -283,5 +314,28 @@ public class AccessDBManager {
                     status);
         }
         return null;
+    }
+
+    public void deleteProperty(String email) throws SQLException {
+                st.executeUpdate("DELETE FROM ASDREAMS.PROPERTY WHERE EMAIL='"
+                + email + "'");
+    }
+
+    public void updateProperty(Property p) throws SQLException {
+        int id = p.getId();
+        String suburb = p.getSuburb();
+        String address = p.getAddress();
+        String state = p.getState();
+        String postcode = Integer.toString(p.getPostcode());
+        String desc = p.getDesc();
+        String email = p.getUserEmail();
+        String bathroom = Integer.toString(p.getNumOfBathrooms()); 
+        String bedroom = Integer.toString(p.getNumOfBedrooms()); 
+        String garage = Integer.toString(p.getNumOfGarages()); 
+
+        
+        st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET SUBURB='"+ suburb +"', ADDRESS='"+ address +"', POSTCODE='"+ postcode +"',"
+        + " STATE='"+state+"', DESCR='"+ desc +"', BATHROOM='"+ bathroom +"', BEDROOM='"+ bedroom +"', GARAGE='"+ garage +"' "
+        + "WHERE PROPERTYID ="+ id +"");
     }
 }

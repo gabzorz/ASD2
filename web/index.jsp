@@ -10,9 +10,9 @@
             <h1>Welcome to REAMS</h1>
         </div>
         <div class="top_right_link_div">
-            <a href="login.jsp">Login</a>
-            <a href="register.jsp">Register</a>
-            <a href="homepage.jsp">Continue as guest</a>
+            <a style="text-decoration:none" href="login.jsp">Login</a>
+            <a style="text-decoration:none" href="register.jsp">Register</a>
+            <a style="text-decoration:none" href="homepage.jsp">Continue as guest</a>
         </div>
         <h1>Real Estate Auction Management System</h1>
     </body>

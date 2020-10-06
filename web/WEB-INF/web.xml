@@ -68,6 +68,22 @@
         <servlet-name>PlaceBidServlet</servlet-name>
         <servlet-class>uts.asd.controller.PlaceBidServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePropertyServlet</servlet-name>
+        <servlet-class>uts.asd.controller.DeletePropertyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePropertyServlet</servlet-name>
+        <servlet-class>uts.asd.controller.UpdatePropertyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdatePropertyServlet</servlet-name>
+        <url-pattern>/UpdatePropertyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePropertyServlet</servlet-name>
+        <url-pattern>/DeletePropertyServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -119,6 +135,7 @@
     <servlet-mapping>
         <servlet-name>AdminUpdateServlet</servlet-name>
         <url-pattern>/AdminUpdateServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <url-pattern>/CreateAuctionServlet</url-pattern>

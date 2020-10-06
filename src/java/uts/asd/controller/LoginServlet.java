@@ -2,6 +2,7 @@ package uts.asd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,10 +38,20 @@ public class LoginServlet extends HttpServlet {
                 //For customer login
                 if (user != null && role == 3) {
                     session.setAttribute("user", user);
+                    //gets the users property
+                    Property property = manager.getProperty(user.getEmailAddress());
+                    if (property != null) {
+                        session.setAttribute("property", property);
+                    }
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                     //For staff login
                 } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
+                    //gets the users property
+                    HashMap<Integer, Property> properties = manager.getProperties();
+                    if (properties != null) {
+                        session.setAttribute("properties", properties);
+                    }
                     request.getRequestDispatcher("staffMain.jsp").include(request, response);
                     //For system administrator login
                 } else if (user != null && role == 1) {
