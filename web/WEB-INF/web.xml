@@ -56,6 +56,10 @@
         <servlet-name>AdminUpdateServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalculateEquityServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CalculateEquityServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>PlaceBidServlet</servlet-name>
         <url-pattern>/PlaceBidServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalculateEquityServlet</servlet-name>
+        <url-pattern>/CalculateEquityServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

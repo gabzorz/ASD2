@@ -46,22 +46,24 @@
             </tr>
         </table>
 
-
-        <table class="indvCalTables">
-            <tr>
-                <th class="indvCel">Estimated property price</th>
-                <th class="indvCel">Outstanding loan amount</th>
-                <th class="indvCel">Estimated available equity</th>
-            </tr>
-            <tr>
-                <td class="indvCel"><input type="text" name='estPropertyPrice'></td>
-                <td class="indvCel"><input type='text' name='outstandingLoanAmt'></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button>calculate</button></td>
-                <td></td>
-            </tr>
-        </table>
+        <form method="post" action="CalculateEquityServlet"> 
+            <table class="indvCalTables">
+                <tr>
+                    <th class="indvCel">Estimated property price</th>
+                    <th class="indvCel">Outstanding loan amount</th>
+                    <th class="indvCel">Estimated available equity</th>
+                </tr>
+                <tr>
+                    <td class="indvCel"><input type="text" name='estPropertyPrice'></td>
+                    <td class="indvCel"><input type='text' name='outstandingLoanAmt'></td>
+                    <td class="indvCel">${equity}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button>calculate</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
