@@ -3,26 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/homepage.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/UpdatePropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentSearchServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewUsers.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/login.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentValidator.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/addProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/propertyApprovals.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/addPropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/propertyTable.sql</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/User.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/CustomerEditServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/DeletePropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/TestPaymentDB.java</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/equity.jsp</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/css/USER_REAMS.css</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/calculator.jsp</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/homepage.jsp</file>
         </group>
     </open-files>
 </project-private>

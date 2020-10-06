@@ -1,22 +1,17 @@
-<%-- 
-    Document   : equity
-    Created on : 30/09/2020, 12:31:41 PM
-    Author     : Gabriel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="uts.asd.model.*" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/USER_REAMS.css">
-        <title>Equity Page</title>
+        <title>Calculator Page</title>
     </head>
     <body>
 
         <div class="header">
-            <h1>Equity Calculator</h1>
+            <h1>Calculators</h1>
         </div>
 
         <div class="top_right_link_div">
@@ -46,22 +41,24 @@
             </tr>
         </table>
 
-
         <table class="indvCalTables">
             <tr>
                 <th class="indvCel">Estimated property price</th>
-                <th class="indvCel">Outstanding loan amount</th>
-                <th class="indvCel">Estimated available equity</th>
+                <th class="indvCel">My deposit</th>
+                <th class="indvCel">Loan term</th>
+                <th class="indvCel">Interest rate</th>
             </tr>
             <tr>
-                <td class="indvCel"><input type="text" name='estPropertyPrice'></td>
-                <td class="indvCel"><input type='text' name='outstandingLoanAmt'></td>
+                <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
+                <td class="indvCel"><input type="text" name="deposit"></td>
+                <td class="indvCel"><input type="text" name="loanTerm"></td>
+                <td class="indvCel"><input type="text" name="interest" value="2.9%" readonly></td>
             </tr>
             <tr>
-                <td></td>
-                <td><button>calculate</button></td>
-                <td></td>
+                <td class="indvCel"><button>Calculate</button></td>
             </tr>
         </table>
+      
+
     </body>
 </html>
