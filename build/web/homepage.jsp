@@ -39,6 +39,7 @@
             <a href="index.jsp">Index</a>
         </div>
         <p>You're not signed in <a href='register.jsp'>register</a> or <a href="login.jsp"> login</a></p>
+        <a href="calculator.jsp" style="color:black;">Calculators</a>
         <%}%>
 
     </body>

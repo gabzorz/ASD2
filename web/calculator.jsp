@@ -26,7 +26,7 @@
                 <td class="calCel">
                     Equity Calculator
                     <p class="descp">Calculate how much equity you may be able to access</p>
-                    <input type="button" value="Calculate" onClick="equity();"/>
+                    <a href="equity.jsp"><button>calculate</button></a>
                 </td>
                 <td class="calCel">
                     Repayment Calculator
@@ -39,7 +39,7 @@
             </tr>
         </table>
         
-        
+      
 
     </body>
 </html>
