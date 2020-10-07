@@ -34,16 +34,16 @@ public class CustomerUpdateServlet extends HttpServlet {
         if (validator.checkUpdateIsEmpty(fname, lname, password, number, address)) {
             session.setAttribute("empErr", "Please fill in every textfield");
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
-        } else if (validator.validateNumber(number)) {
+        } else if (!validator.validateNumber(number)) {
             session.setAttribute("numErr", "Error: Number format incorrect");
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
-        } else if (validator.validatePassword(password)) {
+        } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password format incorrect");
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
-        } else if (validator.validateName(fname)) {
+        } else if (!validator.validateName(fname)) {
             session.setAttribute("nameErr", "Error: First name format incorrect");
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
-        } else if (validator.validateName(lname)) {
+        } else if (!validator.validateName(lname)) {
             session.setAttribute("nameErr", "Error: Last name format incorrect");
             request.getRequestDispatcher("customerDetails.jsp").include(request, response);
         } else {
