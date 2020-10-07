@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import uts.asd.model.*;
 import uts.asd.model.dao.AccessDBManager;
 import java.math.*;
+import java.text.DecimalFormat;
 
 public class CalculateRepaymentServlet extends HttpServlet {
 
@@ -19,6 +20,7 @@ public class CalculateRepaymentServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         CalculatorValidator validator = new CalculatorValidator();
+
 
         String propertyPrice = request.getParameter("estPropertyPrice");
         String deposit = request.getParameter("deposit");
@@ -48,10 +50,10 @@ public class CalculateRepaymentServlet extends HttpServlet {
             
             double rate = interest1/100.0;
 
-            //double repayment = (deposit1 * (rate/12)*(1+(rate/12)^(12(loan1))))/((1+(rate/12)^(12(loan1)))-1);
             double repayment = (deposit1 * (rate/12) * (Math.pow(1+rate/12, 12*loan1)))/((Math.pow(1+rate/12, 12*loan1))-1);
+            String result = String.format("%.2f", repayment);
             
-            request.setAttribute("repayment", repayment);
+            request.setAttribute("repayment", result);
             request.getRequestDispatcher("repayment.jsp").include(request, response);
 
         }

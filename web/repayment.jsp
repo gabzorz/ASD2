@@ -10,6 +10,10 @@
     </head>
     <body>
 
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+
         <div class="header">
             <h1>Calculators</h1>
         </div>
@@ -41,19 +45,22 @@
             </tr>
         </table>
 
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
+
+
         <form method="get" action="CalculateRepaymentServlet">
             <table class="indvCalTables">
                 <tr>
                     <th class="indvCel">Estimated property price</th>
                     <th class="indvCel">My deposit</th>
                     <th class="indvCel">Loan term</th>
-                    <th class="indvCel">Interest rate</th>
+                    <th class="indvCel">Interest rate(%)</th>
                 </tr>
                 <tr>
                     <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
                     <td class="indvCel"><input type="text" name="deposit"></td>
                     <td class="indvCel"><input type="text" name="loanTerm"></td>
-                    <td class="indvCel"><input type="text" name="interest" value="2.9%" readonly></td>
+                    <td class="indvCel"><input type="text" name="interest" value="2.9" readonly></td>
                 </tr>
                 <tr>
                     <td class="indvCel"><button>Calculate</button></td>

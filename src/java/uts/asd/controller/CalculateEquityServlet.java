@@ -42,8 +42,9 @@ public class CalculateEquityServlet extends HttpServlet {
             double loan = Double.parseDouble(loanAmt);
 
             double equity = price - loan;
+            String result = String.format("%.2f", equity);
 
-            request.setAttribute("equity", equity);
+            request.setAttribute("equity", result);
             request.getRequestDispatcher("equity.jsp").include(request, response);
 
         }
