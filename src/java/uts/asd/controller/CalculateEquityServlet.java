@@ -14,7 +14,7 @@ import uts.asd.model.dao.AccessDBManager;
 public class CalculateEquityServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         CalculatorValidator validator = new CalculatorValidator();

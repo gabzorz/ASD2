@@ -60,6 +60,10 @@
         <servlet-name>CalculateEquityServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateEquityServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalculateRepaymentServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CalculateRepaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>CalculateEquityServlet</servlet-name>
         <url-pattern>/CalculateEquityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalculateRepaymentServlet</servlet-name>
+        <url-pattern>/CalculateRepaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

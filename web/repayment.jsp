@@ -41,24 +41,31 @@
             </tr>
         </table>
 
-        <table class="indvCalTables">
-            <tr>
-                <th class="indvCel">Estimated property price</th>
-                <th class="indvCel">My deposit</th>
-                <th class="indvCel">Loan term</th>
-                <th class="indvCel">Interest rate</th>
-            </tr>
-            <tr>
-                <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
-                <td class="indvCel"><input type="text" name="deposit"></td>
-                <td class="indvCel"><input type="text" name="loanTerm"></td>
-                <td class="indvCel"><input type="text" name="interest" value="2.9%" readonly></td>
-            </tr>
-            <tr>
-                <td class="indvCel"><button>Calculate</button></td>
-            </tr>
-        </table>
-      
+        <form method="get" action="CalculateRepaymentServlet">
+            <table class="indvCalTables">
+                <tr>
+                    <th class="indvCel">Estimated property price</th>
+                    <th class="indvCel">My deposit</th>
+                    <th class="indvCel">Loan term</th>
+                    <th class="indvCel">Interest rate</th>
+                </tr>
+                <tr>
+                    <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
+                    <td class="indvCel"><input type="text" name="deposit"></td>
+                    <td class="indvCel"><input type="text" name="loanTerm"></td>
+                    <td class="indvCel"><input type="text" name="interest" value="2.9%" readonly></td>
+                </tr>
+                <tr>
+                    <td class="indvCel"><button>Calculate</button></td>
+                </tr>
+                <tr>
+                    <th class="indvCel">Repayments per month</th>
+                </tr>
+                <tr>
+                    <td class="indvCel">${repayment}</td>
+                </tr>
+            </table>
+        </form>
 
     </body>
 </html>

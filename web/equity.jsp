@@ -53,7 +53,7 @@
         <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
 
 
-        <form method="post" action="CalculateEquityServlet"> 
+        <form method="get" action="CalculateEquityServlet"> 
             <table class="indvCalTables">
                 <tr>
                     <th class="indvCel">Estimated property price</th>
