@@ -17,23 +17,37 @@ public class CalculateEquityServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+        CalculatorValidator validator = new CalculatorValidator();
+
         String propertyPrice = request.getParameter("estPropertyPrice");
         String loanAmt = request.getParameter("outstandingLoanAmt");
-        
-        double price = Double.parseDouble(propertyPrice);
-        double loan = Double.parseDouble(loanAmt);
-        
-        double equity = price - loan;
-        
-        request.setAttribute("equity", equity);
-        request.getRequestDispatcher("equity.jsp").include(request,response);
-        //response.sendRedirect("equity.jsp");
-        
-        
-        
-        
-        
+
+        validator.clear(session);
+
+        if (validator.equityEmptyInput(loanAmt, propertyPrice)) {
+            session.setAttribute("inputErr", "Please fill in every textbox");
+            request.getRequestDispatcher("equity.jsp").include(request, response);
+
+        } else if (validator.equityPositive(propertyPrice, loanAmt)) {
+            session.setAttribute("inputErr", "Please enter a positive number");
+            request.getRequestDispatcher("equity.jsp").include(request, response);
+
+        } else if (validator.equityValidate(propertyPrice, loanAmt)) {
+            session.setAttribute("inputErr", "Property price must be higher than loan amount");
+            request.getRequestDispatcher("equity.jsp").include(request, response);
+
+        } else {
+
+            double price = Double.parseDouble(propertyPrice);
+            double loan = Double.parseDouble(loanAmt);
+
+            double equity = price - loan;
+
+            request.setAttribute("equity", equity);
+            request.getRequestDispatcher("equity.jsp").include(request, response);
+
+        }
+
     }
-        
+
 }

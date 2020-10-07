@@ -14,6 +14,10 @@
         <title>Equity Page</title>
     </head>
     <body>
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+
 
         <div class="header">
             <h1>Equity Calculator</h1>
@@ -45,6 +49,9 @@
                 </td>
             </tr>
         </table>
+
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
+
 
         <form method="post" action="CalculateEquityServlet"> 
             <table class="indvCalTables">
