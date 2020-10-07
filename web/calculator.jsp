@@ -34,9 +34,9 @@
                     <a href="repayment.jsp"><button>calculate</button></a>
                 </td>
                 <td class="calCel">
-                    Refinance Savings Calculator
-                    <p class="descp">Work out how much you could save on your home loan</p>
-                    <a href="refinance.jsp"><button>calculate</button></a>
+                    Stamp Duty Calculator
+                    <p class="descp">Find out how much you could put towards your deposit.</p>
+                    <a href="stampDuty.jsp"><button>calculate</button></a>
                 </td>
             </tr>
         </table>

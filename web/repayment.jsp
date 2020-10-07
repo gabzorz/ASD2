@@ -37,10 +37,10 @@
                     <p class="descp">See how much your monthly repayments would be</p>
                     <a href="repayment.jsp"><button>calculate</button></a>
                 </td>
-                <td class="calCel">
-                    Refinance Savings Calculator
+               <td class="calCel">
+                    Stamp Duty Calculator
                     <p class="descp">Work out how much you could save on your home loan</p>
-                    <a href="refinance.jsp"><button>calculate</button></a>
+                    <a href="stampDuty.jsp"><button>calculate</button></a>
                 </td>
             </tr>
         </table>
