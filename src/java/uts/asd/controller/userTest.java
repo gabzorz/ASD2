@@ -13,6 +13,7 @@ public class userTest {
     private DBConnector connector;
     private Connection conn;
     private AccessDBManager db;
+    private CalculatorDBManager db1;
 
     public static void main(String[] args) throws SQLException {
         (new userTest()).runQueries();
@@ -24,6 +25,7 @@ public class userTest {
             connector = new DBConnector();
             conn = connector.openConnection();
             db = new AccessDBManager(conn);
+            db1 = new CalculatorDBManager(conn);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -52,7 +54,7 @@ public class userTest {
                     testDelete();
                     break;
                 case 'P':
-                    testRole();
+                    testCat();
                     break;
                 default:
                     System.out.println("Unknown Command");
@@ -60,6 +62,22 @@ public class userTest {
             }
 
         }
+    }
+    
+    private void testCat(){
+        System.out.println("Enter category number");
+        int cat = in.nextInt();
+        
+        try {
+            Calculator value = db1.findValues(cat);
+            System.out.println(value.getVariablePrice());
+            System.out.println(value.getVariableIncrease());
+            System.out.println(value.getDuitableValue());
+        } catch (SQLException ex) {
+            Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Customer is added to the database.");
+        
     }
 
     private void testAdd() {

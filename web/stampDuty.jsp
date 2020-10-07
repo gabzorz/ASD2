@@ -48,7 +48,7 @@
         <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
 
 
-        <form method="get" action="CalculateRepaymentServlet">
+        <form method="post" action="CalculateStampDutyServlet">
             <table class="indvCalTables">
                 <tr>
                     <th class="indvCel">Estimated Property Price</th>

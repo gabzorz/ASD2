@@ -43,6 +43,20 @@ public class CalculatorValidator implements Serializable {
         return deposit1 > price1;
     }
 
+    public Boolean stampDutyEmptyInput(String price) {
+        return price.isEmpty();
+    }
+
+    public Boolean stampDutyPositive(String price) {
+        double price1 = Double.parseDouble(price);
+        return price1 < 0;
+    }
+
+    public Boolean StampDutyValidValue(String price) {
+        double price1 = Double.parseDouble(price);
+        return price1 <= 79999;
+    }
+
     public void clear(HttpSession session) {
         session.setAttribute("inputErr", "");
 

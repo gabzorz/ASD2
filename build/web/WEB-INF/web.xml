@@ -64,6 +64,10 @@
         <servlet-name>CalculateRepaymentServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateRepaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalculateStampDutyServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CalculateStampDutyServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>CalculateRepaymentServlet</servlet-name>
         <url-pattern>/CalculateRepaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalculateStampDutyServlet</servlet-name>
+        <url-pattern>/CalculateStampDutyServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
