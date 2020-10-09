@@ -35,6 +35,17 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
+    
+    // Returns the highest userId (i.e. the latest created userId)
+    public int readHighestCustomerId() throws SQLException {
+        String fetch = "SELECT MAX(USERID) FROM ASDREAMS.USER_ACCOUNT";
+        ResultSet rs = st.executeQuery(fetch);
+        int highestId = 0;
+        while (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        return highestId;
+    }
 
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {

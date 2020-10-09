@@ -61,7 +61,8 @@ public class RegisterServlet extends HttpServlet {
                 } else {
                     //email address has not been used
                     manager.createCustomer(fname, lname, address, dob, email, number, password, 3);
-                    User customer = new User(fname, lname, address, dob, email, number, password, 3);
+                    int customerId = manager.readHighestAuctionId();
+                    User customer = new User(customerId, fname, lname, address, dob, email, number, password, 3);
                     session.setAttribute("user", customer);
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                 }
