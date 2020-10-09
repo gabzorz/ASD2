@@ -6,10 +6,10 @@ public class Calculator implements Serializable {
     
     private int priceCat;
     private int variablePrice;
-    private double variableIncrease;
+    private float variableIncrease;
     private int duitableValue;
 
-    public Calculator(int priceCat, int variablePrice, double variableIncrease, int duitableValue) {
+    public Calculator(int priceCat, int variablePrice, float variableIncrease, int duitableValue) {
         this.priceCat = priceCat;
         this.variablePrice = variablePrice;
         this.variableIncrease = variableIncrease;
@@ -32,11 +32,11 @@ public class Calculator implements Serializable {
         this.variablePrice = variablePrice;
     }
 
-    public double getVariableIncrease() {
+    public float getVariableIncrease() {
         return variableIncrease;
     }
 
-    public void setVariableIncrease(double variableIncrease) {
+    public void setVariableIncrease(float variableIncrease) {
         this.variableIncrease = variableIncrease;
     }
 

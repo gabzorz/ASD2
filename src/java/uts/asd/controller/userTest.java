@@ -69,10 +69,16 @@ public class userTest {
         int cat = in.nextInt();
         
         try {
-            Calculator value = db1.findValues(cat);
-            System.out.println(value.getVariablePrice());
-            System.out.println(value.getVariableIncrease());
-            System.out.println(value.getDuitableValue());
+//            Calculator value = db1.findValues(cat);
+//            System.out.println(value.getVariablePrice());
+//            System.out.println(value.getVariableIncrease());
+//            System.out.println(value.getDuitableValue());
+                int price = db1.findPrice(cat);
+                float increase = db1.findIncrease(cat);
+                int duitable = db1.findValue(cat);
+                System.out.println(price);
+                System.out.println(increase);
+                System.out.println(duitable);
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }

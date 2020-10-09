@@ -15,7 +15,7 @@ import uts.asd.model.dao.*;
 public class ConnServlet extends HttpServlet {
 
     private DBConnector db;
-    private AccessDBManager accessManager;   
+    private AccessDBManager accessManager;  
     private Connection conn;
 
     @Override

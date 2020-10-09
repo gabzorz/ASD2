@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         if (validator.checkEmpty(email, password)) {
             session.setAttribute("empErr", "Please fill in every textfield");
             request.getRequestDispatcher("login.jsp").include(request, response);
-        } else if (validator.validateEmail(email)) {
+        } else if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format incorrect");
             request.getRequestDispatcher("login.jsp").include(request, response);
         } else {
