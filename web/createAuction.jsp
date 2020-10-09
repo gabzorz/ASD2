@@ -4,6 +4,8 @@
     Author     : Hamish Lamond
 --%>
 
+<%@page import="uts.asd.model.User"%>
+<%@page import="uts.asd.model.Property"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +19,8 @@
             String startPriceErr = (String) session.getAttribute("startPriceErr");
             String reservePriceErr = (String) session.getAttribute("reservePriceErr");
             String empErr = (String) session.getAttribute("empErr");
+            Property property = (Property) session.getAttribute("property");
+            User user = (User) session.getAttribute("user");
         %>
         <div class="header">
             <h1>Create Auction</h1>
@@ -32,6 +36,14 @@
         <div class="center">
             <form action="CreateAuctionServlet" method="post">
                 <table class="center">
+                    <tr>
+                        <td><label for="propertyAddress">Property Address:</label></td>
+                        <td><%=property.getAddress()%></td>
+                    </tr>
+                    <tr>
+                        <td><label for="propertySuburb">Property Suburb</label></td>
+                        <td><%=property.getSuburb()%></td>
+                    </tr>
                     <tr>
                         <td><label for="auctionStartDate">Auction Start Date:</label></td>
                         <td><input type="date" id="auctionStartDate" name="auctionStartDate" value="2020-01-01"></td>

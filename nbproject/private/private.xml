@@ -3,26 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/homepage.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/UpdatePropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentSearchServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewUsers.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/login.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/PaymentValidator.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/addProperty.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/propertyApprovals.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/viewAuction.jsp</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/addPropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/propertyTable.sql</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/model/User.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/CustomerEditServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/DeletePropertyServlet.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/ASD2/src/java/uts/asd/controller/TestPaymentDB.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertBids.sql</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertUserAccess.sql</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/CreateAuctionServlet.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/staffMain.jsp</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/User.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/viewProperty.jsp</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertAuction_Item.sql</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/InsertPayment.sql</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/createAuction.jsp</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/Property.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/ConnServlet.java</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/createAuction_ItemTable.sql</file>
+            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/login.jsp</file>
         </group>
     </open-files>
 </project-private>
