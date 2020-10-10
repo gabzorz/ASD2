@@ -20,6 +20,10 @@
             <a href="LogoutServlet"><button>Logout</button></a>
             <a href="createAuction.jsp">Create Auction</a>
         </div>
+        
+                <div>
+         <a class="bttn" style="text-decoration:none" href="propertyApprovals.jsp">Property Approvals</a>
+        </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
 

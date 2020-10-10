@@ -73,6 +73,10 @@
         <servlet-class>uts.asd.controller.DeletePropertyServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>propertyApproval</servlet-name>
+        <servlet-class>uts.asd.controller.propertyApproval</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdatePropertyServlet</servlet-class>
     </servlet>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>propertyApproval</servlet-name>
+        <url-pattern>/propertyApproval</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>

@@ -1,5 +1,6 @@
 package uts.asd.controller;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,7 +17,8 @@ public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(); 
+       
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         try {
             User user = (User) session.getAttribute("user");
