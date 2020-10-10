@@ -57,6 +57,11 @@ public class CalculatorValidator implements Serializable {
         return price1 <= 79999;
     }
 
+    public Boolean checkPriceCat(String cat) {
+        int cat1 = Integer.parseInt(cat);
+        return cat1 < 1 || cat1 > 3;
+    }
+
     public void clear(HttpSession session) {
         session.setAttribute("inputErr", "");
 

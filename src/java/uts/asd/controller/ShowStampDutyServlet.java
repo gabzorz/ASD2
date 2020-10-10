@@ -19,7 +19,7 @@ public class ShowStampDutyServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CalculatorValidator validator = new CalculatorValidator();
 
-        String propertyPrice = request.getParameter("estPropertyPrice");
+        String priceCat = request.getParameter("priceCat");
 
         validator.clear(session);
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
