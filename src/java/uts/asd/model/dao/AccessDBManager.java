@@ -35,6 +35,23 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
+    
+    public Calculator findValues(int priceCat) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            int priceCategory = rs.getInt(1);
+            if (priceCategory == priceCat) {
+                int variablePrice = rs.getInt(2);
+                float variableIncrease = rs.getFloat(3);
+                int duitableValue = rs.getInt(4);
+                return new Calculator(priceCat, variablePrice, variableIncrease, duitableValue);
+            }
+        }
+
+        return null;
+    }
 
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {
