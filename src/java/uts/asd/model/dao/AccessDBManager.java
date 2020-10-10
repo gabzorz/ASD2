@@ -349,4 +349,8 @@ public class AccessDBManager {
                 + " STATE='" + state + "', DESCR='" + desc + "', BATHROOM='" + bathroom + "', BEDROOM='" + bedroom + "', GARAGE='" + garage + "' "
                 + "WHERE PROPERTYID =" + id + "");
     }
+    
+    public void updatePropertyStatus(int propertyId, String status) throws SQLException{
+        st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET STATUS='" + status + "' WHERE PROPERTYID =" + propertyId);
+    }
 }

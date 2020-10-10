@@ -65,6 +65,8 @@ public class CreateAuctionServlet extends HttpServlet {
                 int newId = manager.readHighestAuctionId();
                 Auction_Item auction = new Auction_Item(newId, startDate, startTime, endDate, endTime, Integer.parseInt(reservePrice), Integer.parseInt(startPrice), "ongoing");
                 session.setAttribute("auction", auction);
+                manager.updatePropertyStatus(property.getId(), "approved");
+                session.removeAttribute("property");
                 request.getRequestDispatcher("auctionPage.jsp").include(request, response);
 
             } catch (SQLException ex) {
