@@ -35,7 +35,7 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-    
+
     // Returns the highest userId (i.e. the latest created userId)
     public int readHighestCustomerId() throws SQLException {
         String fetch = "SELECT MAX(USERID) FROM ASDREAMS.USER_ACCOUNT";
@@ -99,56 +99,55 @@ public class AccessDBManager {
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
-                int id = rs.getInt(1);
-                //int idInt = Integer.parseInt(id);
-                String suburb = rs.getString(2);
-                String address = rs.getString(3);
-                String postcode = rs.getString(4);
-                int postcodeInt = Integer.parseInt(postcode);
-                String state = rs.getString(5);
-                String desc = rs.getString(6);
-                String bathroom = rs.getString(7);
-                int bathroomInt = Integer.parseInt(bathroom);
-                String bedroom = rs.getString(8);
-                int bedroomInt = Integer.parseInt(bedroom);
-                String garage = rs.getString(9);
-                int garageInt = Integer.parseInt(garage);
-                String userEmail = rs.getString(10);
-                return new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            String userEmail = rs.getString(10);
+            return new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
         }
         return null;
     }
 
-        public HashMap<Integer, Property> getProperties() throws SQLException {
-        
-            HashMap<Integer, Property> properties = new HashMap<Integer, Property>();
-            Property property;
-            String fetch = "select * from ASDREAMS.PROPERTY where STATUS = 'pending'";
+    public HashMap<Integer, Property> getProperties() throws SQLException {
+
+        HashMap<Integer, Property> properties = new HashMap<Integer, Property>();
+        Property property;
+        String fetch = "select * from ASDREAMS.PROPERTY where STATUS = 'pending'";
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
-                int id = rs.getInt(1);
-                //int idInt = Integer.parseInt(id);
-                String suburb = rs.getString(2);
-                String address = rs.getString(3);
-                String postcode = rs.getString(4);
-                int postcodeInt = Integer.parseInt(postcode);
-                String state = rs.getString(5);
-                String desc = rs.getString(6);
-                String bathroom = rs.getString(7);
-                int bathroomInt = Integer.parseInt(bathroom);
-                String bedroom = rs.getString(8);
-                int bedroomInt = Integer.parseInt(bedroom);
-                String garage = rs.getString(9);
-                int garageInt = Integer.parseInt(garage);
-                String userEmail = rs.getString(10);
-                property = new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
-                properties.put(property.getId(), property);
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            String userEmail = rs.getString(10);
+            property = new Property(id, suburb, address, state, desc, userEmail, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            properties.put(property.getId(), property);
         }
         return properties;
     }
-    
-    
+
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,
             String contactNumber, String password, String email)
@@ -180,7 +179,6 @@ public class AccessDBManager {
                 + email + "'");
     }
 
-
     //Function to check a user's role
     public int checkRole(String email) throws SQLException {
         String fetch = "select * from ASDREAMS.USER_ACCOUNT where EMAILADDRESS='"
@@ -196,7 +194,7 @@ public class AccessDBManager {
         }
         return 0;
     }
-    
+
     // Creates a bid database entry
     public void createBid(int itemId, int userId, int amount) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.BID (ITEMID, USERID, AMOUNT) "
@@ -328,8 +326,28 @@ public class AccessDBManager {
         return null;
     }
 
+    public boolean doesAuctionExist(int propertyId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.AUCTION_ITEM WHERE PROPERTYID=" + propertyId;
+        ResultSet rs = st.executeQuery(fetch);
+        if (!rs.next()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public int getAuctionId(int propertyId) throws SQLException {
+        String fetch = "SELECT MAX(ITEMID) FROM ASDREAMS.AUCTION_ITEM WHERE PROPERTYID=" + propertyId;
+        ResultSet rs = st.executeQuery(fetch);
+        int highestId = -1;
+        while (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        return highestId;
+    }
+
     public void deleteProperty(String email) throws SQLException {
-                st.executeUpdate("DELETE FROM ASDREAMS.PROPERTY WHERE EMAIL='"
+        st.executeUpdate("DELETE FROM ASDREAMS.PROPERTY WHERE EMAIL='"
                 + email + "'");
     }
 
@@ -341,13 +359,12 @@ public class AccessDBManager {
         String postcode = Integer.toString(p.getPostcode());
         String desc = p.getDesc();
         String email = p.getUserEmail();
-        String bathroom = Integer.toString(p.getNumOfBathrooms()); 
-        String bedroom = Integer.toString(p.getNumOfBedrooms()); 
-        String garage = Integer.toString(p.getNumOfGarages()); 
+        String bathroom = Integer.toString(p.getNumOfBathrooms());
+        String bedroom = Integer.toString(p.getNumOfBedrooms());
+        String garage = Integer.toString(p.getNumOfGarages());
 
-        
-        st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET SUBURB='"+ suburb +"', ADDRESS='"+ address +"', POSTCODE='"+ postcode +"',"
-        + " STATE='"+state+"', DESCR='"+ desc +"', BATHROOM='"+ bathroom +"', BEDROOM='"+ bedroom +"', GARAGE='"+ garage +"' "
-        + "WHERE PROPERTYID ="+ id +"");
+        st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET SUBURB='" + suburb + "', ADDRESS='" + address + "', POSTCODE='" + postcode + "',"
+                + " STATE='" + state + "', DESCR='" + desc + "', BATHROOM='" + bathroom + "', BEDROOM='" + bedroom + "', GARAGE='" + garage + "' "
+                + "WHERE PROPERTYID =" + id + "");
     }
 }

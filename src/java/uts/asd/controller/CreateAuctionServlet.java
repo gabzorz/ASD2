@@ -61,7 +61,7 @@ public class CreateAuctionServlet extends HttpServlet {
             request.getRequestDispatcher("createAuction.jsp").include(request, response);
         } else {
             try {
-                manager.createAuctionItem(property.getId(), 3, 7, startDate, startTime, endDate, endTime, Integer.parseInt(startPrice), Integer.parseInt(reservePrice));
+                manager.createAuctionItem(property.getId(), user.getUserId(), 7, startDate, startTime, endDate, endTime, Integer.parseInt(startPrice), Integer.parseInt(reservePrice));
                 int newId = manager.readHighestAuctionId();
                 Auction_Item auction = new Auction_Item(newId, startDate, startTime, endDate, endTime, Integer.parseInt(reservePrice), Integer.parseInt(startPrice), "ongoing");
                 session.setAttribute("auction", auction);
