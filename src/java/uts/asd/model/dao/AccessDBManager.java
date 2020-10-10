@@ -52,6 +52,8 @@ public class AccessDBManager {
 
         return null;
     }
+    
+    
 
     //Function to find a customer using an email and password pair
     public User findCustomer(String email, String password) throws SQLException {

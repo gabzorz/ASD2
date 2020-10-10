@@ -62,6 +62,9 @@ public class CalculatorValidator implements Serializable {
         return cat1 < 1 || cat1 > 3;
     }
 
+    public Boolean checkEmpty(String cat){
+        return cat.isEmpty();
+    }
     public void clear(HttpSession session) {
         session.setAttribute("inputErr", "");
 
