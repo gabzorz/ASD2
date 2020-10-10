@@ -1,86 +1,61 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uts.asd.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
+import java.util.logging.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import uts.asd.model.*;
+import uts.asd.model.dao.AccessDBManager;
 
-/**
- *
- * @author Gabri
- */
 public class AdjustStampDutyServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AdjustStampDutyServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AdjustStampDutyServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        HttpSession session = request.getSession();
+        CalculatorValidator validator = new CalculatorValidator();
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        String priceCat = request.getParameter("priceCategory1");
+        String variablePrice = request.getParameter("variablePrice1");
+        String variableIncrease = request.getParameter("variableIncrease1");
+        String duitableVariable = request.getParameter("duitableVariable1");
+
+        validator.clear(session);
+        AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
+
+        if (validator.checkEmptyAdjust(priceCat, variablePrice, variableIncrease, duitableVariable)) {
+            session.setAttribute("inputErr", "Please fill in every textbox");
+            request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
+
+        } else if (validator.checkNegativeValues(priceCat, variablePrice, variableIncrease, duitableVariable)) {
+            session.setAttribute("inputErr", "Please enter a postive value");
+            request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
+
+        } else {
+            try {
+
+                int category = Integer.parseInt(priceCat);
+                int price = Integer.parseInt(variablePrice);
+                float increase = Float.parseFloat(variableIncrease);
+                int variable = Integer.parseInt(duitableVariable);
+
+                manager.updateValues(category, price, increase, variable);
+
+//                request.setAttribute("variablePrice", variablePrice);
+//                request.setAttribute("variableIncrease", variableIncrease);
+//                request.setAttribute("duitableVariable", duitableVariable);
+                request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(CalculateStampDutyServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+    }
 
 }

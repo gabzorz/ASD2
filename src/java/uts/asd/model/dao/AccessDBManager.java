@@ -165,6 +165,10 @@ public class AccessDBManager {
                 + "', CONTACTNUMBER='" + contactNumber + "', PASSWORD='"
                 + password + "' WHERE EMAILADDRESS='" + email + "'");
     }
+    
+    public void updateValues(int priceCat, int variablePrice, float variableIncrease, int duitableVariable) throws SQLException{
+        st.executeUpdate("UPDATE ASDREAMS.STAMP_DUTY SET VARIABLEPRICE = " + variablePrice + ", VARIABLEINCREASE = " + variableIncrease + ", DUITABLEVALUE = " + duitableVariable + " WHERE PRICECAT = " + priceCat);
+    }
 
     //Function to check if a an email is used
     public boolean checkEmail(String email) throws SQLException {

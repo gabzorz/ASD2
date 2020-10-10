@@ -65,6 +65,20 @@ public class CalculatorValidator implements Serializable {
     public Boolean checkEmpty(String cat){
         return cat.isEmpty();
     }
+    
+    public Boolean checkEmptyAdjust(String cat, String vp, String vi, String dv){      
+        return cat.isEmpty() || vp.isEmpty() || vi.isEmpty() || dv.isEmpty();
+    }
+    
+    public Boolean checkNegativeValues(String cat, String vp, String vi, String dv){
+        int category = Integer.parseInt(cat);
+        int price = Integer.parseInt(vp);
+        float increase = Float.parseFloat(vi);
+        int duitable = Integer.parseInt(dv);
+        return category < 0 || price < 0 || increase < 0 || duitable < 0;  
+    }
+    
+    
     public void clear(HttpSession session) {
         session.setAttribute("inputErr", "");
 

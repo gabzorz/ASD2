@@ -24,12 +24,12 @@ public class ShowStampDutyServlet extends HttpServlet {
         validator.clear(session);
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
 
-        if (validator.checkPriceCat(priceCat)) {
-            session.setAttribute("inputErr", "Input must be 1, 2 or 3");
+        if (validator.checkEmpty(priceCat)) {
+            session.setAttribute("inputErr", "Please enter a value");
             request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
 
-        } else if (validator.checkEmpty(priceCat)) {
-            session.setAttribute("inputErr", "Please enter a value");
+        } else if (validator.checkPriceCat(priceCat)) {
+            session.setAttribute("inputErr", "Input must be 1, 2 or 3");
             request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
 
         } else {

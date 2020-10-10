@@ -9,6 +9,10 @@
         <title>Adjust Calculator Page</title>
     </head>
     <body>
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+        
 
         <div class="header">
             <h1>Adjust Calculators</h1>
@@ -32,6 +36,8 @@
                 </td>
             </tr>
         </table>
+        
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
         
         <form method="post" action="ShowStampDutyServlet">
             <table class="indvCalTables">
@@ -62,10 +68,10 @@
                     <th class="indvCel">Duitable Variable</th>
                 </tr>
                 <tr>
-                    <td class="indvCel"><input type="text" name="priceCategory"></td>
-                    <td class="indvCel"><input type="text" name="variablePrice"></td>
-                    <td class="indvCel"><input type="text" name="variableIncrease"></td>
-                    <td class="indvCel"><input type="text" name="duitableVariable"></td>
+                    <td class="indvCel"><input type="text" name="priceCategory1"></td>
+                    <td class="indvCel"><input type="text" name="variablePrice1"></td>
+                    <td class="indvCel"><input type="text" name="variableIncrease1"></td>
+                    <td class="indvCel"><input type="text" name="duitableVariable1"></td>
                 </tr>
                 <tr>
                     <td class="indvCel"><button>Adjust</button></td>
