@@ -6,12 +6,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/USER_REAMS.css">
-        <title>Calculator Page</title>
+        <title>Adjust Calculator Page</title>
     </head>
     <body>
 
         <div class="header">
-            <h1>Calculators</h1>
+            <h1>Adjust Calculators</h1>
         </div>
 
         <div class="top_right_link_div">
@@ -20,23 +20,15 @@
                 <a href="homepage.jsp"><button>Home</button></a>
             </div>
         </div>
+        
+        <p>Select a calculator you want to adjust</p>
 
         <table class="calTables">
             <tr>
                 <td class="calCel">
-                    Equity Calculator
-                    <p class="descp">Calculate how much equity you may be able to access</p>
-                    <a href="equity.jsp"><button>calculate</button></a>
-                </td>
-                <td class="calCel">
-                    Repayment Calculator
-                    <p class="descp">See how much your monthly repayments would be</p>
-                    <a href="repayment.jsp"><button>calculate</button></a>
-                </td>
-                <td class="calCel">
                     Stamp Duty Calculator
                     <p class="descp">Find out how much you could put towards your deposit.</p>
-                    <a href="stampDuty.jsp"><button>calculate</button></a>
+                    <a href="adjustStampDuty.jsp"><button>Adjust</button></a>
                 </td>
             </tr>
         </table>

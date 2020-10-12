@@ -14,6 +14,10 @@
         <title>Equity Page</title>
     </head>
     <body>
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+
 
         <div class="header">
             <h1>Equity Calculator</h1>
@@ -39,29 +43,34 @@
                     <a href="repayment.jsp"><button>calculate</button></a>
                 </td>
                 <td class="calCel">
-                    Refinance Savings Calculator
+                    Stamp Duty Calculator
                     <p class="descp">Work out how much you could save on your home loan</p>
-                    <a href="refinance.jsp"><button>calculate</button></a>
+                    <a href="stampDuty.jsp"><button>calculate</button></a>
                 </td>
             </tr>
         </table>
 
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
 
-        <table class="indvCalTables">
-            <tr>
-                <th class="indvCel">Estimated property price</th>
-                <th class="indvCel">Outstanding loan amount</th>
-                <th class="indvCel">Estimated available equity</th>
-            </tr>
-            <tr>
-                <td class="indvCel"><input type="text" name='estPropertyPrice'></td>
-                <td class="indvCel"><input type='text' name='outstandingLoanAmt'></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button>calculate</button></td>
-                <td></td>
-            </tr>
-        </table>
+
+        <form method="get" action="CalculateEquityServlet"> 
+            <table class="indvCalTables">
+                <tr>
+                    <th class="indvCel">Estimated property price</th>
+                    <th class="indvCel">Outstanding loan amount</th>
+                    <th class="indvCel">Estimated available equity</th>
+                </tr>
+                <tr>
+                    <td class="indvCel"><input type="text" name='estPropertyPrice'></td>
+                    <td class="indvCel"><input type='text' name='outstandingLoanAmt'></td>
+                    <td class="indvCel">${equity}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button>calculate</button></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

@@ -10,6 +10,10 @@
     </head>
     <body>
 
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+
         <div class="header">
             <h1>Calculators</h1>
         </div>
@@ -34,31 +38,35 @@
                     <a href="repayment.jsp"><button>calculate</button></a>
                 </td>
                 <td class="calCel">
-                    Refinance Savings Calculator
+                    Stamp Duty Calculator
                     <p class="descp">Work out how much you could save on your home loan</p>
-                    <a href="refinance.jsp"><button>calculate</button></a>
+                    <a href="stampDuty.jsp"><button>calculate</button></a>
                 </td>
             </tr>
         </table>
 
-        <table class="indvCalTables">
-            <tr>
-                <th class="indvCel">Interest rate</th>
-                <th class="indvCel">Estimated property value</th>
-                <th class="indvCel">Outstanding loan amount</th>
-                <th class="indvCel">Outstanding loan term (years)</th>
-            </tr>
-            <tr>
-                <td class="indvCel"><input type="text" name="interestRate"></td>
-                <td class="indvCel"><input type="text" name="estPropertyVal"></td>
-                <td class="indvCel"><input type="text" name="outstandingLoanAmt"></td>
-                <td class="indvCel"><input type="text" name="outstandingLoanTerm"></td>
-            </tr>
-            <tr>
-                <td><button>calculate</button></td>
-            </tr>
-        </table>
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
 
+
+        <form method="post" action="CalculateStampDutyServlet">
+            <table class="indvCalTables">
+                <tr>
+                    <th class="indvCel">Estimated Property Price</th>
+                </tr>
+                <tr>
+                    <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
+                </tr>
+                <tr>
+                    <td class="indvCel"><button>Calculate</button></td>
+                </tr>
+                <tr>
+                    <th class="indvCel">Stamp duty cost</th>
+                </tr>
+                <tr>
+                    <td class="indvCel">${stamp_duty}</td>
+                </tr>
+            </table>
+        </form>
 
     </body>
 </html>

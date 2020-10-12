@@ -10,6 +10,10 @@
     </head>
     <body>
 
+        <%
+            String inputErr = (String) session.getAttribute("inputErr");
+        %>
+
         <div class="header">
             <h1>Calculators</h1>
         </div>
@@ -33,32 +37,42 @@
                     <p class="descp">See how much your monthly repayments would be</p>
                     <a href="repayment.jsp"><button>calculate</button></a>
                 </td>
-                <td class="calCel">
-                    Refinance Savings Calculator
+               <td class="calCel">
+                    Stamp Duty Calculator
                     <p class="descp">Work out how much you could save on your home loan</p>
-                    <a href="refinance.jsp"><button>calculate</button></a>
+                    <a href="stampDuty.jsp"><button>calculate</button></a>
                 </td>
             </tr>
         </table>
 
-        <table class="indvCalTables">
-            <tr>
-                <th class="indvCel">Estimated property price</th>
-                <th class="indvCel">My deposit</th>
-                <th class="indvCel">Loan term</th>
-                <th class="indvCel">Interest rate</th>
-            </tr>
-            <tr>
-                <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
-                <td class="indvCel"><input type="text" name="deposit"></td>
-                <td class="indvCel"><input type="text" name="loanTerm"></td>
-                <td class="indvCel"><input type="text" name="interest" value="2.9%" readonly></td>
-            </tr>
-            <tr>
-                <td class="indvCel"><button>Calculate</button></td>
-            </tr>
-        </table>
-      
+        <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
+
+
+        <form method="get" action="CalculateRepaymentServlet">
+            <table class="indvCalTables">
+                <tr>
+                    <th class="indvCel">Estimated property price</th>
+                    <th class="indvCel">My deposit</th>
+                    <th class="indvCel">Loan term</th>
+                    <th class="indvCel">Interest rate(%)</th>
+                </tr>
+                <tr>
+                    <td class="indvCel"><input type="text" name="estPropertyPrice"></td>
+                    <td class="indvCel"><input type="text" name="deposit"></td>
+                    <td class="indvCel"><input type="text" name="loanTerm"></td>
+                    <td class="indvCel"><input type="text" name="interest" value="2.9" readonly></td>
+                </tr>
+                <tr>
+                    <td class="indvCel"><button>Calculate</button></td>
+                </tr>
+                <tr>
+                    <th class="indvCel">Repayments per month</th>
+                </tr>
+                <tr>
+                    <td class="indvCel">${repayment}</td>
+                </tr>
+            </table>
+        </form>
 
     </body>
 </html>

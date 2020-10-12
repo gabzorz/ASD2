@@ -48,10 +48,10 @@ public class LoginServlet extends HttpServlet {
                 } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
                     //gets the users property
-                    HashMap<Integer, Property> properties = manager.getProperties();
-                    if (properties != null) {
-                        session.setAttribute("properties", properties);
-                    }
+//                    HashMap<Integer, Property> properties = manager.getProperties();
+//                    if (properties != null) {
+//                        session.setAttribute("properties", properties);
+//                    }
                     request.getRequestDispatcher("staffMain.jsp").include(request, response);
                     //For system administrator login
                 } else if (user != null && role == 1) {
