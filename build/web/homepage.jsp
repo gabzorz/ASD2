@@ -26,8 +26,10 @@
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
         <a href="addProperty.jsp" style="color:black;">Add property</a>
         <a href="viewProperty.jsp" style="color:black;">View property</a>
+        <a href="calculator.jsp">Calculators</a>
         <% if(user.getRoleId() == 2) { %>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
+            <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
         <% } %>
         
 
@@ -41,6 +43,7 @@
             <a style="text-decoration:none" href="index.jsp">Index</a>
         </div>
         <p>You're not signed in <a style="text-decoration:none" href='register.jsp'>register</a> or <a style="text-decoration:none" href="login.jsp"> login</a></p>
+        <p><a href="calculator.jsp">Calculators</a></p>
         <%}%>
 
     </body>

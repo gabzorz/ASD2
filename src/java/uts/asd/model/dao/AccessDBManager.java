@@ -35,6 +35,25 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
+    
+    public Calculator findValues(int priceCat) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            int priceCategory = rs.getInt(1);
+            if (priceCategory == priceCat) {
+                int variablePrice = rs.getInt(2);
+                float variableIncrease = rs.getFloat(3);
+                int duitableValue = rs.getInt(4);
+                return new Calculator(priceCat, variablePrice, variableIncrease, duitableValue);
+            }
+        }
+
+        return null;
+    }
+    
+    
 
     // Returns the highest userId (i.e. the latest created userId)
     public int readHighestCustomerId() throws SQLException {
@@ -138,6 +157,10 @@ public class AccessDBManager {
                 + "', LNAME='" + lName + "', ADDRESS='" + address
                 + "', CONTACTNUMBER='" + contactNumber + "', PASSWORD='"
                 + password + "' WHERE EMAILADDRESS='" + email + "'");
+    }
+    
+    public void updateValues(int priceCat, int variablePrice, float variableIncrease, int duitableVariable) throws SQLException{
+        st.executeUpdate("UPDATE ASDREAMS.STAMP_DUTY SET VARIABLEPRICE = " + variablePrice + ", VARIABLEINCREASE = " + variableIncrease + ", DUITABLEVALUE = " + duitableVariable + " WHERE PRICECAT = " + priceCat);
     }
 
     //Function to check if a an email is used
