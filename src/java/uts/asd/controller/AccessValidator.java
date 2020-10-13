@@ -15,7 +15,7 @@ public class AccessValidator implements Serializable {
     private String namePattern = "[A-Z][a-z]*";
     //password is combination of  lower and upper case letters 
     //and numbers, 4 characters minimum
-    private String passwordPattern = "[a-zA-Z0-9]{4,}";
+    private String passwordPattern = "[a-z0-9]{4,}";
     //number length must be between 8 (landline) and 10 (mobile)
     private String numberPattern = "[0-9]{8,10}";
 

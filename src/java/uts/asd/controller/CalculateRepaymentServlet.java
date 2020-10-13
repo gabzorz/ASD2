@@ -21,6 +21,10 @@ public class CalculateRepaymentServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CalculatorValidator validator = new CalculatorValidator();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
         String propertyPrice = request.getParameter("estPropertyPrice");
         String deposit = request.getParameter("deposit");
         String loanTerm = request.getParameter("loanTerm");
@@ -28,11 +32,19 @@ public class CalculateRepaymentServlet extends HttpServlet {
 
         validator.clear(session);
 
+<<<<<<< HEAD
         if (validator.repaymentEmptyInput(deposit, propertyPrice, loanTerm)) {
             session.setAttribute("inputErr", "Please fill in every textbox");
             request.getRequestDispatcher("repayment.jsp").include(request, response);
 
         } else if (validator.repaymentPositive(deposit, propertyPrice, loanTerm)) {
+=======
+        if (validator.repaymentEmptyInput(deposit, interest, loanTerm)) {
+            session.setAttribute("inputErr", "Please fill in every textbox");
+            request.getRequestDispatcher("repayment.jsp").include(request, response);
+
+        } else if (validator.repaymentPositive(deposit, interest, loanTerm)) {
+>>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
             session.setAttribute("inputErr", "Please enter a positive number");
             request.getRequestDispatcher("repayment.jsp").include(request, response);
 
@@ -46,12 +58,21 @@ public class CalculateRepaymentServlet extends HttpServlet {
             double deposit1 = Double.parseDouble(deposit);
             double loan1 = Double.parseDouble(loanTerm);
             double interest1 = Double.parseDouble(interest);
+<<<<<<< HEAD
 
             double rate = interest1 / 100.0;
 
             double repayment = (deposit1 * (rate / 12) * (Math.pow(1 + rate / 12, 12 * loan1))) / ((Math.pow(1 + rate / 12, 12 * loan1)) - 1);
             String result = String.format("%.2f", repayment);
 
+=======
+            
+            double rate = interest1/100.0;
+
+            double repayment = (deposit1 * (rate/12) * (Math.pow(1+rate/12, 12*loan1)))/((Math.pow(1+rate/12, 12*loan1))-1);
+            String result = String.format("%.2f", repayment);
+            
+>>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
             request.setAttribute("repayment", result);
             request.getRequestDispatcher("repayment.jsp").include(request, response);
 
