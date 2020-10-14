@@ -3,37 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertBids.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertUserAccess.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/CreateAuctionServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/staffMain.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/User.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/viewProperty.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/insertAuction_Item.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/InsertPayment.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/createAuction.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/Property.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/ConnServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/createAuction_ItemTable.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/login.jsp</file>
-=======
-<<<<<<< HEAD
-            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/db/insertStampDuty.sql</file>
-=======
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/model/Calculator.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/CustomerUpdateServlet.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/CalculateStampDutyServlet.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/web/stampDuty.jsp</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/ConnServlet.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/userTest.java</file>
-            <file>file:/C:/Users/Gabri/Documents/ASD/newrep/ASD2/src/java/uts/asd/controller/RegisterServlet.java</file>
->>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
->>>>>>> gabriel3
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/index.jsp</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/src/java/uts/asd/controller/LogoutServlet.java</file>
+            <file>file:/D:/Gabriel/Uni%20docs/2020/Semester%202/Advanced%20Software%20Development/New%20repo/ASD2/web/homepage.jsp</file>
         </group>
     </open-files>
 </project-private>

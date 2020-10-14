@@ -68,7 +68,7 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateStampDutyServlet</servlet-class>
     </servlet>
-<<<<<<< HEAD
+
     <servlet>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.ShowStampDutyServlet</servlet-class>
@@ -77,8 +77,7 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdjustStampDutyServlet</servlet-class>
     </servlet>
-=======
->>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
+
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -187,7 +186,7 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <url-pattern>/CalculateStampDutyServlet</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
+
     <servlet-mapping>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <url-pattern>/ShowStampDutyServlet</url-pattern>
@@ -196,8 +195,7 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <url-pattern>/AdjustStampDutyServlet</url-pattern>
     </servlet-mapping>
-=======
->>>>>>> 42ce2d1e34f12f49a680daa52991263aba8c7b72
+
     <session-config>
         <session-timeout>
             30
