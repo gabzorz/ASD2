@@ -47,7 +47,6 @@
 
         <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
 
-
         <form method="post" action="CalculateStampDutyServlet">
             <table class="indvCalTables">
                 <tr>
@@ -67,6 +66,8 @@
                 </tr>
             </table>
         </form>
+
+    <a class="bttn" href="homepage.jsp">Go back</a>
 
     </body>
 </html>
