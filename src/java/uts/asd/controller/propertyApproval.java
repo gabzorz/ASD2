@@ -23,26 +23,26 @@ import uts.asd.model.dao.AccessDBManager;
  *
  * @author Corey
  */
-public class viewPropertyServlet extends HttpServlet {
+public class propertyApproval extends HttpServlet {
   @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //get session
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
+        
+        String user = request.getParameter("id");
+        int userID = Integer.parseInt(user);
 
-        User user = (User) session.getAttribute("user");
-
-        if(user != null) { 
             try {
-                session.setAttribute("property", manager.getProperty(user.getUserId()));
+                session.setAttribute("property", manager.getProperty(userID));
+                request.getRequestDispatcher("createAuction.jsp").include(request, response);
                 
                 
             } catch (SQLException ex) {
                 Logger.getLogger(viewPropertyServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-              
-        }
+             
 
 
 }}

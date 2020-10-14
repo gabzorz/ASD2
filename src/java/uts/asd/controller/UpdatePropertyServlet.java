@@ -49,7 +49,7 @@ public class UpdatePropertyServlet extends HttpServlet {
         int garageInt = Integer.parseInt(garage);
 
 
-        Property newProperty = new Property(oldProperty.getId(), suburb, address, state, desc, oldProperty.getUserEmail(), postcodeInt, bathroomInt, bedroomInt, garageInt);
+        Property newProperty = new Property(oldProperty.getId(), suburb, address, state, desc, oldProperty.getUserID(), postcodeInt, bathroomInt, bedroomInt, garageInt);
         
         try {
             manager.updateProperty(newProperty);

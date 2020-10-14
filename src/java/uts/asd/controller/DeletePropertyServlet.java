@@ -31,11 +31,11 @@ public class DeletePropertyServlet extends HttpServlet {
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
 
             Property property = (Property) session.getAttribute("property");
-            session.removeAttribute("property");
             
         try {
             //delete user from the database
-            manager.deleteProperty(property.getUserEmail());
+            manager.deleteProperty(property.getUserID());
+            session.removeAttribute("property");
         } catch (SQLException ex) {
             Logger.getLogger(DeletePropertyServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

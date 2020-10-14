@@ -14,17 +14,17 @@ import java.io.Serializable;
 
 public class Property implements Serializable {
     private int id;
-    private String suburb, address, state, desc, userEmail;
-    private int postcode, numOfBathrooms, numOfBedrooms, numOfGarages;
+    private String suburb, address, state, desc;
+    private int userID, postcode, numOfBathrooms, numOfBedrooms, numOfGarages;
     private String status;
 
-    public Property(int id, String suburb, String address, String state, String desc, String userEmail, int postcode, int numOfBathrooms, int numOfBedrooms, int numOfGarages) {
+    public Property(int id, String suburb, String address, String state, String desc, int userID, int postcode, int numOfBathrooms, int numOfBedrooms, int numOfGarages) {
         this.id = id;
         this.suburb = suburb;
         this.address = address;
         this.state = state;
         this.desc = desc;
-        this.userEmail = userEmail;
+        this.userID = userID;
         this.postcode = postcode;
         this.numOfBathrooms = numOfBathrooms;
         this.numOfBedrooms = numOfBedrooms;
@@ -80,12 +80,12 @@ public class Property implements Serializable {
         this.desc = desc;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public int getPostcode() {

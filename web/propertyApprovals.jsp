@@ -1,33 +1,41 @@
-<%-- 
-    Document   : propertyApprovals
-    Created on : 03/10/2020, 10:24:16 PM
-    Author     : Corey
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
 <%@page import="uts.asd.model.User"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="uts.asd.model.Property"%>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <% HashMap<Integer, Property> properties = (HashMap<Integer, Property>) session.getAttribute("properties"); 
-        Gson gson = new Gson();
-        
-        
-            int size = properties.size();
-            User user = (User) session.getAttribute("user");
-            Property property;
-            if (properties != null) {
-               
-            if (user.getRoleId() == 2) {
-        %> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/USER_REAMS.css">
+        <title>Add User</title>
     </head>
+
+    <%
+
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRoleId() == 1 || user.getRoleId() == 2 ) {
+
+    %>
     <body>
-        <h1>Approvals</h1>
-        <table>
+
+        <div class="header">
+            <h1>Approval List </h1>
+        </div>
+    <body>
+        <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
+                           url = "jdbc:derby://localhost:1527/REAMS"
+                           user = "ASDREAMS"  password = "ASDREAMS"/>
+         <sql:query dataSource = "${snapshot}" var = "result">
+        SELECT * FROM PROPERTY WHERE STATUS = 'pending'
+           </sql:query>
+        <table border = "1" width = "80%">
             <tr>
                 <th>Address</th>
                 <th>Suburb</th>
@@ -37,25 +45,40 @@
                 <th>Bedrooms</th>
                 <th>Garages</th>
                 <th>Desc</th>
-                <th>Email:</th>
-                <th>Approval?</th>
-            </tr>
-            <%
-            for(int i = 0; i < size; i++){
-                property = properties.get(i);
-                %>
+                <th>Status</th>
+                <th>Approve</th>
+            </tr>      
+            <c:forEach var = "row" items = "${result.rows}">
                 <tr>
-                    <th><%=property.getAddress()%></th>
-                    <th><%=property.getSuburb()%></th>
-                    <th><%=property.getState()%></th>
-                    <th><%=property.getPostcode()%></th>
-                    <th><%=property.getNumOfBathrooms()%></th>
-                    <th><%=property.getNumOfBedrooms()%></th>
-                    <th><%=property.getNumOfGarages()%></th>
-                    <th><%=property.getDesc()%></th>
-                    <th><%=property.getUserEmail() %></th>
-                </tr>   
-                <% }}} %>
+                <td><c:out value = "${row.address}"/></td>
+                <td><c:out value = "${row.suburb}"/></td>
+                <td><c:out value = "${row.state}"/></td>
+                <td><c:out value = "${row.postcode}"/></td>
+                <td><c:out value = "${row.bathroom}"/></td>
+                <td><c:out value = "${row.bedroom}"/></td>
+                <td><c:out value = "${row.garage}"/></td>
+                <td><c:out value = "${row.descr}"/></td>
+                <td><c:out value = "${row.status}"/></td>
+                <form action="propertyApproval" method="get">
+                <input type="hidden" value="${row.userid}" name="id">
+                <td><input type="submit" value='Approve' name="Approve"</td>
+                </form>
+                </tr>
+            </c:forEach>
         </table>
+
+        Click <a href="sysMain.jsp">here</a> to go back.
     </body>
+</table>
+<% } else { %>
+
+<body>
+    <h1>There are no registered users</h1>
+    Click <a href="sysMain.jsp">here</a> to go back.            
+</body>
+</body>
 </html>
+<% }%>
+
+
+<!-- This is a test comment -->

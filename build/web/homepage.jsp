@@ -9,12 +9,13 @@
         <title>Home Page</title>
         <%
             User user = (User) session.getAttribute("user");
+            int number = user.getUserId();
         %>
     </head>
     <body>
         <% if (user != null) {%>
         <div class="header">
-            <h1>Welcome to REAMS </h1>
+            <h1>Welcome to REAMS</h1>
         </div>
 
         <div class="top_right_link_div">
