@@ -100,6 +100,24 @@ public class AccessDBManager {
         return null;
     }
 
+    public User findCustomerById(int userId) throws SQLException {
+        String fetch = "select * from ASDREAMS.USER_ACOUNT WHERE USERID=" + userId;
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()) {
+            String fName = rs.getString(2);
+            String lName = rs.getString(3);
+            String address = rs.getString(4);
+            String dob = rs.getString(5);
+            String customerEmail = rs.getString(6);
+            String contactNumber = rs.getString(7);
+            String password = rs.getString(8);
+            Integer roleId = rs.getInt(9);
+            return new User(userId, fName, lName, address, dob, customerEmail,
+                    contactNumber, password, roleId);
+        }
+        return null;
+    }
+
     //Function to find a user using email
     public User findEmail(String email) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.USER_ACCOUNT where EMAILADDRESS = '" + email + "'";
@@ -375,5 +393,59 @@ public class AccessDBManager {
     
     public void updatePropertyStatus(int propertyId, String status) throws SQLException{
         st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET STATUS='" + status + "' WHERE PROPERTYID =" + propertyId);
+    }
+
+    public void createOpenDayListing(int staffId, int propertyId, String date, String startTime, String endTime) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.OPEN_DAY_BOOKING (STAFFID, PROPERTYID, DATE, STARTTIME, ENDTIME, STATUS) VALUES (" + staffId + ", "
+                + propertyId + ", '" + date + "', '" + startTime + "', '" + endTime + "', 'Available)");
+    }
+
+    public int getOpenDayListingId(int propertyId, String date, String startTime) throws SQLException {
+        String fetch = "SELECT BOOKINGID FROM ASDREAMS.OPEN_DAY_BOOKING WHERE PROPERTYID=" + propertyId + " AND DATE='" + date
+                + "' AND startTime='" + startTime;
+        ResultSet rs = st.executeQuery(fetch);
+        int listingId = -1;
+        while (rs.next()) {
+            listingId = rs.getInt(1);
+        }
+        return listingId;
+    }
+
+    public void updateOpenDayListing(int listingId, String date, String startTime, String endTime) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET DATE='" + date + "', STARTTIME='" + startTime + "', ENDTIME='"
+                + endTime + "' WHERE LISTINGID=" + listingId);
+    }
+
+    public void updateOpenDayListingBooked(int listingId, int userId) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=" + userId + " WHERE LISTINGID=" + listingId);
+    }
+
+    public void deleteOpenDayListing(int listingId) throws SQLException {
+        st.executeUpdate("DELETE FROM ASDREAMS.OPEN_DAY_BOOKING WHERE LISTINGID=" + listingId);
+    }
+
+    public ArrayList<Open_Day_Booking> getAllPropertyOpenDays(int propertyId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.OPEN_DAY_BOOKING WHERE PROPERTYID=" + propertyId + " ORDER BY DATE, STARTTIME";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<Open_Day_Booking> openDayBookings = new ArrayList<Open_Day_Booking>();
+        Open_Day_Booking currentBooking;
+        while (rs.next()) {
+            int bookingId = rs.getInt(1);
+            int staffId = rs.getInt(2);
+            int userId = rs.getInt(3);
+            String date = rs.getDate(5).toString();
+            String startTime = rs.getTime(6).toString();
+            String endTime = rs.getTime(7).toString();
+            String status = rs.getString(8);
+            if (userId != 0) {
+                currentBooking = new Open_Day_Booking(bookingId, staffId, userId, propertyId,
+                        date, startTime, endTime, status);
+            } else {
+                currentBooking = new Open_Day_Booking(bookingId, staffId, propertyId,
+                        date, startTime, endTime, status);
+            }
+            openDayBookings.add(currentBooking);
+        }
+        return openDayBookings;
     }
 }
