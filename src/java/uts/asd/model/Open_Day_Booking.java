@@ -10,21 +10,35 @@ package uts.asd.model;
  * @author Hamish Lamond
  */
 public class Open_Day_Booking {
-    
+
     private int bookingID;
     private int staffID;
     private int userID;
     private int propertyID;
     private String date;
-    private String time;
+    private String startTime;
+    private String endTime;
+    private String status;
 
-    public Open_Day_Booking(int bookingID, int staffID, int userID, int propertyID, String date, String time) {
+    public Open_Day_Booking(int bookingID, int staffID, int propertyID, String date, String startTime, String endTime, String status) {
+        this.bookingID = bookingID;
+        this.staffID = staffID;
+        this.propertyID = propertyID;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.status = status;
+    }
+
+    public Open_Day_Booking(int bookingID, int staffID, int userID, int propertyID, String date, String startTime, String endTime, String status) {
         this.bookingID = bookingID;
         this.staffID = staffID;
         this.userID = userID;
         this.propertyID = propertyID;
         this.date = date;
-        this.time = time;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.status = status;
     }
 
     public int getBookingID() {
@@ -67,14 +81,28 @@ public class Open_Day_Booking {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    
-    
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

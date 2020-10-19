@@ -56,6 +56,26 @@
         <servlet-name>AdminUpdateServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JoinAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.JoinAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CreateOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CancelOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EditOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOpenDayListServlet</servlet-name>
+        <servlet-class>uts.asd.controller.ViewOpenDayListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -151,6 +171,26 @@
     <servlet-mapping>
         <servlet-name>PlaceBidServlet</servlet-name>
         <url-pattern>/PlaceBidServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JoinAuctionServlet</servlet-name>
+        <url-pattern>/JoinAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOpenDayServlet</servlet-name>
+        <url-pattern>/CreateOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelOpenDayServlet</servlet-name>
+        <url-pattern>/CancelOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditOpenDayServlet</servlet-name>
+        <url-pattern>/EditOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOpenDayListServlet</servlet-name>
+        <url-pattern>/ViewOpenDayListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
