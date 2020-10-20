@@ -152,9 +152,9 @@ public class AccessDBManager {
     public ArrayList<Property> searchProperties(String SearchInput) throws SQLException {
         if (!SearchInput.isEmpty()) {
         ArrayList<Property> properties = new ArrayList<>();
-        String fetch = "select * from ASDREAMS.PROPERTY where SUBURB like '%"+SearchInput+"%'"
-                + " or POSTCODE = '"+SearchInput+"' "
-                + "or ADDRESS like '%"+SearchInput+"%'";
+        String fetch = "select * from ASDREAMS.PROPERTY where "
+                + "UPPER (SUBURB) like UPPER ('%"+SearchInput+"%') "
+                + "or POSTCODE = '"+SearchInput+"'";
         ResultSet rs = st.executeQuery(fetch);
         // 
         while (rs.next()) {

@@ -26,6 +26,14 @@ body{
     cursor: pointer;
 }
 
+.top_right_link_div b{
+    float: left;
+    padding: 10px 10px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .top_left_link_div a{
     float: left;
     padding: 10px 10px;

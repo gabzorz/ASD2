@@ -19,6 +19,12 @@ and open the template in the editor.
 }
 /*end of logo styling*/
 
+/* icon styling*/
+.icon {
+    width:30px;
+    height:30px;
+}
+
 /*headings styling*/
 h1 {
     text-align: center;

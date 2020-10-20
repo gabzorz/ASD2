@@ -15,37 +15,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Payment_Styling.css">
-        <title>Search Results</title>
     </head>
     <body>
-        <%
-            ArrayList<Property> properties = (ArrayList<Property>) session.getAttribute("propertieslist");
-        %>
         <div class="header-img">
           <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
+        
         <div class="topnav">
              <a href="homepage.jsp"style="float: left;">Home</a>
         </div>
-        <br>
-        
+        <c:if test ="${not empty requestScope['propertieslist']}">
+        <div class="header">
+            <h1>Results</h1>
+        </div>
         <table border="1">
             <tr>
                 <th>Suburb</th>
-                <th>Address</th>
                 <th>Postcode</th>
-                <th>State</th>
                 <th>Description</th>
-                <th>Bathroom/s</th>
-                <th>Bedroom/s</th>
-                <th>Garage/s</th>
+                <th><img class="icon" src="css/icon(bath).png" alt=""/></th>
+                <th><img class="icon" src="css/bed (2).png" alt=""/></th>
+                <th><img class="icon" src="css/icon(garage).png" alt=""/></th>
+            
             </tr>
             <c:forEach var="Property" items="${requestScope['propertieslist']}">
                 <tr>
                     <td><c:out value="${Property.suburb}"/></td>
-                    <td><c:out value="${Property.address}"/></td>
                     <td><c:out value="${Property.postcode}"/></td>
-                    <td><c:out value="${Property.state}"/></td>
                     <td><c:out value="${Property.desc}"/></td>
                     <td><c:out value="${Property.numOfBathrooms}"/></td>
                     <td><c:out value="${Property.numOfBedrooms}"/></td>
@@ -53,5 +49,10 @@
                 </tr>
             </c:forEach>
         </table>
+        </c:if>
+        
+        <c:if test ="${empty requestScope['propertieslist']}">
+        <h1>No Results</h1>
+        </c:if>
     </body>
 </html>

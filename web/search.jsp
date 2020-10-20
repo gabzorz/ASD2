@@ -28,7 +28,7 @@
         <br>
         
         <form class="search" action="SearchServlet" method="get">
-        <input type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" >
+        <input type="text" name="propertysearch" placeholder="Search by suburb or postcode" >
         <input type="submit" value="Search Properties"></input>
         </form>
     </body>
