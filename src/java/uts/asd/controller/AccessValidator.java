@@ -49,6 +49,11 @@ public class AccessValidator implements Serializable {
     public boolean checkEmpty(String email, String password) {
         return email.isEmpty() || password.isEmpty();
     }
+    
+    //Function to check for empty search in search.jsp
+    public boolean checkSearchEmpty(String propertySearch) {
+        return propertySearch.isEmpty();
+    }
 
     //function to check if email format is valid
     public boolean validateEmail(String email) {

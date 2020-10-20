@@ -148,6 +148,38 @@ public class AccessDBManager {
         }
         return null;
     }
+    
+    public ArrayList<Property> searchProperties(String SearchInput) throws SQLException {
+        ArrayList<Property> properties = new ArrayList<>();
+        String fetch = "select * from ASDREAMS.PROPERTY where SUBURB like '%" + SearchInput + "%'";
+        ResultSet rs = st.executeQuery(fetch);
+        // 
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            int userID = rs.getInt(10);
+            Property property = new Property(id, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            properties.add(property);
+        }
+        if(properties.size() > 0) {
+        return properties;
+    }  
+        else {
+            return null;
+        }
+    }
 
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,
