@@ -26,6 +26,8 @@
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
         <a href="addProperty.jsp" style="color:black;">Add property</a>
         <a href="viewProperty.jsp" style="color:black;">View property</a>
+        <a href="addKeywords.jsp" style="color:black;">Add keywords</a>
+        <a href="properties.jsp" style="color:black;">View all properties</a>
         <a href="calculator.jsp">Calculators</a>
         <% if(user.getRoleId() == 2) { %>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
