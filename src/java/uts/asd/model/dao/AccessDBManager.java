@@ -36,6 +36,7 @@ public class AccessDBManager {
                 + "','" + password + "'," + roleId + ")");
     }
     
+    //Function to get all the values in the database
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);

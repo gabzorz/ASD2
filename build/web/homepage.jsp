@@ -9,7 +9,7 @@
         <title>Home Page</title>
         <%
             User user = (User) session.getAttribute("user");
-            int number = user.getUserId();
+           
         %>
     </head>
     <body>
@@ -29,7 +29,7 @@
         <a href="calculator.jsp">Calculators</a>
         <% if(user.getRoleId() == 2) { %>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
-            <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
+          
         <% } %>
         
 

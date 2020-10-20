@@ -49,7 +49,6 @@ public class LoginServlet extends HttpServlet {
                     //For staff login
                 } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
-
                     request.getRequestDispatcher("staffMain.jsp").include(request, response);
                     //For system administrator login
                 } else if (user != null && role == 1) {
