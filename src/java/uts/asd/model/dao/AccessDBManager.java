@@ -150,8 +150,11 @@ public class AccessDBManager {
     }
     
     public ArrayList<Property> searchProperties(String SearchInput) throws SQLException {
+        if (!SearchInput.isEmpty()) {
         ArrayList<Property> properties = new ArrayList<>();
-        String fetch = "select * from ASDREAMS.PROPERTY where SUBURB like '%" + SearchInput + "%'";
+        String fetch = "select * from ASDREAMS.PROPERTY where SUBURB like '%"+SearchInput+"%'"
+                + " or POSTCODE = '"+SearchInput+"' "
+                + "or ADDRESS like '%"+SearchInput+"%'";
         ResultSet rs = st.executeQuery(fetch);
         // 
         while (rs.next()) {
@@ -176,6 +179,10 @@ public class AccessDBManager {
         if(properties.size() > 0) {
         return properties;
     }  
+        else {
+            return null;
+        }
+    }
         else {
             return null;
         }

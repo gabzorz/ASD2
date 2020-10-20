@@ -40,24 +40,6 @@
                 <th>Bedroom/s</th>
                 <th>Garage/s</th>
             </tr>
-            <%--
-            <%if (properties!=null) {
-                for (int i=0; i<properties.size(); i++) {
-                Property property = properties.get(i);
-                %>
-                
-                <tr>
-                    <td><%=property.getSuburb()%></td>
-                    <td><%=property.getAddress()%></td>
-                    <td><%=property.getPostcode()%></td>
-                    <td><%=property.getState()%></td>
-                    <td><%=property.getDesc()%></td>
-                    <td><%=property.getNumOfBathrooms()%></td>
-                    <td><%=property.getNumOfBedrooms()%></td>
-                    <td><%=property.getNumOfGarages()%></td>
-                </tr>
-                <%}}%>
-            --%>
             <c:forEach var="Property" items="${requestScope['propertieslist']}">
                 <tr>
                     <td><c:out value="${Property.suburb}"/></td>

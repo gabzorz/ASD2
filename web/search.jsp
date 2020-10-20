@@ -31,20 +31,5 @@
         <input type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" >
         <input type="submit" value="Search Properties"></input>
         </form>
-        
-        <br>
-        
-        <table border = "1" width = "80%">
-            <tr>
-                <th>Suburb</th>
-                <th>Address</th>
-                <th>Postcode</th>
-                <th>State</th>
-                <th>Description</th>
-                <th>Bathroom/s</th>
-                <th>Bedroom/s</th>
-                <th>Garage/s</th>
-            </tr>
-        </table>
     </body>
 </html>
