@@ -122,6 +122,25 @@ public class AccessDBManager {
         }
         return null;
     }
+    
+    //get user from UserID
+    public User getUser(int UserID) throws SQLException {
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where USERID = "+UserID+"";
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()) {
+                Integer customerID = rs.getInt(1);
+                String fName = rs.getString(2);
+                String lName = rs.getString(3);
+                String address = rs.getString(4);
+                String dob = rs.getString(5);
+                String customerEmail = rs.getString(6);
+                String contactNumber = rs.getString(7);
+                String password = rs.getString(7);
+                Integer roleId = rs.getInt(9);
+                return new User(customerID, fName, lName, address, dob, customerEmail, contactNumber, password, roleId);
+        }
+        return null;
+    }
 
     public Property getProperty(int UserID) throws SQLException {
       String fetch = "select * from ASDREAMS.PROPERTY where USERID = "+ UserID +""; // AND STATUS <> 'pending'

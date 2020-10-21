@@ -54,7 +54,7 @@
                 </c:url>
                 <div class="wrapper">
                     <div class="property">
-                        <a href="${loadPropertyLink}"><img src="css/property images/${Property.id}.jpg" alt=""/></a>
+                        <a href="${loadPropertyLink}"><img class="searchresultsimg" src="css/property images/${Property.id}.jpg" alt=""/></a>
                         <h3><c:out value="${Property.address}"/>, <c:out value="${Property.suburb}"/> <c:out value="${Property.postcode}"/></h3>
                         <img class="icon" src="css/icons/icon(bedroom).png" alt=""/> 
                         <c:out value="${Property.numOfBedrooms}"/>
@@ -70,6 +70,7 @@
         </c:if>
         <c:if test ="${empty requestScope['propertieslist']}">
         <h1>No Results</h1>
+        <h4><a href="homepage.jsp">Click here to go back</a></h4>
         </c:if>
         </div>
     </body>

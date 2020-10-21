@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.asd.model.Property;
+import uts.asd.model.User;
 import uts.asd.model.dao.AccessDBManager;
 
 /**
@@ -32,12 +33,16 @@ public class PropertyDetailsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
-        //search textfield & selected garages + bedrooms
+        
         String id = request.getParameter("id");
         int idint = Integer.parseInt(id);
+        
         try {
             Property property = manager.findProperty(idint);
+            int UserID = property.getUserID();
+            User user = manager.getUser(UserID);
             session.setAttribute("property", property);
+            session.setAttribute("user", user);
             request.getRequestDispatcher("propertyDetails.jsp").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(CustomerEditServlet.class.getName()).log(Level.SEVERE, null, ex);

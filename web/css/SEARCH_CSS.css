@@ -46,6 +46,11 @@ h3 {
     margin-left: 5px;
 }
 
+h4 {
+    text-align: center;
+    color: black;
+}
+
 /*top navigation bar styling*/
 .topnav {
   background-color: #333;
@@ -93,6 +98,37 @@ form {
     padding: 10px;
 }
 
+.detailswrapper {
+    display: block;
+    margin: auto;
+    width: 80em;
+    padding: 10px;
+    text-align: center;
+}
+
+.details {
+    display: block;
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+    height: 20em;
+    background-color: #444A4D;
+    color: white;
+}
+
+.detailsblocksa {
+    padding-left: 5px;
+    width: 49%;
+    float:left;
+}
+.detailsblocksb {
+    margin-left: 51%;
+    text-align: center;
+    width: 49%;
+    background-color: grey;
+    border: 2px solid black;
+}
+
 .property {
     color: #f2f2f2;
     background-color: #444A4D;
@@ -100,8 +136,18 @@ form {
     box-shadow: 6px 6px 5px -5px rgba(0,0,0,0.57);
 }
 
-img {
+.searchresultsimg {
     height: 30em;
     width:100%;
 }
 
+.detailsimg {
+    margin-left: auto;
+    margin-right: auto;
+    border:3px solid black;
+    width: 40%;
+}
+
+#enquire {
+    
+}
