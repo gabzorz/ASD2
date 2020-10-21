@@ -19,7 +19,6 @@ and open the template in the editor.
 }
 /*end of logo styling*/
 
-/* icon styling*/
 .icon {
     width:30px;
     height:30px;
@@ -74,6 +73,19 @@ h3 {
   background-color: #4CAF50;
   color: white;
 }
+
+form {
+    margin:10px;
+}
+
+.searchBox {
+    width: 230px;
+}
+
+.navicon {
+    width:15px;
+    height:15px;
+}
 /*wraps into grid*/
 .wrapper {
     margin: auto;
@@ -85,10 +97,10 @@ h3 {
     color: #f2f2f2;
     background-color: #444A4D;
     margin-bottom: 10px;
+    box-shadow: 6px 6px 5px -5px rgba(0,0,0,0.57);
 }
 
 img {
-    border-radius: 8px;
     height: 30em;
     width:100%;
 }

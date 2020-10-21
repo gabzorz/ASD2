@@ -22,7 +22,29 @@
         </div>
         
         <div class="topnav">
-             <a href="homepage.jsp"style="float: left;">Home</a>
+            <b>
+             <form class="search" action="SearchServlet" method="get">
+                <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" >
+                <img class="navicon" src="css/icons/icon(bedroom).png" alt=""/>
+                <select name="bedroomselect">
+                    <option value="%">Any</option>
+                    <option value="1">1 Bed</option>
+                    <option value="2">2 Beds</option>
+                    <option value="3">3 Beds</option>
+                    <option value="4">4 Beds</option>
+                    <option value="5">5+ Beds</option>
+                </select>
+                <img class="navicon" src="css/icons/icon(garage).png" alt=""/>
+                <select name="garageselect">
+                    <option value="%">Any</option>
+                    <option value="1">1 Car</option>
+                    <option value="2">2 Cars</option>
+                    <option value="3">3 Cars</option>
+                    <option value="4">4+ Cars</option>
+                </select>
+                <input type="submit" value="Search Properties"></input>
+                </form>
+                </b>
         </div>
         
         <c:if test ="${not empty requestScope['propertieslist']}">
@@ -32,8 +54,8 @@
                 </c:url>
                 <div class="wrapper">
                     <div class="property">
-                        <a href="${loadPropertyLink}"><img src="css/property images/1.jpg" alt=""/></a>
-                        <h3><c:out value="${Property.address}"/>, <c:out value="${Property.postcode}"/></h3>
+                        <a href="${loadPropertyLink}"><img src="css/property images/${Property.id}.jpg" alt=""/></a>
+                        <h3><c:out value="${Property.address}"/>, <c:out value="${Property.suburb}"/> <c:out value="${Property.postcode}"/></h3>
                         <img class="icon" src="css/icons/icon(bedroom).png" alt=""/> 
                         <c:out value="${Property.numOfBedrooms}"/>
                         <img class="icon" src="css/icons/icon(garage).png" alt=""/>

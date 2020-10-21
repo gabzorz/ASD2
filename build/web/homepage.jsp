@@ -38,7 +38,7 @@
                     <option value="1">1 Car</option>
                     <option value="2">2 Cars</option>
                     <option value="3">3 Cars</option>
-                    <option value="4">4 Cars</option>
+                    <option value="4">4+ Cars</option>
                 </select>
                 <input type="submit" value="Search Properties"></input>
                 </form>
