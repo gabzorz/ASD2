@@ -104,3 +104,13 @@ body{
     padding: 10px;
     text-align: left;
 }
+
+/* icon styling*/
+.icon {
+    width:15px;
+    height:15px;
+}
+
+.searchBox {
+    width: 230px;
+}

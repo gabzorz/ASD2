@@ -34,7 +34,7 @@
                 <th>Postcode</th>
                 <th>Description</th>
                 <th><img class="icon" src="css/icon(bath).png" alt=""/></th>
-                <th><img class="icon" src="css/bed (2).png" alt=""/></th>
+                <th><img class="icon" src="css/icon(bedroom).png" alt=""/></th>
                 <th><img class="icon" src="css/icon(garage).png" alt=""/></th>
             
             </tr>

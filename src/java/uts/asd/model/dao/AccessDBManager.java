@@ -149,14 +149,41 @@ public class AccessDBManager {
         return null;
     }
     
-    public ArrayList<Property> searchProperties(String SearchInput) throws SQLException {
+    public ArrayList<Property> searchProperties(String SearchInput, String BedroomInput, String GarageInput) throws SQLException {
         if (!SearchInput.isEmpty()) {
+            switch (BedroomInput) {
+                case "%":
+                    BedroomInput = "BEDROOM >= 0";
+                    break;
+                case "5":
+                    BedroomInput = "BEDROOM >= 5";
+                    break;
+                default:
+                    BedroomInput = "BEDROOM = " + BedroomInput;
+                    break;
+            }
+            switch (GarageInput) {
+                case "%":
+                    GarageInput = "GARAGE >= 0";
+                    break;
+                case "5":
+                    GarageInput = "GARAGE >= 5";
+                    break;
+                default:
+                    GarageInput = "GARAGE = " + GarageInput;
+                    break;
+            }
         ArrayList<Property> properties = new ArrayList<>();
+        //int bedroominputInt = Integer.parseInt(BedroomInput);
         String fetch = "select * from ASDREAMS.PROPERTY where "
-                + "UPPER (SUBURB) like UPPER ('%"+SearchInput+"%') "
-                + "or POSTCODE = '"+SearchInput+"'";
+                + ""+BedroomInput+" "
+                + "AND "+GarageInput+" "
+                + "AND (UPPER (SUBURB) like UPPER ('%"+SearchInput+"%') "
+                + "OR UPPER (STATE) like UPPER ('%"+SearchInput+"%') "
+                + "or POSTCODE = '"+SearchInput+"')";
+            
         ResultSet rs = st.executeQuery(fetch);
-        // 
+        
         while (rs.next()) {
             int id = rs.getInt(1);
             //int idInt = Integer.parseInt(id);

@@ -32,13 +32,14 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
-        //search textfield
+        //search textfield & selected garages + bedrooms
         String SearchInput = request.getParameter("propertysearch");
-        
+        String BedroomInput = request.getParameter("bedroomselect");
+        String GarageInput = request.getParameter("garageselect");
         
         try {
             ArrayList<Property> propertieslist = new ArrayList<Property>();
-            propertieslist = manager.searchProperties(SearchInput);
+            propertieslist = manager.searchProperties(SearchInput, BedroomInput, GarageInput);
             request.setAttribute("propertieslist", propertieslist);
             request.getRequestDispatcher("searchlist.jsp").include(request, response);
         } catch (SQLException ex) {
