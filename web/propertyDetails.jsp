@@ -14,11 +14,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/SEARCH_CSS.css">
+        <link rel="stylesheet" href="css/SEAN_CSS.css">
     </head>
     <body>
         <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+          <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         <div class="topnav">
             <b>
@@ -46,19 +46,19 @@
                 </b>
         </div>
         <div class="detailswrapper">
-            <img class="detailsimg" src="css/property images/${property.id}.jpg" alt=""/>
+            <img class="detailsimg" src="css/property images/${propertyView.id}.jpg" alt=""/>
         </div>
         <div class="details">
             <div class="detailsblocksa">
-            <h3><c:out value="${property.address}"/>, <c:out value="${property.suburb}"/> <c:out value="${property.postcode}"/></h3>
+            <h3><c:out value="${propertyView.address}"/>, <c:out value="${propertyView.suburb}"/> <c:out value="${property.postcode}"/></h3>
             <img class="icon" src="css/icons/icon(bedroom).png" alt=""/> 
-            <c:out value="${property.numOfBedrooms}"/>
+            <c:out value="${propertyView.numOfBedrooms}"/>
             <img class="icon" src="css/icons/icon(garage).png" alt=""/>
-            <c:out value="${property.numOfGarages}"/>
+            <c:out value="${propertyView.numOfGarages}"/>
             <img class="icon" src="css/icons/icon(bath).png" alt=""/>
-            <c:out value="${property.numOfBathrooms}"/>
+            <c:out value="${propertyView.numOfBathrooms}"/>
             <br>
-            <h2><c:out value="${property.desc}"/></h2>
+            <h2><c:out value="${propertyView.desc}"/></h2>
             <br>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in varius orci. Praesent ut consectetur purus. Cras pellentesque turpis non 
             sapien tristique, a fermentum dolor imperdiet. Donec consectetur nibh enim. Nulla vitae fringilla massa. Fusce quis porta erat. Lorem ipsum 
@@ -67,8 +67,8 @@
             <div class="detailsblocksb">
                 <br>
             <img style="border-radius: 70%; width: 45%" src="css/property images/person-icon.jpg" alt=""/>
-            <h3>${user.fName} ${user.lName}</h3>
-            <h3>${user.emailAddress} | ${user.contactNumber}</h3>
+            <h3>${userEnquire.fName} ${userEnquire.lName}</h3>
+            <h3>${userEnquire.emailAddress} | ${userEnquire.contactNumber}</h3>
             <form>
                 <input type="submit" value="Enquire"/>
             </div>

@@ -14,7 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/SEARCH_CSS.css">
+        <link rel="stylesheet" href="css/SEAN_CSS.css">
     </head>
     <body>
         <div class="header-img">

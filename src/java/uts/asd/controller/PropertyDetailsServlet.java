@@ -38,11 +38,11 @@ public class PropertyDetailsServlet extends HttpServlet {
         int idint = Integer.parseInt(id);
         
         try {
-            Property property = manager.findProperty(idint);
-            int UserID = property.getUserID();
-            User user = manager.getUser(UserID);
-            session.setAttribute("property", property);
-            session.setAttribute("user", user);
+            Property propertyView = manager.findProperty(idint);
+            int UserID = propertyView.getUserID();
+            User userEnquire = manager.getUser(UserID);
+            session.setAttribute("propertyView", propertyView);
+            session.setAttribute("userEnquire", userEnquire);
             request.getRequestDispatcher("propertyDetails.jsp").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(CustomerEditServlet.class.getName()).log(Level.SEVERE, null, ex);
