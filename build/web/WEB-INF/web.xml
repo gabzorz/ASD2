@@ -114,6 +114,14 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PropertyDetailsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PropertyDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PropertyDetailsServlet</servlet-name>
+        <url-pattern>/PropertyDetailsServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>

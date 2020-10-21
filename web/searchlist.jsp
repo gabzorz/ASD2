@@ -14,45 +14,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/Payment_Styling.css">
+        <link rel="stylesheet" href="css/SEARCH_CSS.css">
     </head>
     <body>
         <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+          <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         
         <div class="topnav">
              <a href="homepage.jsp"style="float: left;">Home</a>
         </div>
-        <c:if test ="${not empty requestScope['propertieslist']}">
-        <div class="header">
-            <h1>Results</h1>
-        </div>
-        <table border="1">
-            <tr>
-                <th>Suburb</th>
-                <th>Postcode</th>
-                <th>Description</th>
-                <th><img class="icon" src="css/icon(bath).png" alt=""/></th>
-                <th><img class="icon" src="css/icon(bedroom).png" alt=""/></th>
-                <th><img class="icon" src="css/icon(garage).png" alt=""/></th>
-            
-            </tr>
-            <c:forEach var="Property" items="${requestScope['propertieslist']}">
-                <tr>
-                    <td><c:out value="${Property.suburb}"/></td>
-                    <td><c:out value="${Property.postcode}"/></td>
-                    <td><c:out value="${Property.desc}"/></td>
-                    <td><c:out value="${Property.numOfBathrooms}"/></td>
-                    <td><c:out value="${Property.numOfBedrooms}"/></td>
-                    <td><c:out value="${Property.numOfGarages}"/></td>
-                </tr>
-            </c:forEach>
-        </table>
-        </c:if>
         
+        <c:if test ="${not empty requestScope['propertieslist']}">
+            <c:forEach var="Property" items="${requestScope['propertieslist']}">
+                <c:url var="loadPropertyLink" value="PropertyDetailsServlet">
+                    <c:param name="id" value="${Property.id}"/>
+                </c:url>
+                <div class="wrapper">
+                    <div class="property">
+                        <a href="${loadPropertyLink}"><img src="css/property images/1.jpg" alt=""/></a>
+                        <h3><c:out value="${Property.address}"/>, <c:out value="${Property.postcode}"/></h3>
+                        <img class="icon" src="css/icons/icon(bedroom).png" alt=""/> 
+                        <c:out value="${Property.numOfBedrooms}"/>
+                        <img class="icon" src="css/icons/icon(garage).png" alt=""/>
+                        <c:out value="${Property.numOfGarages}"/>
+                        <img class="icon" src="css/icons/icon(bath).png" alt=""/>
+                        <c:out value="${Property.numOfBathrooms}"/>
+                        <br>
+                        <h2><c:out value="${Property.desc}"/></h2>
+                    </div>
+                </div>
+                </c:forEach>
+        </c:if>
         <c:if test ="${empty requestScope['propertieslist']}">
         <h1>No Results</h1>
         </c:if>
+        </div>
     </body>
 </html>

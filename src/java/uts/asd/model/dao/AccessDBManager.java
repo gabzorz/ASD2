@@ -149,28 +149,55 @@ public class AccessDBManager {
         return null;
     }
     
+    /*Get Property from PropertyID*/
+    public Property findProperty(int PropertyID) throws SQLException {
+      String fetch = "select * from ASDREAMS.PROPERTY where PROPERTYID = "+ PropertyID +""; // AND STATUS <> 'pending'
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            int userID = rs.getInt(10);
+            return new Property(id, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            
+        }
+        return null;
+    }
+    
     public ArrayList<Property> searchProperties(String SearchInput, String BedroomInput, String GarageInput) throws SQLException {
         if (!SearchInput.isEmpty()) {
             switch (BedroomInput) {
                 case "%":
-                    BedroomInput = "BEDROOM >= 0";
+                    BedroomInput = "BEDROOM LIKE '%'";
                     break;
                 case "5":
-                    BedroomInput = "BEDROOM >= 5";
+                    BedroomInput = "BEDROOM NOT IN ('1','2','3','4')";
                     break;
                 default:
-                    BedroomInput = "BEDROOM = " + BedroomInput;
+                    BedroomInput = "BEDROOM = '"+BedroomInput+"'";
                     break;
             }
             switch (GarageInput) {
                 case "%":
-                    GarageInput = "GARAGE >= 0";
+                    GarageInput = "GARAGE LIKE '%'";
                     break;
-                case "5":
-                    GarageInput = "GARAGE >= 5";
+                case "4":
+                    GarageInput = "GARAGE NOT IN ('0','1','2','3')";
                     break;
                 default:
-                    GarageInput = "GARAGE = " + GarageInput;
+                    GarageInput = "GARAGE = '"+GarageInput+"'";
                     break;
             }
         ArrayList<Property> properties = new ArrayList<>();
