@@ -78,7 +78,7 @@
                     <div class="helpticketwrapper">
                     <input class="helpticketbutton" type="submit" value="Send Ticket">
                     <br>
-                    <t1> <%=(ticketdetailsErr != null ? ticketdetailsErr : "")%> </t1>
+                    <t2> <%=(ticketdetailsErr != null ? ticketdetailsErr : "")%> </t2>
                     </div>
                     </form>
             </div>
@@ -87,12 +87,19 @@
                     <div class="ticketlistwrapper">
                         <c:if test ="${not empty requestScope['senthelpticketslist']}">
                                 <c:forEach var="HelpTicket" items="${requestScope['senthelpticketslist']}">
-                                    <div class="ticket">
+                                    <c:url var="viewTicketLink" value="ViewTicketServlet">
+                                        <c:param name="Ticketid" value="${HelpTicket.helpTicketId}"/>
+                                    </c:url>
+                                    <a href="${viewTicketLink}">
+                                    <div class="ticket" style="${HelpTicket.status == 'Complete' ? 'background-color:#ade700;' : ''} ${HelpTicket.status == 'Assigned' ? 'background-color:#ffcc00;' : ''} ${HelpTicket.status == 'Cancelled' ? 'background-color:#d6d6d6;' : ''}">
                                         <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
                                         <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                        <br>
+                                        <t1><t1><c:out value="Date Sent: ${HelpTicket.datesent}"/></t1></t1>
                                     </div>
+                                    </a>
                                 </c:forEach>
                         </c:if>
                         <c:if test ="${empty requestScope['senthelpticketslist']}">

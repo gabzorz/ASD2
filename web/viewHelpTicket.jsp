@@ -52,11 +52,11 @@
             <div class="editticketblocksa">
                 <c0>Ticket Details</c0>
                 <br>
-                <c1>User ID: <c2><c:out value ="${userView.getUserId()}"/></c2></c1>
+                <c1>User ID: </c1><c2><c:out value ="${userView.getUserId()}"/></c2>
                 <br>
-                <c1>User: <c2><c:out value ="${userView.getfName()}"/> <c:out value ="${userView.getlName()}"/></c2></c1>
+                <c1>User: </c1><c2><c:out value ="${userView.getfName()}"/> <c:out value ="${userView.getlName()}"/></c2>
                 <br>
-                <c1>Contact: <c2><c:out value ="${userView.getEmailAddress()}"/> | <c:out value ="${userView.getContactNumber()}"/></c2></c1>
+                <c1>Contact: </c1><c2><c:out value ="${userView.getEmailAddress()}"/> | <c:out value ="${userView.getContactNumber()}"/></c2>
                 <br>
                 <div class="ticketdetails">
                 <d1>Help Ticket ID:</d1> <d2><c:out value ="${edithelpticket.getHelpTicketId()}"/></d2>
@@ -72,27 +72,23 @@
                 <br>
             </div>
                 <div class="editticketblocksb">
-                    <c0>Respond to Ticket</c0>
+                    <c0>Response</c0>
                     <br>
-                    <form action="EditTicketServlet" method="post">
+                    <c1>Status: </c1><c2><c:out value ="${edithelpticket.getStatus()}"/></c2>
+                    <br>
+                    <c1>Response:</c1>
+                    <br>
+                    <div class="ticketdetails">
+                        <d2><c:out value ="${edithelpticket.getResponse()}"/></d2>
+                    </div>
+                    <c1>Date Completed: </c1><c2><c:out value ="${edithelpticket.getDatecompleted()}"/></c2>
+                    <br>
+                    <form action="ViewTicketServlet" method="post">
                         <input type="hidden" name="helpticketid" value="${edithelpticket.getHelpTicketId()}">
-                        <a2>Status:</a2>
-                        <br>
-                        <select name="ticketstatusselect">
-                        <option value="Assigned" name="Assigned" ${edithelpticket.getStatus() == 'Assigned' ? 'selected' : ''}>Assigned</option>
-                        <option value="Complete" name="Complete" ${edithelpticket.getStatus() == 'Complete' ? 'selected' : ''}>Complete</option>
-                        </select>
-                        <br>
-                        <a2>Response:</a2>
-                        <br>
-                        <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="response" placeholder="Write up to 1000 characters"><c:out value ="${edithelpticket.getResponse()}"/></textarea>
-                        
-                        <div class="helpticketwrapper">
-                            <input class="helpticketbutton" type="submit" value="Respond to Ticket" ${edithelpticket.getStatus() == 'Complete' ? 'disabled="disabled"' : ''}>
-                            <br>
-                            <t2> <%=(ticketdetailsErr != null ? ticketdetailsErr : "")%> </t2>
-                        </div>
-                        <br>
+                        <input type="hidden" name="Cancelled" value="Cancelled">
+                    <div class="helpticketwrapper">
+                            <input name="Cancelled" class="helpticketbutton" type="submit" value="Cancel" ${edithelpticket.getStatus() == 'Complete' ? 'disabled="disabled"' : ''} ${edithelpticket.getStatus() == 'Cancelled' ? 'disabled="disabled"' : ''}>
+                    </div>
                     </form>
                 </div>
             </div>

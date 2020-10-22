@@ -145,6 +145,14 @@
         <servlet-class>uts.asd.controller.EditTicketServlet</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>ViewTicketServlet</servlet-name>
+        <url-pattern>/ViewTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewTicketServlet</servlet-name>
+        <servlet-class>uts.asd.controller.ViewTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>
     </servlet-mapping>

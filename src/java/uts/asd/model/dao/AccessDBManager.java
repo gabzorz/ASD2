@@ -270,7 +270,7 @@ public class AccessDBManager {
     
     //Find HelpTicket as a user
     public ArrayList<HelpTicket> userFindHelpTicket(int userId) throws SQLException {
-        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE USERID = " + userId;
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE USERID = " + userId + " ORDER BY STATUS, HELPTICKETID DESC";
         ResultSet rs = st.executeQuery(fetch);
         ArrayList<HelpTicket> helptickets = new ArrayList<>();
         
@@ -505,7 +505,11 @@ public class AccessDBManager {
     // Updates an Help Ticket when it is assigned
     public void updateHelpTicketAssigned(String StatusInput, String ResponseInput, int StaffId, int HelpTicketId) throws SQLException {
         st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS='" + StatusInput + "', RESPONSE='"
-                + ResponseInput + "', STAFFID=" + StaffId + ", WHERE HELPTICKETID = "+HelpTicketId+"");
+                + ResponseInput + "', STAFFID=" + StaffId + " WHERE HELPTICKETID = "+HelpTicketId+"");
+    }
+    
+    public void cancelHelpTicket (String StatusInput, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS= '"+StatusInput+"' WHERE HELPTICKETID = "+HelpTicketId+"");
     }
 
     // Returns the Auction with the highest itemId (i.e. the latest created auction)

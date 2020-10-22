@@ -165,6 +165,12 @@ t1 {
     color: black;
 }
 
+t2 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
 .noresults {
     display: block;
 }
@@ -203,7 +209,7 @@ c1 {
 c2 {
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
     font-size: 14px;
-    color: black;
+    color: white;
 }
 
 d1 {
@@ -309,7 +315,7 @@ d2 {
 .column {
     float: left;
     width: 20em;
-    height: 40em;
+    height: 37em;
     background-color: grey;
     margin:10px;
     padding:10px;
@@ -329,7 +335,7 @@ a {
 .editticketblocksa {
     padding-left: 5px;
     width: 49%;
-    background-color:gray;
+    background-color:#333;
     border: 2px solid black;
 }
 
@@ -337,6 +343,6 @@ a {
     margin-top: 5px;
     padding-left: 5px;
     width: 49%;
-    background-color:gray;
+    background-color:#333;
     border: 2px solid black;
 }
