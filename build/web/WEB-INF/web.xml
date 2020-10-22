@@ -137,6 +137,14 @@
         <servlet-class>uts.asd.controller.HelpTicketStaffServlet</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <url-pattern>/EditTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EditTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>
     </servlet-mapping>

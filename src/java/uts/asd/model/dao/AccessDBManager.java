@@ -296,6 +296,28 @@ public class AccessDBManager {
         }
     }
     
+    //Find HelpTicket as a staff
+    public HelpTicket staffFindHelpTicket(int HelpTicketId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE HELPTICKETID = " + HelpTicketId;
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            return helpticket;
+        }
+        return null;
+    }
+    
         //Find Pending Help Ticket
     public ArrayList<HelpTicket> pendingHelpTicket() throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Pending'";

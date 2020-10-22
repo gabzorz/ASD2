@@ -85,7 +85,7 @@ h4 {
     margin:10px;
 }
 
-form {
+.topnav form {
     margin:10px;
 }
 
@@ -186,6 +186,47 @@ a2 {
     color: white;
 }
 
+c0 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+c1 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+c2 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 14px;
+    color: black;
+}
+
+d1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+    text-decoration: underline;
+}
+
+d2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: black;
+}
+
+
+
+.ticketdetails {
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border: 2px solid black;
+}
 
 
 .details {
@@ -239,7 +280,6 @@ a2 {
 }
 
 .ticket1 {
-    diplay:block;
     margin:5px;
     padding:5px;
     color:white;
@@ -247,7 +287,6 @@ a2 {
 }
 
 .ticket2 {
-    diplay:block;
     margin:5px;
     padding:5px;
     color:white;
@@ -255,7 +294,6 @@ a2 {
 }
 
 .ticket3 {
-    diplay:block;
     margin:5px;
     padding:5px;
     color:white;
@@ -275,4 +313,30 @@ a2 {
     background-color: grey;
     margin:10px;
     padding:10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.editticketwrapper {
+    display: block;
+    margin-left: auto;
+    width: 80em;
+    padding: 10px;
+}
+
+.editticketblocksa {
+    padding-left: 5px;
+    width: 49%;
+    background-color:#999999;
+    border: 2px solid black;
+}
+
+.editticketblocksb {
+    margin-top: 5px;
+    padding-left: 5px;
+    width: 49%;
+    background-color:gray;
+    border: 2px solid black;
 }

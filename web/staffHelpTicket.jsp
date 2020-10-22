@@ -54,14 +54,19 @@
                     <div class="ticketlistwrapper">
                         <c:if test ="${not empty requestScope['pendinghelpticketslist']}">
                                 <c:forEach var="HelpTicket" items="${requestScope['pendinghelpticketslist']}">
-                                    <div class="ticket1">
+                            <c:url var="editTicketLink" value="EditTicketServlet">
+                                <c:param name="Ticketid" value="${HelpTicket.helpTicketId}"/>
+                            </c:url>
+                                    <a href="${editTicketLink}">
+                                        <div class="ticket1">
                                         <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
                                         <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
                                         <br>
-                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
                                     </div>
+                                    </a>
                                 </c:forEach>
                         </c:if>
                 </div>
@@ -71,14 +76,19 @@
                     <div class="ticketlistwrapper">
                         <c:if test ="${not empty requestScope['assignedhelpticketslist']}">
                                 <c:forEach var="HelpTicket" items="${requestScope['assignedhelpticketslist']}">
+                            <c:url var="editTicketLink" value="EditTicketServlet">
+                                <c:param name="Ticketid" value="${HelpTicket.helpTicketId}"/>
+                            </c:url>
+                                    <a href="${editTicketLink}">
                                     <div class="ticket2">
                                         <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
                                         <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
                                         <br>
-                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
                                     </div>
+                                    </a>
                                 </c:forEach>
                         </c:if>
                 </div>
@@ -88,14 +98,19 @@
                     <div class="ticketlistwrapper">
                         <c:if test ="${not empty requestScope['completehelpticketslist']}">
                                 <c:forEach var="HelpTicket" items="${requestScope['completehelpticketslist']}">
+                            <c:url var="editTicketLink" value="EditTicketServlet">
+                                <c:param name="Ticketid" value="${HelpTicket.helpTicketId}"/>
+                            </c:url>
+                                    <a href="${editTicketLink}">
                                     <div class="ticket3">
                                         <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
                                         <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
                                         <br>
-                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
                                     </div>
+                                    <a/>
                                 </c:forEach>
                         </c:if>
                 </div>
