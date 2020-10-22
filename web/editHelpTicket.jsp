@@ -76,6 +76,8 @@
                     <br>
                     <form action="EditTicketServlet" method="post">
                         <input type="hidden" name="helpticketid" value="${edithelpticket.getHelpTicketId()}">
+                        <a2>Assigned to Staff ID: <c:out value ="${edithelpticket.getStaffId()}"/></a2>
+                        <br>
                         <a2>Status:</a2>
                         <br>
                         <select name="ticketstatusselect">

@@ -72,6 +72,7 @@
             <form>
                 <input type="submit" value="Enquire"/>
             </div>
+            <br>
             </div>
         <%--
         <table border="1">

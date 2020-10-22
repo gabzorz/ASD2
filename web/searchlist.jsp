@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="css/SEAN_CSS.css">
     </head>
     <body>
+        <%
+            String searchSaved = (String) session.getAttribute("searchSaved");
+        %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
@@ -24,7 +27,7 @@
         <div class="topnav">
             <b>
              <form class="search" action="SearchServlet" method="get">
-                <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" >
+                <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" value="<%=(searchSaved != null ? searchSaved : "")%>">
                 <img class="navicon" src="css/icons/icon(bedroom).png" alt=""/>
                 <select name="bedroomselect">
                     <option value="%">Any</option>

@@ -42,6 +42,7 @@ public class SearchServlet extends HttpServlet {
             ArrayList<Property> propertieslist = new ArrayList<Property>();
             propertieslist = manager.searchProperties(SearchInput, BedroomInput, GarageInput);
             request.setAttribute("propertieslist", propertieslist);
+            session.setAttribute("subjectSaved", SearchInput);
             request.getRequestDispatcher("searchlist.jsp").include(request, response);
         } catch (SQLException ex) {
             throw new ServletException("Cannot obtain properties from Database", ex);
