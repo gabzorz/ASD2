@@ -26,7 +26,7 @@ import uts.asd.model.dao.AccessDBManager;
  * @author Sean
  */
 
-public class HelpTicketSendServlet extends HttpServlet {
+public class HelpTicketUserServlet extends HttpServlet {
     
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -51,14 +51,14 @@ public class HelpTicketSendServlet extends HttpServlet {
                     session.setAttribute("ticketdetailsErr", "Please fill in both Boxes");
                     session.setAttribute("subjectSaved", SubjectInput);
                     session.setAttribute("detailsSaved", DetailsInput);
-                    response.sendRedirect("HelpTicketSendServlet?id="+userId);
+                    response.sendRedirect("HelpTicketUserServlet?id="+userId);
                 } else {
                     manager.createHelpTicket(CategoryInput, DetailsInput, userId, date, SubjectInput);
                     session.setAttribute("ticketdetailsErr", "Submitted");
-                    response.sendRedirect("HelpTicketSendServlet?id="+userId);
+                    response.sendRedirect("HelpTicketUserServlet?id="+userId);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(HelpTicketSendServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HelpTicketUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
     
@@ -78,7 +78,7 @@ public class HelpTicketSendServlet extends HttpServlet {
                 senthelpticketslist = manager.userFindHelpTicket(userId);
                 request.setAttribute("senthelpticketslist", senthelpticketslist);
                 request.getRequestDispatcher("sendHelpTicket.jsp").include(request, response);} catch (SQLException ex) {
-                Logger.getLogger(HelpTicketSendServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HelpTicketUserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

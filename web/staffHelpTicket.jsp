@@ -49,9 +49,57 @@
                 </b>
         </div>
             <div class="row">
-                <div class="column">dad</div>
-                <div class="column">dadadadad</div>
-                <div class="column">dasdasdasda</div>
+                <div class="column">
+                    <a1>Pending Tickets</a1>
+                    <div class="ticketlistwrapper">
+                        <c:if test ="${not empty requestScope['pendinghelpticketslist']}">
+                                <c:forEach var="HelpTicket" items="${requestScope['pendinghelpticketslist']}">
+                                    <div class="ticket1">
+                                        <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
+                                        <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
+                                        <br>
+                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <br>
+                                        <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                    </div>
+                                </c:forEach>
+                        </c:if>
+                </div>
+                </div>
+                <div class="column">
+                    <a1>Assigned Tickets</a1>
+                    <div class="ticketlistwrapper">
+                        <c:if test ="${not empty requestScope['assignedhelpticketslist']}">
+                                <c:forEach var="HelpTicket" items="${requestScope['assignedhelpticketslist']}">
+                                    <div class="ticket2">
+                                        <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
+                                        <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
+                                        <br>
+                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <br>
+                                        <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                    </div>
+                                </c:forEach>
+                        </c:if>
+                </div>
+                </div>
+                <div class="column">
+                    <a1>Completed Tickets</a1>
+                    <div class="ticketlistwrapper">
+                        <c:if test ="${not empty requestScope['completehelpticketslist']}">
+                                <c:forEach var="HelpTicket" items="${requestScope['completehelpticketslist']}">
+                                    <div class="ticket3">
+                                        <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
+                                        <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
+                                        <br>
+                                        <t1><c:out value="User: ${HelpTicket.userId}"/></t1>
+                                        <br>
+                                        <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                    </div>
+                                </c:forEach>
+                        </c:if>
+                </div>
+                </div>
             </div>        
         </div>
     </body>

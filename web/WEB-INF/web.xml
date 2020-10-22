@@ -113,14 +113,6 @@
         <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>HelpTicketGetUserServlet</servlet-name>
-        <servlet-class>uts.asd.controller.HelpTicketGetUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HelpTicketGetUserServlet</servlet-name>
-        <url-pattern>/HelpTicketGetUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>PropertyDetailsServlet</servlet-name>
         <servlet-class>uts.asd.controller.PropertyDetailsServlet</servlet-class>
     </servlet>
@@ -129,12 +121,20 @@
         <url-pattern>/PropertyDetailsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>HelpTicketSendServlet</servlet-name>
-        <url-pattern>/HelpTicketSendServlet</url-pattern>
+        <servlet-name>HelpTicketUserServlet</servlet-name>
+        <url-pattern>/HelpTicketUserServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>HelpTicketSendServlet</servlet-name>
-        <servlet-class>uts.asd.controller.HelpTicketSendServlet</servlet-class>
+        <servlet-name>HelpTicketUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.HelpTicketUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelpTicketStaffServlet</servlet-name>
+        <url-pattern>/HelpTicketStaffServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HelpTicketStaffServlet</servlet-name>
+        <servlet-class>uts.asd.controller.HelpTicketStaffServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>

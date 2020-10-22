@@ -143,6 +143,13 @@ form {
     background: white;
 }
 
+.staffticketlistwrapper {
+    height: 550px;
+    width: 100%;
+    overflow-y: scroll;
+    background: white;
+}
+
 .helpticketwrapper {
     text-align: center;
 }
@@ -231,19 +238,41 @@ a2 {
     background-color:lightblue;
 }
 
+.ticket1 {
+    diplay:block;
+    margin:5px;
+    padding:5px;
+    color:white;
+    background-color: lightblue;
+}
+
+.ticket2 {
+    diplay:block;
+    margin:5px;
+    padding:5px;
+    color:white;
+    background-color:#ffcc00;
+}
+
+.ticket3 {
+    diplay:block;
+    margin:5px;
+    padding:5px;
+    color:white;
+    background-color:#ade700;
+}
+
 .row {
     display: block;
-    text-align: center;
     margin-left: auto;
-    margin-right: auto;
-    width:60%
+    width:100em;
 }
 
 .column {
     float: left;
-    width: 29%;
+    width: 20em;
     height: 40em;
     background-color: grey;
     margin:10px;
-    text-align: center;
+    padding:10px;
 }

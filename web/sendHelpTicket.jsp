@@ -54,7 +54,7 @@
         </div>
         <div class="helpwrapper">
             <div class="helpblocksa">
-                <form action="HelpTicketSendServlet" method="post">
+                <form action="HelpTicketUserServlet" method="post">
                     <a1>Send Help Ticket</a1>
                     <br>
                     <a2>Category:</a2>
