@@ -35,7 +35,7 @@
          <sql:query dataSource = "${snapshot}" var = "result">
         SELECT * FROM USER_ACCOUNT
            </sql:query>
-        <table border = "1" width = "80%">
+        <table border = "1" width = "80%" class="userTables">
             <tr>
 
                 <th>First Name</th>
@@ -57,7 +57,7 @@
                 <td><c:out value = "${row.contactnumber}"/></td>
                 <td><c:out value = "${row.password}"/></td>
                 <td><c:out value = "${row.roleid}"/></td>
-                <td><a style="text-decoration:none" >Edit</a></td>
+                <td><a style="text-decoration:none" href="DeleteServlet?user=${user.userId}" class="editBttn" >Delete</a></td>
                 </tr>
             </c:forEach>
         </table>
