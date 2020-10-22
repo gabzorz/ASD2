@@ -125,10 +125,17 @@ form {
 
 .helpblocksb {
     margin-left: 51%;
-    text-align: center;
     width: 49%;
+    height: 600px;
     background-color: grey;
     border: 2px solid black;
+}
+
+.ticketlistwrapper {
+    height: 550px;
+    width: 100%;
+    overflow-y: scroll;
+    background: white;
 }
 
 .helpticketwrapper {
@@ -144,6 +151,14 @@ t1 {
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
     font-size: 14px;
     color: black;
+}
+
+.noresults {
+    display: block;
+}
+
+.noresults p {
+    text-align: center;
 }
 
 a1 {

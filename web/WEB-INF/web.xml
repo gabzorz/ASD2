@@ -113,6 +113,14 @@
         <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>HelpTicketGetUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.HelpTicketGetUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelpTicketGetUserServlet</servlet-name>
+        <url-pattern>/HelpTicketGetUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>PropertyDetailsServlet</servlet-name>
         <servlet-class>uts.asd.controller.PropertyDetailsServlet</servlet-class>
     </servlet>

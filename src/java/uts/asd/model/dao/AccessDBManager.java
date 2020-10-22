@@ -267,6 +267,32 @@ public class AccessDBManager {
             return null;
         }
     }
+    
+    //Find HelpTicket as a user
+    public ArrayList<HelpTicket> userFindHelpTicket(int userId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE USERID = " + userId;
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String category = rs.getString(3);
+            Date date = rs.getDate(4);
+            String assigned = rs.getString(5);
+            String completed = rs.getString(6);
+            int userid = rs.getInt(7);
+            int staffId = rs.getInt(8);
+            HelpTicket helpticket = new HelpTicket(id, details, category, date, assigned, completed, userid, staffId);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
 
     //Function to update the customer profile
     public void updateCustomer(String fName, String lName, String address,

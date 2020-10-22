@@ -4,6 +4,7 @@
     Author     : Sean
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.Date"%>
 <%@page import="uts.asd.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -65,15 +66,30 @@
                     <br>
                     <a2>Details:</a2>
                     <br>
-                    <textarea style="resize: none; height: 20em; width: 80%;" name="htdetails"></textarea>
+                    <textarea style="resize: none; height: 20em; width: 97%;" maxlength="500" name="htdetails"></textarea>
+                    <br>
+                    <a2>500 character limit</a2>
                     <br>
                     <div class="helpticketwrapper">
                     <input class="helpticketbutton" type="submit" value="Send Ticket">
                     <br>
-                    <t1> </t1>
+                    <t1> <%=(ticketdetailsErr != null ? ticketdetailsErr : "")%> </t1>
                     </div>
                     </form>
             </div>
+            <div class="helpblocksb">
+                    <a1>Help Tickets</a1>
+                    <div class="ticketlistwrapper">
+                        <c:if test ="${not empty requestScope['senthelpticketslist']}">
+                            <c:forEach var="HelpTicket" items="${requestScope['senthelpticketslist']}">
+                                <t1><c:out value="${HelpTicket.category}"/></t1>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test ="${empty requestScope['senthelpticketslist']}">
+                            <div class="noresults"><p>No Results</p></div>
+                        </c:if>
+                    </div>
+            </div>        
         </div>
     </body>
 </html>

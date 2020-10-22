@@ -51,7 +51,7 @@
         <a href="viewProperty.jsp" style="color:black;">View property</a>
         <a href="calculator.jsp">Calculators</a>
         <% if(user.getRoleId() == 3) { %>
-            <a href="sendHelpTicket.jsp" style="color:black;">Help Tickets</a>
+            <a href="HelpTicketSendServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
         <% } %>
         <% if(user.getRoleId() == 2) { %>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>

@@ -33,7 +33,6 @@ public class PropertyDetailsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
-        
         String id = request.getParameter("id");
         int idint = Integer.parseInt(id);
         
