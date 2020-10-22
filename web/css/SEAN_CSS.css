@@ -306,6 +306,13 @@ d2 {
     background-color:#ade700;
 }
 
+.ticket4 {
+    margin:5px;
+    padding:5px;
+    color:white;
+    background-color:#d6d6d6;;
+}
+
 .row {
     display: block;
     margin-left: auto;

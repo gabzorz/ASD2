@@ -37,6 +37,7 @@ public class HelpTicketStaffServlet extends HttpServlet {
         ArrayList<HelpTicket> pendinghelpticketslist = new ArrayList<>();
         ArrayList<HelpTicket> assignedhelpticketslist = new ArrayList<>();
         ArrayList<HelpTicket> completehelpticketslist = new ArrayList<>();
+        ArrayList<HelpTicket> cancelledhelpticketslist = new ArrayList<>();
         
         String id = request.getParameter("id");
         int idint = Integer.parseInt(id);
@@ -47,10 +48,14 @@ public class HelpTicketStaffServlet extends HttpServlet {
                 request.setAttribute("pendinghelpticketslist", pendinghelpticketslist);
                 
                 assignedhelpticketslist = manager.inProgressHelpTicket(idint);
+                request.setAttribute("staffId", id);
                 request.setAttribute("assignedhelpticketslist", assignedhelpticketslist);
                 
                 completehelpticketslist = manager.completeHelpTicket();
                 request.setAttribute("completehelpticketslist", completehelpticketslist);
+                
+                cancelledhelpticketslist = manager.cancelledHelpTicket(idint);
+                request.setAttribute("cancelledhelpticketslist", cancelledhelpticketslist);
                 
                 request.getRequestDispatcher("staffHelpTicket.jsp").include(request, response);} catch (SQLException ex) {
                 Logger.getLogger(HelpTicketStaffServlet.class.getName()).log(Level.SEVERE, null, ex);

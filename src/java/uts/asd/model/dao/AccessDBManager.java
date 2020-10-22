@@ -348,7 +348,7 @@ public class AccessDBManager {
     
             //Find In-progress Help Ticket
     public ArrayList<HelpTicket> inProgressHelpTicket(int staffInput) throws SQLException {
-        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Assigned' AND STAFFID = "+staffInput+"";
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Assigned' ORDER BY (CASE WHEN STAFFID = "+staffInput+" THEN 0 ELSE 1 END), HELPTICKETID";
         ResultSet rs = st.executeQuery(fetch);
         ArrayList<HelpTicket> helptickets = new ArrayList<>();
         
@@ -377,6 +377,34 @@ public class AccessDBManager {
             //Find Pending Help Ticket
     public ArrayList<HelpTicket> completeHelpTicket() throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Complete'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    //Find Cancelled Help Tickets
+    public ArrayList<HelpTicket> cancelledHelpTicket(int staffInput) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Cancelled' AND STAFFID = "+staffInput+"";
         ResultSet rs = st.executeQuery(fetch);
         ArrayList<HelpTicket> helptickets = new ArrayList<>();
         

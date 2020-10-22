@@ -18,6 +18,8 @@
     </head>
     <body>
         <% 
+            User user = (User) session.getAttribute("user");
+            int number = user.getUserId();
         %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
@@ -87,6 +89,11 @@
                                         <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                        <c:choose>
+                                        <c:when test="${HelpTicket.staffId == staffId}">
+                                        <img src="css/property images/person-icon.jpg" style="float:right; height:20px; width: 20px; border: 1px solid black;" alt=""/>
+                                        </c:when>
+                                        </c:choose>
                                     </div>
                                     </a>
                                 </c:forEach>
@@ -109,6 +116,38 @@
                                         <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
                                         <br>
                                         <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                        <c:choose>
+                                        <c:when test="${HelpTicket.staffId == staffId}">
+                                        <img src="css/property images/person-icon.jpg" style="float:right; height:20px; width: 20px; border: 1px solid black;" alt=""/>
+                                        </c:when>
+                                        </c:choose>
+                                    </div>
+                                    <a/>
+                                </c:forEach>
+                        </c:if>
+                </div>
+                </div>
+                <div class="column">
+                    <a1>Cancelled Tickets</a1>
+                    <div class="ticketlistwrapper">
+                        <c:if test ="${not empty requestScope['cancelledhelpticketslist']}">
+                                <c:forEach var="HelpTicket" items="${requestScope['cancelledhelpticketslist']}">
+                            <c:url var="editTicketLink" value="EditTicketServlet">
+                                <c:param name="Ticketid" value="${HelpTicket.helpTicketId}"/>
+                            </c:url>
+                                    <a href="${editTicketLink}">
+                                    <div class="ticket4">
+                                        <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
+                                        <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
+                                        <br>
+                                        <t1><c:out value="User ID: ${HelpTicket.userId}"/></t1>
+                                        <br>
+                                        <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                        <c:choose>
+                                        <c:when test="${HelpTicket.staffId == staffId}">
+                                        <img src="css/property images/person-icon.jpg" style="float:right; height:20px; width: 20px; border: 1px solid black;" alt=""/>
+                                        </c:when>
+                                        </c:choose>
                                     </div>
                                     <a/>
                                 </c:forEach>
