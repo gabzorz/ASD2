@@ -19,6 +19,9 @@
     <body>
         <%
             String ticketdetailsErr = (String) session.getAttribute("ticketdetailsErr");
+            String detailsSaved = (String) session.getAttribute("detailsSaved");
+            String subjectSaved = (String) session.getAttribute("subjectSaved");
+            
         %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
@@ -64,11 +67,13 @@
                         <option value="Other" name="Other">Other</option>
                         </select>
                     <br>
+                    <a2>Subject:</a2>
+                    <br>
+                    <input type="text" style="width:97%; font:12px Arial, sans-serif;" name="subject" maxlength="50" placeholder="Write up to 100 characters" value="<%=(subjectSaved != null ? subjectSaved : "")%>"/>
+                    <br>
                     <a2>Details:</a2>
                     <br>
-                    <textarea style="resize: none; height: 20em; width: 97%;" maxlength="500" name="htdetails"></textarea>
-                    <br>
-                    <a2>500 character limit</a2>
+                    <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="500" name="htdetails" placeholder="Write up to 500 characters"><%=(detailsSaved != null ? detailsSaved : "")%></textarea>
                     <br>
                     <div class="helpticketwrapper">
                     <input class="helpticketbutton" type="submit" value="Send Ticket">
@@ -81,9 +86,14 @@
                     <a1>Help Tickets</a1>
                     <div class="ticketlistwrapper">
                         <c:if test ="${not empty requestScope['senthelpticketslist']}">
-                            <c:forEach var="HelpTicket" items="${requestScope['senthelpticketslist']}">
-                                <t1><c:out value="${HelpTicket.category}"/></t1>
-                            </c:forEach>
+                                <c:forEach var="HelpTicket" items="${requestScope['senthelpticketslist']}">
+                                    <div class="ticket">
+                                        <t1><c:out value="Ticket ID: ${HelpTicket.helpTicketId}"/></t1>
+                                        <t1 style="float:right"><c:out value="${HelpTicket.status}"/></t1>
+                                        <br>
+                                        <t1><c:out value="Subject: ${HelpTicket.subject}"/></t1>
+                                    </div>
+                                </c:forEach>
                         </c:if>
                         <c:if test ="${empty requestScope['senthelpticketslist']}">
                             <div class="noresults"><p>No Results</p></div>

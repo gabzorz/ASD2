@@ -81,6 +81,10 @@ h4 {
   color: white;
 }
 
+.margin {
+    margin:10px;
+}
+
 form {
     margin:10px;
 }
@@ -129,6 +133,7 @@ form {
     height: 600px;
     background-color: grey;
     border: 2px solid black;
+    padding:10px;
 }
 
 .ticketlistwrapper {
@@ -165,7 +170,7 @@ a1 {
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
     font-size: 17px;
     color: white;
-  font-weight: bold;
+    font-weight: bold;
 }
 
 a2 {
@@ -216,4 +221,29 @@ a2 {
     margin-right: auto;
     border:3px solid black;
     width: 40%;
+}
+
+.ticket {
+    diplay:block;
+    margin:5px;
+    padding:5px;
+    color:white;
+    background-color:lightblue;
+}
+
+.row {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width:60%
+}
+
+.column {
+    float: left;
+    width: 29%;
+    height: 40em;
+    background-color: grey;
+    margin:10px;
+    text-align: center;
 }

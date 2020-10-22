@@ -54,6 +54,7 @@
             <a href="HelpTicketSendServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
         <% } %>
         <% if(user.getRoleId() == 2) { %>
+            <a href="staffHelpTicket.jsp" style="color:black;">Help Tickets</a>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
             <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
         <% } %>

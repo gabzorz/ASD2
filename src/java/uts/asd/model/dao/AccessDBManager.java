@@ -37,9 +37,9 @@ public class AccessDBManager {
     }
     
     //Function to create a new Customer
-    public void createHelpTicket(String CategoryInput, String DetailsInput, int userId, Date date) throws SQLException {
-        st.executeUpdate("INSERT INTO ASDREAMS.HELPTICKET (CATEGORY, DETAILS, USERID, SENT) "
-                + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "')");
+    public void createHelpTicket(String CategoryInput, String DetailsInput, int userId, Date date, String SubjectInput) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.HELPTICKET (CATEGORY, DETAILS, USERID, DATESENT, STATUS, SUBJECT) "
+                + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "', 'Pending', '"+SubjectInput+"')");
     }
     
     
@@ -277,13 +277,15 @@ public class AccessDBManager {
         while (rs.next()) {
             int id = rs.getInt(1);
             String details = rs.getString(2);
-            String category = rs.getString(3);
-            Date date = rs.getDate(4);
-            String assigned = rs.getString(5);
-            String completed = rs.getString(6);
-            int userid = rs.getInt(7);
-            int staffId = rs.getInt(8);
-            HelpTicket helpticket = new HelpTicket(id, details, category, date, assigned, completed, userid, staffId);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
             helptickets.add(helpticket);
         }
         if(helptickets.size() > 0) {

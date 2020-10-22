@@ -35,27 +35,31 @@ public class HelpTicketSendServlet extends HttpServlet {
         HelpTicketValidator validator = new HelpTicketValidator();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
-        validator.clear(session);
         
         //Fields in sendHelpTicket
         String CategoryInput = request.getParameter("ticketcategoryselect");
         String DetailsInput = request.getParameter("htdetails");
+        String SubjectInput = request.getParameter("subject");
         User user = (User) session.getAttribute("user");
         int userId = user.getUserId();
         Date date = new Date(session.getLastAccessedTime());
         
-        {
+        validator.clear(session);
+        
             try {
-                if (validator.checkDetailIsEmpty(DetailsInput)) {
-                    session.setAttribute("ticketdetailsErr", "Please fill in Details Box");
+                if (validator.checkIsEmpty(SubjectInput, DetailsInput)) {
+                    session.setAttribute("ticketdetailsErr", "Please fill in both Boxes");
+                    session.setAttribute("subjectSaved", SubjectInput);
+                    session.setAttribute("detailsSaved", DetailsInput);
                     response.sendRedirect("HelpTicketSendServlet?id="+userId);
                 } else {
-                    manager.createHelpTicket(CategoryInput, DetailsInput, userId, date);
-                    response.sendRedirect("HelpTicketSendServlet?id="+userId);}
+                    manager.createHelpTicket(CategoryInput, DetailsInput, userId, date, SubjectInput);
+                    session.setAttribute("ticketdetailsErr", "Submitted");
+                    response.sendRedirect("HelpTicketSendServlet?id="+userId);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(HelpTicketSendServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
     }
     
     @Override

@@ -15,23 +15,63 @@ import java.sql.Time;
 public class HelpTicket {
     private int helpTicketId;
     private String details;
+    private String subject;
     private String category;
-    private Date sent;
-    private String assigned;
-    private String completed;
+    private Date datesent;
+    private Date datecompleted;
+    private String status;
     private int userId;
     private int staffId;
+    private String response;
     
-    public HelpTicket(int helpTicketId, String details, String category, Date sent, String assigned, String completed, int userId, int staffId) {
+    public HelpTicket(int helpTicketId, String details, String subject, String category, Date datesent, 
+            Date datecompleted, String status, int userId, int staffId, 
+            String response) {
         this.helpTicketId = helpTicketId;
         this.details = details;
+        this.subject = subject;
         this.category = category;
-        this.sent = sent;
-        this.assigned = assigned;
-        this.completed = completed;
+        this.datesent = datesent;
+        this.datecompleted = datecompleted;
+        this.status = status;
         this.userId = userId;
         this.staffId = staffId;
+        this.response = response;
     }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+    
+    
+
+    public Date getDatesent() {
+        return datesent;
+    }
+
+    public void setDatesent(Date datesent) {
+        this.datesent = datesent;
+    }
+
+    public Date getDatecompleted() {
+        return datecompleted;
+    }
+
+    public void setDatecompleted(Date datecompleted) {
+        this.datecompleted = datecompleted;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }    
 
     public int getHelpTicketId() {
         return helpTicketId;
@@ -57,28 +97,12 @@ public class HelpTicket {
         this.category = category;
     }
 
-    public Date getDate() {
-        return sent;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDate(Date sent) {
-        this.sent = sent;
-    }
-
-    public String getAssigned() {
-        return assigned;
-    }
-
-    public void setAssigned(String assigned) {
-        this.assigned = assigned;
-    }
-
-    public String getCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(String completed) {
-        this.completed = completed;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getUserId() {
