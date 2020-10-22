@@ -36,6 +36,13 @@ public class AccessDBManager {
                 + "','" + password + "'," + roleId + ")");
     }
     
+    //Function to create a new Customer
+    public void createHelpTicket(String CategoryInput, String DetailsInput, int userId, Date date) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.HELPTICKET (CATEGORY, DETAILS, USERID, SENT) "
+                + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "')");
+    }
+    
+    
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);

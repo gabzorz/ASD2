@@ -51,6 +51,8 @@ h4 {
     color: black;
 }
 
+
+
 /*top navigation bar styling*/
 .topnav {
   background-color: #333;
@@ -106,6 +108,59 @@ form {
     text-align: center;
 }
 
+.helpwrapper {
+    display: block;
+    margin: auto;
+    width: 80em;
+    padding: 10px;
+}
+
+.helpblocksa {
+    padding-left: 5px;
+    width: 49%;
+    float:left;
+    background-color:#999999;
+    border: 2px solid black;
+}
+
+.helpblocksb {
+    margin-left: 51%;
+    text-align: center;
+    width: 49%;
+    background-color: grey;
+    border: 2px solid black;
+}
+
+.helpticketwrapper {
+    text-align: center;
+}
+
+.helpticketbutton {
+    text-align: center;
+    margin: 10px;
+}
+
+t1 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 14px;
+    color: black;
+}
+
+a1 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 17px;
+    color: white;
+  font-weight: bold;
+}
+
+a2 {
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+
+
 .details {
     display: block;
     margin: auto;
@@ -146,8 +201,4 @@ form {
     margin-right: auto;
     border:3px solid black;
     width: 40%;
-}
-
-#enquire {
-    
 }

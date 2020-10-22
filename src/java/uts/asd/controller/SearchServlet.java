@@ -37,6 +37,7 @@ public class SearchServlet extends HttpServlet {
         String BedroomInput = request.getParameter("bedroomselect");
         String GarageInput = request.getParameter("garageselect");
         
+        
         try {
             ArrayList<Property> propertieslist = new ArrayList<Property>();
             propertieslist = manager.searchProperties(SearchInput, BedroomInput, GarageInput);
@@ -47,14 +48,5 @@ public class SearchServlet extends HttpServlet {
         }
     }
  }
-    /*@Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        if (validator.checkSearchEmpty(propertySearch)) {
-            session.setAttribute("searchErr", "Error: Search format incorrect");
-            request.getRequestDispatcher("search.jsp").include(request, response);
-        }
-        else {*/
         
         
