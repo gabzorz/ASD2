@@ -3,37 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/propertyTable.sql</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/LoginServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/viewUsers.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/login.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/register.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/model/Bid.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/UpdatePropertyServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/PropertyDetailsServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/RegisterServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/addUser.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/sendHelpTicket.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/css/SEAN_CSS.css</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/createOpen_Day_BookingTable.sql</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/AccessValidator.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/createAuction.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/createTicketTable.sql</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/viewProperty.jsp</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/model/HelpTicket.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/HelpTicketSendServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/addUserSuccess.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/createBidTable.sql</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/viewHelpTicket.jsp</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/staffHelpTicket.jsp</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/HelpTicketStaffServlet.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/HelpTicketUserServlet.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/editHelpTicket.jsp</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/homepage.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/CreateAuctionServlet.java</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/model/dao/AccessDBManager.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/css/SEAN_CSS.css</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/propertyDetails.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/searchlist.jsp</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/SearchServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/PlaceBidServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/createUserAccessTables.sql</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/model/Open_Day_Booking.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/viewPropertyServlet.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/searchlist.jsp</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/ViewTicketServlet.java</file>
         </group>
     </open-files>
 </project-private>

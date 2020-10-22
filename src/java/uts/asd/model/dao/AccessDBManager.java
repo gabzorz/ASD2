@@ -403,8 +403,8 @@ public class AccessDBManager {
     }
     
     //Find Cancelled Help Tickets
-    public ArrayList<HelpTicket> cancelledHelpTicket(int staffInput) throws SQLException {
-        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Cancelled' AND STAFFID = "+staffInput+"";
+    public ArrayList<HelpTicket> cancelledHelpTicket() throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Cancelled'";
         ResultSet rs = st.executeQuery(fetch);
         ArrayList<HelpTicket> helptickets = new ArrayList<>();
         

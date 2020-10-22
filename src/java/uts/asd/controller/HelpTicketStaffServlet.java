@@ -54,7 +54,7 @@ public class HelpTicketStaffServlet extends HttpServlet {
                 completehelpticketslist = manager.completeHelpTicket();
                 request.setAttribute("completehelpticketslist", completehelpticketslist);
                 
-                cancelledhelpticketslist = manager.cancelledHelpTicket(idint);
+                cancelledhelpticketslist = manager.cancelledHelpTicket();
                 request.setAttribute("cancelledhelpticketslist", cancelledhelpticketslist);
                 
                 request.getRequestDispatcher("staffHelpTicket.jsp").include(request, response);} catch (SQLException ex) {
