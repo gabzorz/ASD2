@@ -20,6 +20,11 @@ public class HelpTicketValidator implements Serializable {
     public boolean checkIsEmpty(String subject, String detail) {
         return subject.isEmpty() || detail.isEmpty();
     }
+    
+    //Function to validate the textfields when updating a profile
+    public boolean checkIsEmpty2(String detail) {
+        return detail.isEmpty();
+    }
 
     //function to clear errors when page is refreshed
     public void clear(HttpSession session) {

@@ -495,6 +495,18 @@ public class AccessDBManager {
                 + startTime + "', ENDDATE='" + endDate + "', ENDTIME='" + endTime + "', RESERVEPRICE="
                 + reservePrice + ", STARTINGPRICE=" + startingPrice + " WHERE ITEMID=" + itemId);
     }
+    
+    // Updates a Help Ticket when it is complete
+    public void updateHelpTicketComplete(String StatusInput, String ResponseInput, int StaffId, Date date, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS='" + StatusInput + "', RESPONSE='"
+                + ResponseInput + "', STAFFID=" + StaffId + ", DATECOMPLETED='" + date + "' WHERE HELPTICKETID = "+HelpTicketId+"");
+    }
+    
+    // Updates an Help Ticket when it is assigned
+    public void updateHelpTicketAssigned(String StatusInput, String ResponseInput, int StaffId, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS='" + StatusInput + "', RESPONSE='"
+                + ResponseInput + "', STAFFID=" + StaffId + ", WHERE HELPTICKETID = "+HelpTicketId+"");
+    }
 
     // Returns the Auction with the highest itemId (i.e. the latest created auction)
     public int readHighestAuctionId() throws SQLException {

@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="css/SEAN_CSS.css">
     </head>
     <body>
+        <%
+            String ticketdetailsErr = (String) session.getAttribute("ticketdetailsErr");
+        %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
@@ -71,19 +74,23 @@
                 <div class="editticketblocksb">
                     <c0>Respond to Ticket</c0>
                     <br>
-                    <form action="EditTicketServlet2" method="post">
+                    <form action="EditTicketServlet" method="post">
+                        <input type="hidden" name="helpticketid" value="${edithelpticket.getHelpTicketId()}">
                         <a2>Status:</a2>
                         <br>
                         <select name="ticketstatusselect">
-                        <option value="Assigned" name="Assigned">Assigned</option>
-                        <option value="Complete" name="Complete">Complete</option>
+                        <option value="Assigned" name="Assigned" ${edithelpticket.getStatus() == 'Assigned' ? 'selected' : ''}>Assigned</option>
+                        <option value="Complete" name="Complete" ${edithelpticket.getStatus() == 'Complete' ? 'selected' : ''}>Complete</option>
                         </select>
                         <br>
                         <a2>Response:</a2>
                         <br>
-                        <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="response" placeholder="Write up to 1000 characters"></textarea>
+                        <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="response" placeholder="Write up to 1000 characters"><c:out value ="${edithelpticket.getResponse()}"/></textarea>
+                        
                         <div class="helpticketwrapper">
-                            <input class="helpticketbutton" type="submit" value="Respond to Ticket">
+                            <input class="helpticketbutton" type="submit" value="Respond to Ticket" ${edithelpticket.getStatus() == 'Complete' ? 'disabled="disabled"' : ''}>
+                            <br>
+                            <t1> <%=(ticketdetailsErr != null ? ticketdetailsErr : "")%> </t1>
                         </div>
                         <br>
                     </form>
