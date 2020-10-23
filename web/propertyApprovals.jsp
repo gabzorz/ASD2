@@ -73,8 +73,8 @@
 <% } else { %>
 
 <body>
-    <h1>There are no registered users</h1>
-    Click <a href="sysMain.jsp">here</a> to go back.            
+    <h1>You are not authorized to be here</h1>
+    Click <a href="homepage.jsp">here</a> to go back.            
 </body>
 </body>
 </html>
