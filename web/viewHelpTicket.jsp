@@ -56,8 +56,6 @@
                 <br>
                 <c1>User: </c1><c2><c:out value ="${userView.getfName()}"/> <c:out value ="${userView.getlName()}"/></c2>
                 <br>
-                <c1>Contact: </c1><c2><c:out value ="${userView.getEmailAddress()}"/> | <c:out value ="${userView.getContactNumber()}"/></c2>
-                <br>
                 <div class="ticketdetails">
                 <d1>Help Ticket ID:</d1> <d2><c:out value ="${edithelpticket.getHelpTicketId()}"/></d2>
                 <br>
