@@ -38,6 +38,10 @@
          <a class="bttn" style="text-decoration:none" href="propertyApprovals.jsp">Property Approvals</a>
         </div>
         
+                <div>
+         <a class="bttn" style="text-decoration:none" href="properties.jsp">View all auctions</a>
+        </div>
+        
         <a class="bttn" style="text-decoration:none" href="AdminEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 
     </body>

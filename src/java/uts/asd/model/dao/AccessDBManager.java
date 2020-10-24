@@ -23,6 +23,32 @@ public class AccessDBManager {
                 + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "'," + userID + ",'pending')");
     }
 
+        public void addKeywords(int userID, int bathroom, int bedroom, int garage) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.KEYWORDS (USERID, BATHROOM, BEDROOM, GARAGE) "
+                + "VALUES (" + userID + "," + bathroom + "," + bedroom + "," + garage + ")");
+    }  
+        
+        public Keywords updateKeywords(int userID, int bathroom, int bedroom, int garage) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.KEYWORDS SET BATHROOM=" + bathroom + ", BEDROOM=" + bedroom + ", GARAGE=" + garage + " WHERE USERID = " + userID);
+        
+                String fetch = "SELECT * FROM ASDREAMS.KEYWORDS WHERE USERID = " + userID +"";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+
+                int id = rs.getInt(1);
+                int newBathroom = rs.getInt(3);
+                int newBedroom = rs.getInt(4);
+                int newGarage = rs.getInt(5);
+
+                return new Keywords(id, userID, newBathroom, newBedroom, newGarage);
+            }
+        return null;
+    }  
+        
+
+        
+    
     //Function to create a new Customer
     public void createCustomer(String fName, String lName, String address,
             String dob, String emailAddress, String contactNumber,
@@ -35,7 +61,8 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-
+    
+    //Function to get all the values in the database
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);
@@ -52,10 +79,37 @@ public class AccessDBManager {
 
         return null;
     }
+    
+        public Keywords getKeywords(int userId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.KEYWORDS WHERE USERID = " + userId +"";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+
+                int id = rs.getInt(1);
+                int bathroom = rs.getInt(3);
+                int bedroom = rs.getInt(4);
+                int garage = rs.getInt(5);
+
+                return new Keywords(id, userId, bathroom, bedroom, garage);
+            }
+        return null;
+    }
 
     // Returns the highest userId (i.e. the latest created userId)
     public int readHighestCustomerId() throws SQLException {
         String fetch = "SELECT MAX(USERID) FROM ASDREAMS.USER_ACCOUNT";
+        ResultSet rs = st.executeQuery(fetch);
+        int highestId = 0;
+        while (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        return highestId;
+    }
+    
+        // Returns the highest userId (i.e. the latest created userId)
+    public int readHighestKeywordsId() throws SQLException {
+        String fetch = "SELECT MAX(KEYWORDSID) FROM ASDREAMS.KEYWORDS";
         ResultSet rs = st.executeQuery(fetch);
         int highestId = 0;
         while (rs.next()) {
@@ -139,6 +193,26 @@ public class AccessDBManager {
         return null;
     }
 
+        public int[] getKeywordUsers(int bathrooms, int bedrooms, int garages) throws SQLException {
+      String fetch = "select * from ASDREAMS.PROPERTY where BATHROOM = "+ bathrooms +" and BEDROOM = "+ bedrooms + " and GARAGE = "+ garages +""; // AND STATUS <> 'pending'
+      ResultSet rs = st.executeQuery(fetch);
+      int size = 0;
+      int count = 0;
+      if (rs != null) 
+        {
+          rs.last();    // moves cursor to the last row
+          size = rs.getRow(); // get row id 
+           rs.beforeFirst();
+        }
+      
+        int[] intArray = new int[size];
+        while (rs.next()) {
+            intArray[count] = rs.getInt(10);
+            count++;
+        }
+        return intArray;
+    }
+    
     public Property getProperty(int UserID) throws SQLException {
         String fetch = "select * from ASDREAMS.PROPERTY where USERID = " + UserID + ""; // AND STATUS <> 'pending'
         ResultSet rs = st.executeQuery(fetch);
@@ -222,6 +296,11 @@ public class AccessDBManager {
     public void deleteUser(String email) throws SQLException {
         st.executeUpdate("DELETE FROM ASDREAMS.USER_ACCOUNT WHERE EMAILADDRESS='"
                 + email + "'");
+    }
+    
+    public void deleteKeywords(int userID) throws SQLException {
+        st.executeUpdate("DELETE FROM ASDREAMS.KEYWORDS WHERE USERID="
+                + userID);
     }
 
     //Function to check a user's role
