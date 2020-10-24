@@ -16,9 +16,22 @@
         <link rel="stylesheet" href="css/Payment_Styling.css">
         <title>Payment Information</title>
     </head>
+<<<<<<< HEAD
     <body>       
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+=======
+    <body>
+        
+        <%
+            ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
+            String existErr = (String) session.getAttribute("existErr");
+            String deleted = (String) session.getAttribute("deleted");
+        %>
+        
+        <div class="header-img">
+          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
         </div>
         
         <div class="topnav">
@@ -43,7 +56,11 @@
                 <th>BSB</th>
                 <th></th>
             </tr>
+<<<<<<< HEAD
             <c:forEach var="payment" items="${payment}">
+=======
+            <c:forEach var="payment" items="${payments}">
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
                 <tr>
                     <td><c:out value="${payment.paymentID}" /></td>
                     <td><c:out value="${payment.firstName}" /></td>
@@ -58,11 +75,15 @@
                 </tr>
             </c:forEach>
         </table>
+<<<<<<< HEAD
                     <div>
                         <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
                     </div>
                     
                     
+=======
+                    <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
         </main>
     </body>
 </html>

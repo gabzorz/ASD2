@@ -32,6 +32,7 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>uts.asd.controller.DeleteServlet</servlet-class>
     </servlet>
+<<<<<<< HEAD
     <servlet>
         <servlet-name>addPropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.addPropertyServlet</servlet-class>
@@ -66,6 +67,10 @@
     </servlet>
     
     <!--    Payment Servlets-->
+=======
+    
+<!--    Payment Servlets-->
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>uts.asd.controller.PaymentServlet</servlet-class>
@@ -86,6 +91,7 @@
         <servlet-name>PaymentSearchServlet</servlet-name>
         <servlet-class>uts.asd.controller.PaymentAddServlet</servlet-class>
     </servlet>
+<<<<<<< HEAD
     <!--    Payment Servlets-->
     
     <!--Post Servlets-->
@@ -107,6 +113,10 @@
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
     </servlet-mapping>
+=======
+<!--    Payment Servlets-->
+    
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -139,6 +149,7 @@
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>addPropertyServlet</servlet-name>
         <url-pattern>/addPropertyServlet</url-pattern>
@@ -168,6 +179,10 @@
         <url-pattern>/PlaceBidServlet</url-pattern>
     </servlet-mapping>
     <!--    Payment Servlets-->
+=======
+    
+<!--    Payment Servlets-->
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/PaymentServlet</url-pattern>
@@ -188,6 +203,7 @@
         <servlet-name>PaymentRemoveServlet</servlet-name>
         <url-pattern>/PaymentRemoveServlet</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <!--    Payment Servlets-->
     <!--    Post Servlets-->
     <servlet-mapping>
@@ -203,6 +219,10 @@
         <url-pattern>/PostRemoveServlet</url-pattern>
     </servlet-mapping>
     <!--    Post Servlets-->
+=======
+<!--    Payment Servlets-->
+    
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
     <session-config>
         <session-timeout>
             30

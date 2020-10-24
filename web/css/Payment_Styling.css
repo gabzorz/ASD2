@@ -60,7 +60,11 @@ form{
     padding:0 16px;
     width: 55%;
 }
+<<<<<<< HEAD
 label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"], [for="title"], [for="category"], [for="content"]{
+=======
+label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"]{
+>>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
     display:block;
     margin:8px auto;
     text-align:left !important;
