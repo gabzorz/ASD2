@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/login.jsp</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/homepage.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/model/HelpTicket.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/sysMain.jsp</file>
             <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/searchlist.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/propertyDetails.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/viewHelpTicket.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/staffHelpTicket.jsp</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/ViewTicketServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/insertProperty.sql</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/HelpTicketUserServlet.java</file>
-            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/editHelpTicket.jsp</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/src/java/uts/asd/controller/SearchServlet.java</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/logout.jsp</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/db/insertAuction_Item.sql</file>
+            <file>file:/C:/Users/Sean/Documents/GitHub/ASDFINAL/web/staffMain.jsp</file>
         </group>
     </open-files>
 </project-private>
