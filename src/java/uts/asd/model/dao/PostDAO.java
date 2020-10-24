@@ -56,6 +56,20 @@ public class PostDAO {
         st.execute();
     }
     
+    //function to create post object from content, title and category
+    public Post findPost(String title, String category) throws SQLException{
+        String search = "Select * from ASDREAMS.Post where TITLE='" + title + "'AND CATEGORY='"+category+"'";
+        ResultSet rs = st.executeQuery(search);
+        while (rs.next()){
+            int postID = rs.getInt(1);
+            String title2 = rs.getString(2);
+            String category2 = rs.getString(3);
+            String content2 = rs.getString(4);
+            return new Post(postID, title2, category2, content2);
+        }
+        return null;
+    }
+    
     //function to update post information
     public void updatePost(int postID, String title, String category, String content) throws SQLException{
         st.executeUpdate("UPDATE ASDREAMS.Post SET TITLE ='" + title + "', CATEGORY='" + category + "', CONTENT='" + content + "' WHERE POSTID= " + postID + "");

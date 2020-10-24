@@ -37,8 +37,9 @@ public class PostAddServlet extends HttpServlet{
             
             try {
                 pd.addPost(title, category, content);
+                Post post = pd.findPost(title, category);
+                session.setAttribute("post", post);
                 request.getRequestDispatcher("newsReport.jsp").include(request, response);
-                
             } catch (SQLException e){
                throw new ServletException("Cannot add post to Database", e); 
             }

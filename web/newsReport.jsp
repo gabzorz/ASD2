@@ -12,6 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/Payment_Styling.css">
         <title>News Reports</title>
+        <%
+            Post post = (Post) session.getAttribute("post");
+        %>
     </head>
     <body>
         <div class="header-img">
@@ -29,9 +32,9 @@
         </div>
         
         <main  style="text-align: center;">
-            <h1>Post Title</h1>
-            <h2>Post Category</h2>
-            <h3>Post Content</h3>
+            <h1><%= post.getTitle()%></h1>
+            <h2><%= post.getCategory()%></h2>
+            <h3><%= post.getContent()%></h3>
         </main>
     </body>
 </html>
