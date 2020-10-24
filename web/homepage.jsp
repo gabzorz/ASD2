@@ -9,7 +9,6 @@
         <title>Home Page</title>
         <%
             User user = (User) session.getAttribute("user");
-            int number = user.getUserId();
         %>
     </head>
     <body>
