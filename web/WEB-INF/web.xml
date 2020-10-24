@@ -120,6 +120,30 @@
         <servlet-name>UpdateOpenDayServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdateOpenDayServlet</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>deleteKeywordServlet</servlet-name>
+        <servlet-class>uts.asd.controller.deleteKeywordServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>deleteKeywordServlet</servlet-name>
+        <url-pattern>/deleteKeywordServlet</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>updateKeywordsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.updateKeywordsServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>updateKeywordsServlet</servlet-name>
+        <url-pattern>/updateKeywordsServlet</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>addKeywordsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.addKeywordsServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>addKeywordsServlet</servlet-name>
+        <url-pattern>/addKeywordsServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>

@@ -23,6 +23,82 @@ public class AccessDBManager {
                 + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "'," + userID + ",'pending')");
     }
 
+            public void addKeywords(int userID, int bathroom, int bedroom, int garage) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.KEYWORDS (USERID, BATHROOM, BEDROOM, GARAGE) "
+                + "VALUES (" + userID + "," + bathroom + "," + bedroom + "," + garage + ")");
+    }  
+
+        public Keywords updateKeywords(int userID, int bathroom, int bedroom, int garage) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.KEYWORDS SET BATHROOM=" + bathroom + ", BEDROOM=" + bedroom + ", GARAGE=" + garage + " WHERE USERID = " + userID);
+
+                String fetch = "SELECT * FROM ASDREAMS.KEYWORDS WHERE USERID = " + userID +"";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+
+                int id = rs.getInt(1);
+                int newBathroom = rs.getInt(3);
+                int newBedroom = rs.getInt(4);
+                int newGarage = rs.getInt(5);
+
+                return new Keywords(id, userID, newBathroom, newBedroom, newGarage);
+            }
+        return null;
+    }  
+        
+                public Keywords getKeywords(int userId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.KEYWORDS WHERE USERID = " + userId +"";
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+
+                int id = rs.getInt(1);
+                int bathroom = rs.getInt(3);
+                int bedroom = rs.getInt(4);
+                int garage = rs.getInt(5);
+
+                return new Keywords(id, userId, bathroom, bedroom, garage);
+            }
+        return null;
+    }
+    
+                        // Returns the highest userId (i.e. the latest created userId)
+    public int readHighestKeywordsId() throws SQLException {
+        String fetch = "SELECT MAX(KEYWORDSID) FROM ASDREAMS.KEYWORDS";
+        ResultSet rs = st.executeQuery(fetch);
+        int highestId = 0;
+        while (rs.next()) {
+            highestId = rs.getInt(1);
+        }
+        return highestId;
+    }
+           
+    public int[] getKeywordUsers(Property property) throws SQLException {
+      String fetch = "select * from ASDREAMS.KEYWORDS where BATHROOM = "+ property.getNumOfBathrooms() +" and BEDROOM = "+ property.getNumOfBedrooms() + " and GARAGE = "+ property.getNumOfGarages() +""; // AND STATUS <> 'pending'
+      ResultSet rs = st.executeQuery(fetch);
+      int size = 0;
+      int count = 0;
+      if (rs != null) 
+        {
+          rs.last();    // moves cursor to the last row
+          size = rs.getRow(); // get row id 
+           rs.beforeFirst();
+        }
+
+        int[] intArray = new int[size];
+        while (rs.next()) {
+            intArray[count] = rs.getInt(1);
+            count++;
+        }
+        return intArray;
+    }
+
+            
+    public void deleteKeywords(int userID) throws SQLException {
+        st.executeUpdate("DELETE FROM ASDREAMS.KEYWORDS WHERE USERID="
+                + userID);
+    }
+    
     //Function to create a new Customer
     public void createCustomer(String fName, String lName, String address,
             String dob, String emailAddress, String contactNumber,
@@ -52,6 +128,7 @@ public class AccessDBManager {
 
         return null;
     }
+    
 
     // Returns the highest userId (i.e. the latest created userId)
     public int readHighestCustomerId() throws SQLException {

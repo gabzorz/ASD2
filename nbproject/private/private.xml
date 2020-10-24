@@ -3,20 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/editOpenDay.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/index.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/db/createOpen_Day_BookingTable.sql</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/createNewOpenDay.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/CancelOpenDayServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/model/dao/AccessDBManager.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/ViewOpenDayListServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/UpdateOpenDayServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/CreateOpenDayServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/EditOpenDayServlet.java</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/viewOpenDayBookings.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/properties.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/web/createAuction.jsp</file>
-            <file>file:/C:/Users/USER/Documents/GitHub/ASD2/src/java/uts/asd/controller/LoginServlet.java</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/InsertPayment.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createAuction_ItemTable.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/propertyTable.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/insertStampDuty.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/insertBids.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createBidTable.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/insertAuction_Item.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createPaymentTables.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createUserAccessTables.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/insertUserAccess.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createTables.sql</file>
+            <file>file:/E:/Documents/NetBeansProjects/ASD2/web/db/createOpen_Day_BookingTable.sql</file>
         </group>
     </open-files>
 </project-private>
