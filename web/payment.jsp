@@ -4,6 +4,7 @@
     Author     : CristinaFidelino
 --%>
 
+<%@page import="uts.asd.model.Payment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     </head>
     <body>
         <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+          <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         
         <div class="topnav">
@@ -28,7 +29,7 @@
         </div>
         
         <main>
-            <form method="post" action="payment_list.jsp" style="text-align: center;">
+            <form method="post" action="PaymentAddServlet" style="text-align: center;">
                 <h1>Payment Account Information</h1>
                 <h2 style="color:red">* marks required fields</h2>
                 
@@ -44,7 +45,7 @@
                 <br>
                 
                 <div>
-                    <a class="button" href="CancelServlet"> Cancel </a>
+                    <a class="button" href="customerDetails.jsp"> Cancel </a>
                     <input class="button" type="submit" value="Add Payment"/><br>
                 </div>
             </form>

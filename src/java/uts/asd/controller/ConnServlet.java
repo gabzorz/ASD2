@@ -17,6 +17,8 @@ public class ConnServlet extends HttpServlet {
     private DBConnector db;
     private AccessDBManager accessManager;   
     private Connection conn;
+    private PaymentDAO pyd;
+    private PostDAO pd;
 
     @Override
     public void init() {
@@ -38,10 +40,14 @@ public class ConnServlet extends HttpServlet {
 
         try {
             accessManager = new AccessDBManager(conn);
+            pyd = new PaymentDAO(conn);
+            pd = new PostDAO(conn);
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         session.setAttribute("accessManager", accessManager);
+        session.setAttribute("pyd", pyd);
+        session.setAttribute("pd", pd);
     }
 
     @Override

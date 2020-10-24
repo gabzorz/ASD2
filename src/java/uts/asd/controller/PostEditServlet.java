@@ -14,31 +14,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import uts.asd.model.dao.PaymentDAO;
-import uts.asd.model.Payment;
+import uts.asd.model.dao.PostDAO;
+import uts.asd.model.Post;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author CristinaFidelino
  */
-public class PaymentServlet extends HttpServlet{
-    @Override
+public class PostEditServlet extends HttpServlet{
+     @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            Payment payment = (Payment) session.getAttribute("payment");
-            int id = payment.getPaymentID();
-            
-            try {
-                ArrayList<Payment> payments = pyd.searchPayment(id);
-                request.setAttribute("payment", payments);
-                request.getRequestDispatcher("payment_edit.jsp").include(request, response);
-            } catch (SQLException e){
-               throw new ServletException("Cannot obtain payments from Database", e); 
-            }
+            PostDAO pd = (PostDAO) session.getAttribute("pd");
+            int id = Integer.parseInt(request.getParameter("id"));
+            try{
+                Post post = pd.searchPost(id).get(0);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("post_edit.jsp");
+                request.setAttribute("post", post);
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+            Logger.getLogger(PaymentEditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+    
 }

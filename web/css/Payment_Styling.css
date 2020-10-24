@@ -60,7 +60,7 @@ form{
     padding:0 16px;
     width: 55%;
 }
-label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"]{
+label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"], [for="title"], [for="category"], [for="content"]{
     display:block;
     margin:8px auto;
     text-align:left !important;

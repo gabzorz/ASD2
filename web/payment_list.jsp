@@ -16,16 +16,9 @@
         <link rel="stylesheet" href="css/Payment_Styling.css">
         <title>Payment Information</title>
     </head>
-    <body>
-        
-        <%
-            ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
-            String existErr = (String) session.getAttribute("existErr");
-            String deleted = (String) session.getAttribute("deleted");
-        %>
-        
+    <body>       
         <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+          <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         
         <div class="topnav">
@@ -50,7 +43,7 @@
                 <th>BSB</th>
                 <th></th>
             </tr>
-            <c:forEach var="payment" items="${payments}">
+            <c:forEach var="payment" items="${payment}">
                 <tr>
                     <td><c:out value="${payment.paymentID}" /></td>
                     <td><c:out value="${payment.firstName}" /></td>
@@ -65,7 +58,11 @@
                 </tr>
             </c:forEach>
         </table>
-                    <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
+                    <div>
+                        <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
+                    </div>
+                    
+                    
         </main>
     </body>
 </html>

@@ -86,7 +86,22 @@
         <servlet-name>PaymentSearchServlet</servlet-name>
         <servlet-class>uts.asd.controller.PaymentAddServlet</servlet-class>
     </servlet>
-<!--    Payment Servlets-->
+    <!--    Payment Servlets-->
+    
+    <!--Post Servlets-->
+    <servlet>
+        <servlet-name>PostAddServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PostAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostEditServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PostEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostRemoveServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PostRemoveServlet</servlet-class>
+    </servlet>
+    <!--Post Servlets-->
 
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
@@ -173,7 +188,21 @@
         <servlet-name>PaymentRemoveServlet</servlet-name>
         <url-pattern>/PaymentRemoveServlet</url-pattern>
     </servlet-mapping>
-<!--    Payment Servlets-->
+    <!--    Payment Servlets-->
+    <!--    Post Servlets-->
+    <servlet-mapping>
+        <servlet-name>PostAddServlet</servlet-name>
+        <url-pattern>/PostAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostEditServlet</servlet-name>
+        <url-pattern>/PostEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostRemoveServlet</servlet-name>
+        <url-pattern>/PostRemoveServlet</url-pattern>
+    </servlet-mapping>
+    <!--    Post Servlets-->
     <session-config>
         <session-timeout>
             30
