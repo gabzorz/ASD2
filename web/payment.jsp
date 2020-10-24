@@ -4,10 +4,7 @@
     Author     : CristinaFidelino
 --%>
 
-<<<<<<< HEAD
 <%@page import="uts.asd.model.Payment"%>
-=======
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,11 +15,8 @@
     </head>
     <body>
         <div class="header-img">
-<<<<<<< HEAD
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
-=======
           <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
         </div>
         
         <div class="topnav">
@@ -36,11 +30,8 @@
         </div>
         
         <main>
-<<<<<<< HEAD
             <form method="post" action="PaymentAddServlet" style="text-align: center;">
-=======
             <form method="post" action="payment_list.jsp" style="text-align: center;">
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
                 <h1>Payment Account Information</h1>
                 <h2 style="color:red">* marks required fields</h2>
                 
@@ -56,11 +47,8 @@
                 <br>
                 
                 <div>
-<<<<<<< HEAD
                     <a class="button" href="customerDetails.jsp"> Cancel </a>
-=======
                     <a class="button" href="CancelServlet"> Cancel </a>
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
                     <input class="button" type="submit" value="Add Payment"/><br>
                 </div>
             </form>

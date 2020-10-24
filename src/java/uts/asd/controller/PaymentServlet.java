@@ -30,7 +30,6 @@ public class PaymentServlet extends HttpServlet{
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-<<<<<<< HEAD
             Payment payment = (Payment) session.getAttribute("payment");
             int id = payment.getPaymentID();
             
@@ -38,13 +37,11 @@ public class PaymentServlet extends HttpServlet{
                 ArrayList<Payment> payments = pyd.searchPayment(id);
                 request.setAttribute("payment", payments);
                 request.getRequestDispatcher("payment_edit.jsp").include(request, response);
-=======
             //int id = Integer.parseInt(request.getParameter("id"));
             try {
                 ArrayList<Payment> payments = pyd.fetchPayments();
                 request.setAttribute("payments", payments);
                 request.getRequestDispatcher("payment_list.jsp").include(request, response);
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
             } catch (SQLException e){
                throw new ServletException("Cannot obtain payments from Database", e); 
             }

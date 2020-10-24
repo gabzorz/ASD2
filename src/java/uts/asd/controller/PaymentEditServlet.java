@@ -34,11 +34,8 @@ public class PaymentEditServlet  extends HttpServlet{
             int id = Integer.parseInt(request.getParameter("id"));
             try{
                 Payment payment = pyd.searchPayment(id).get(0);
-<<<<<<< HEAD
                 RequestDispatcher dispatcher = request.getRequestDispatcher("payment_edit.jsp");
-=======
                 RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
->>>>>>> caf89223a649b714d999363a5fdf89ced84a7858
                 request.setAttribute("payment", payment);
                 dispatcher.forward(request, response);
             } catch (SQLException ex) {
