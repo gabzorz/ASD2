@@ -85,7 +85,7 @@
                         <input type="hidden" name="helpticketid" value="${edithelpticket.getHelpTicketId()}">
                         <input type="hidden" name="Cancelled" value="Cancelled">
                     <div class="helpticketwrapper">
-                            <input name="Cancelled" class="helpticketbutton" type="submit" value="Cancel" ${edithelpticket.getStatus() == 'Complete' ? 'disabled="disabled"' : ''} ${edithelpticket.getStatus() == 'Cancelled' ? 'disabled="disabled"' : ''}>
+                            <input name="Cancelled" class="helpticketbutton" type="submit" value="Cancel Help Ticket" ${edithelpticket.getStatus() == 'Complete' ? 'disabled="disabled"' : ''} ${edithelpticket.getStatus() == 'Cancelled' ? 'disabled="disabled"' : ''}>
                     </div>
                     </form>
                 </div>
