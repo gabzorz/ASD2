@@ -45,15 +45,12 @@ public class LoginServlet extends HttpServlet {
                         if (property != null) {
                             session.setAttribute("property", property);
                         }
-                    Keywords keywords = manager.getKeywords(user.getUserId());
-                        if (keywords != null) {
-                            session.setAttribute("keywords", keywords);
-                        }
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                     //For staff login
                 } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
-                    request.getRequestDispatcher("staffMain.jsp").include(request, response);
+
+                    request.getRequestDispatcher("sysMain.jsp").include(request, response);
                     //For system administrator login
                 } else if (user != null && role == 1) {
                     session.setAttribute("user", user);

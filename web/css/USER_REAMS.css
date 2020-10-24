@@ -96,29 +96,3 @@ body{
     padding: 10px;
     text-align: left;
 }
-
-.userTables{
-    margin-left: auto;
-    margin-right: auto;
-    height: 100px;
-    width: auto;
-    table-layout: fixed;
-    font-family: sans-serif;
-    font-style: normal;
-    
-}
-.editBttn{
-    background-color: lightgray;
-    border: black;
-    color: black;
-    text-align: center;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 6px;
-    border-radius: 4px;
-    padding: 12px;
-    height: 10px;
-    font-family: sans-serif;
-    font-style: normal;
-    cursor: pointer;
-}

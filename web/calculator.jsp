@@ -41,7 +41,7 @@
             </tr>
         </table>
 
-    <a class="bttn" href="homepage.jsp">Go back</a>
+
 
     </body>
 </html>

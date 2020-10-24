@@ -19,32 +19,31 @@ public class ShowStampDutyServlet extends HttpServlet {
         HttpSession session = request.getSession();
         CalculatorValidator validator = new CalculatorValidator();
 
-        //Get the user input value
         String priceCat = request.getParameter("priceCat");
 
         validator.clear(session);
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
-        //Check if there is a value in the textbox
+
         if (validator.checkEmpty(priceCat)) {
             session.setAttribute("inputErr", "Please enter a value");
             request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
-        //Check whether the value is either 1, 2 or 3
+
         } else if (validator.checkPriceCat(priceCat)) {
             session.setAttribute("inputErr", "Input must be 1, 2 or 3");
             request.getRequestDispatcher("adjustStampDuty.jsp").include(request, response);
 
         } else {
             try {
-                //Parse the user input from String to integer
+              
                 int category = Integer.parseInt(priceCat);
-
-                //Get the values from the DB
+                
                 Calculator value = manager.findValues(category);
                 int variablePrice = value.getVariablePrice();
                 float variableIncrease = value.getVariableIncrease();
                 int duitableVariable = value.getDuitableValue();
 
-                //Pass the values to the jsp
+                
+
                 request.setAttribute("variablePrice", variablePrice);
                 request.setAttribute("variableIncrease", variableIncrease);
                 request.setAttribute("duitableVariable", duitableVariable);
@@ -53,6 +52,9 @@ public class ShowStampDutyServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(CalculateStampDutyServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
+
     }
+
 }
