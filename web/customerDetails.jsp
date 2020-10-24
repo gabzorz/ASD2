@@ -56,7 +56,7 @@
         <p>If you wish to delete your account click <a href="DeleteServlet"><button class="bttn">Delete</button></a></p>
         <table>
                 <a class="bttn" href="payment.jsp">Add Payment Details</a>
-                <a class="bttn" href="payment_list.jsp">View Payment Details</a>
+                <a class="bttn" href="PaymentServlet?id=<%=user.getUserId()%>">View Payment Details</a>
         </table>
         <%} else if (user.getRoleId() == 2) {%>
         <table>
