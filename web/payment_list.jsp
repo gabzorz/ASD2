@@ -3,11 +3,17 @@
     Created on : 26/09/2020, 8:26:48 PM
     Author     : CristinaFidelino
 --%>
-
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uts.asd.model.Payment"%>
 <%@page import="uts.asd.model.User"%>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     
@@ -19,16 +25,6 @@
     <body>       
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
-    <body>
-        
-        <%
-            ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
-            String existErr = (String) session.getAttribute("existErr");
-            String deleted = (String) session.getAttribute("deleted");
-        %>
-        
-        <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         
         <div class="topnav">
@@ -42,37 +38,34 @@
         </div>
         
         <main> 
+            <form method="post" action="PaymentServlet">
         <table border="1" cellpadding="5">
-            
             <h1>Linked Accounts</h1>
             <tr>
                 <th>Payment ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
                 <th>Account Number</th>
                 <th>BSB</th>
-                <th></th>
             </tr>
-            <c:forEach var="payment" items="${payment}">
-            <c:forEach var="payment" items="${payments}">
                 <tr>
-                    <td><c:out value="${payment.paymentID}" /></td>
-                    <td><c:out value="${payment.firstName}" /></td>
-                    <td><c:out value="${payment.lastName}" /></td>
-                    <td><c:out value="${payment.accountNumber}" /></td>
-                    <td><c:out value="${payment.bsb}" /></td>
-                    <td>
-                        <a href="PaymentEditServlet?id=<c:out value ="${payment.paymentID}"/>Edit Payment</a>
-                    <br>
-                        <a href="PaymentRemoveServlet?id=<c:out value ="${payment.paymentID}"/>Delete</a>      
-                    </td>
+                    <td><c:out value="${payment.getPaymentID()}"/></td>
+                    <input type="hidden" name ="paymentId" value="${payment.getPaymentID()}"/>
+                    <td><c:out value="${payment.getAccountNumber()}"/></td>
+                    <td><c:out value="${payment.getBsb()}"/></td>
+                    <%--<form method="post" action="PaymentRemoveServlet">--%>
                 </tr>
-            </c:forEach>
+                <tr>
+                    <td><c:out value="${payment.getPaymentID()}"/></td>
+                    <td><input maxlength="8" name="accountNumber" type="text" placeholder="<c:out value="${payment.getAccountNumber()}"/>"/></td>
+                    <td><input maxlength="7" name="bsb" type="text" placeholder="<c:out value="${payment.getBsb()}"/>"/></td>
+                    <%--<form method="post" action="PaymentRemoveServlet">--%>
+                </tr>
         </table>
-                    <div>
-                        <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
-                    </div>
-                    <a id="pyb" class="button" href="payment.jsp"> Add New Payment </a>
+                <input class="button" type="submit" value="Change"/>
+            </form>
+                <form method="post" action="PaymentRemoveServlet">
+                    <input type="hidden" name ="paymentId" value="${payment.getPaymentID()}"/>
+                    <input class="button" type="submit" value="Delete"/>
+                </form>
         </main>
     </body>
 </html>

@@ -49,7 +49,7 @@ public class AccessDBManager {
                 String dob = rs.getString(5);
                 String contactNumber = rs.getString(7);
                 Integer roleId = rs.getInt(9);
-                return new User(fName, lName, address, dob, customerEmail,
+                return new User(customerID, fName, lName, address, dob, customerEmail,
                         contactNumber, password, roleId);
             }
         }
@@ -65,6 +65,7 @@ public class AccessDBManager {
         while (rs.next()) {
             String customerEmail = rs.getString(6);
             if (customerEmail.equals(email)) {
+                Integer customerID = rs.getInt(1);
                 String fName = rs.getString(2);
                 String lName = rs.getString(3);
                 String address = rs.getString(4);
@@ -72,7 +73,7 @@ public class AccessDBManager {
                 String contactNumber = rs.getString(7);
                 String password = rs.getString(7);
                 Integer roleId = rs.getInt(9);
-                return new User(fName, lName, address, dob, customerEmail,
+                return new User(customerID, fName, lName, address, dob, customerEmail,
                         contactNumber, password, roleId);
             }
         }

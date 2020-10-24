@@ -19,6 +19,7 @@ import uts.asd.model.Payment;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import uts.asd.model.User;
 
 /**
  *
@@ -29,21 +30,34 @@ public class PaymentServlet extends HttpServlet{
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            int id = user.getUserId();
+            //String id = request.getParameter("id");
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            Payment payment = (Payment) session.getAttribute("payment");
-            int id = payment.getPaymentID();
             
             try {
-                ArrayList<Payment> payments = pyd.searchPayment(id);
-                request.setAttribute("payment", payments);
-                request.getRequestDispatcher("payment_edit.jsp").include(request, response);
-            //int id = Integer.parseInt(request.getParameter("id"));
-            try {
-                ArrayList<Payment> payments = pyd.fetchPayments();
-                request.setAttribute("payments", payments);
+                Payment payment = pyd.searchPayments(id);
+                session.setAttribute("payment", payment);
                 request.getRequestDispatcher("payment_list.jsp").include(request, response);
-            } catch (SQLException e){
-               throw new ServletException("Cannot obtain payments from Database", e); 
-            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException{ 
+            HttpSession session = request.getSession();
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            User user = (User) session.getAttribute("user");
+            
+            int accountNumber = Integer.parseInt(request.getParameter("accountNumber"));
+            int bsb = Integer.parseInt(request.getParameter("bsb"));
+            int paymentId = Integer.parseInt(request.getParameter("paymentId"));
+            
+            try {
+                pyd.editPayments(accountNumber, bsb, paymentId);
+                response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
+            } catch (SQLException ex) {
+            Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
 }

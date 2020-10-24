@@ -38,7 +38,7 @@ public class PostEditServlet extends HttpServlet{
                 request.setAttribute("post", post);
                 dispatcher.forward(request, response);
             } catch (SQLException ex) {
-            Logger.getLogger(PaymentEditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PostEditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
     

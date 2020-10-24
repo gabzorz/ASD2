@@ -19,6 +19,7 @@ import uts.asd.model.Payment;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import uts.asd.model.User;
 
 /**
  *
@@ -26,14 +27,17 @@ import java.util.ArrayList;
  */
 public class PaymentRemoveServlet extends HttpServlet {
     @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost (HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            int id = Integer.parseInt(request.getParameter("id"));
+            User user = (User) session.getAttribute("user");
+            
+           int paymentId = Integer.parseInt(request.getParameter("paymentId"));
+           
             try {
-                pyd.deletePayment(id);
-                response.sendRedirect("PaymentServlet");
+                pyd.deletePayment(paymentId);
+                response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 
             }
