@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
                 } else if (user != null && role == 2) {
                     session.setAttribute("user", user);
 
-                    request.getRequestDispatcher("sysMain.jsp").include(request, response);
+                    request.getRequestDispatcher("staffMain.jsp").include(request, response);
                     //For system administrator login
                 } else if (user != null && role == 1) {
                     session.setAttribute("user", user);

@@ -29,6 +29,7 @@
         <p>You're logged in as <%= user.getfName()%></p>
 
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
+        <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
 
     </body>
 </html>
