@@ -96,6 +96,10 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdjustStampDutyServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>viewPropertyServlet</servlet-name>
+        <url-pattern>/viewPropertyServlet</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
@@ -152,6 +156,54 @@
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <url-pattern>/UpdatePropertyServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>uts.asd.controller.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PropertyDetailsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.PropertyDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PropertyDetailsServlet</servlet-name>
+        <url-pattern>/PropertyDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HelpTicketUserServlet</servlet-name>
+        <url-pattern>/HelpTicketUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HelpTicketUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.HelpTicketUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelpTicketStaffServlet</servlet-name>
+        <url-pattern>/HelpTicketStaffServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HelpTicketStaffServlet</servlet-name>
+        <servlet-class>uts.asd.controller.HelpTicketStaffServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <url-pattern>/EditTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EditTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewTicketServlet</servlet-name>
+        <url-pattern>/ViewTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewTicketServlet</servlet-name>
+        <servlet-class>uts.asd.controller.ViewTicketServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>
