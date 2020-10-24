@@ -19,6 +19,7 @@
         <div class="top_right_link_div">
             <a href="LogoutServlet"><button>Logout</button></a>
             <a href="createAuction.jsp">Create Auction</a>
+            
         </div>
         
                 <div>

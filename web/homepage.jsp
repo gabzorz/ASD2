@@ -26,6 +26,7 @@
         <a href="addProperty.jsp" style="color:black;">Add property</a>
         <a href="viewProperty.jsp" style="color:black;">View property</a>
         <a href="addKeywords.jsp" style="color:black;">Add keywords</a>
+        <a href="myKeywords.jsp" style="color:black;">My Keywords Auctions</a>
         <a href="properties.jsp" style="color:black;">View all properties</a>
         <a href="calculator.jsp">Calculators</a>
         <% if(user.getRoleId() == 2) { %>
