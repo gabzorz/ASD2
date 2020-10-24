@@ -88,7 +88,6 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateStampDutyServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.ShowStampDutyServlet</servlet-class>
@@ -97,11 +96,6 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdjustStampDutyServlet</servlet-class>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>viewPropertyServlet</servlet-name>
-        <url-pattern>/viewPropertyServlet</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
@@ -122,6 +116,14 @@
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdatePropertyServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.UpdateOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewPropertyServlet</servlet-name>
+        <url-pattern>/viewPropertyServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <url-pattern>/UpdatePropertyServlet</url-pattern>
@@ -226,7 +228,6 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <url-pattern>/CalculateStampDutyServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <url-pattern>/ShowStampDutyServlet</url-pattern>
@@ -235,10 +236,11 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <url-pattern>/AdjustStampDutyServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>UpdateOpenDayServlet</servlet-name>
+        <url-pattern>/UpdateOpenDayServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>

@@ -29,6 +29,10 @@
         <div>
          <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
         </div>
+        
+        <div>
+         <a class="bttn" style="text-decoration:none" href="properties.jsp">View all properties</a>
+        </div>
 
         <div>
          <a class="bttn" style="text-decoration:none" href="propertyApprovals.jsp">Property Approvals</a>

@@ -35,7 +35,7 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-    
+
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);
@@ -52,8 +52,6 @@ public class AccessDBManager {
 
         return null;
     }
-    
-    
 
     // Returns the highest userId (i.e. the latest created userId)
     public int readHighestCustomerId() throws SQLException {
@@ -101,7 +99,7 @@ public class AccessDBManager {
     }
 
     public User findCustomerById(int userId) throws SQLException {
-        String fetch = "select * from ASDREAMS.USER_ACOUNT WHERE USERID=" + userId;
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT WHERE USERID=" + userId;
         ResultSet rs = st.executeQuery(fetch);
         while (rs.next()) {
             String fName = rs.getString(2);
@@ -142,7 +140,7 @@ public class AccessDBManager {
     }
 
     public Property getProperty(int UserID) throws SQLException {
-      String fetch = "select * from ASDREAMS.PROPERTY where USERID = "+ UserID +""; // AND STATUS <> 'pending'
+        String fetch = "select * from ASDREAMS.PROPERTY where USERID = " + UserID + ""; // AND STATUS <> 'pending'
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
@@ -162,7 +160,31 @@ public class AccessDBManager {
             int garageInt = Integer.parseInt(garage);
             int userID = rs.getInt(10);
             return new Property(id, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
-            
+
+        }
+        return null;
+    }
+
+    public Property getPropertyByID(int propertyId) throws SQLException {
+        String fetch = "select * from ASDREAMS.PROPERTY where PROPERTYID = " + propertyId + ""; // AND STATUS <> 'pending'
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            int userID = rs.getInt(10);
+            return new Property(propertyId, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
+
         }
         return null;
     }
@@ -176,8 +198,8 @@ public class AccessDBManager {
                 + "', CONTACTNUMBER='" + contactNumber + "', PASSWORD='"
                 + password + "' WHERE EMAILADDRESS='" + email + "'");
     }
-    
-    public void updateValues(int priceCat, int variablePrice, float variableIncrease, int duitableVariable) throws SQLException{
+
+    public void updateValues(int priceCat, int variablePrice, float variableIncrease, int duitableVariable) throws SQLException {
         st.executeUpdate("UPDATE ASDREAMS.STAMP_DUTY SET VARIABLEPRICE = " + variablePrice + ", VARIABLEINCREASE = " + variableIncrease + ", DUITABLEVALUE = " + duitableVariable + " WHERE PRICECAT = " + priceCat);
     }
 
@@ -358,7 +380,7 @@ public class AccessDBManager {
             return true;
         }
     }
-    
+
     public int getAuctionId(int propertyId) throws SQLException {
         String fetch = "SELECT MAX(ITEMID) FROM ASDREAMS.AUCTION_ITEM WHERE PROPERTYID=" + propertyId;
         ResultSet rs = st.executeQuery(fetch);
@@ -390,14 +412,14 @@ public class AccessDBManager {
                 + " STATE='" + state + "', DESCR='" + desc + "', BATHROOM='" + bathroom + "', BEDROOM='" + bedroom + "', GARAGE='" + garage + "' "
                 + "WHERE PROPERTYID =" + id + "");
     }
-    
-    public void updatePropertyStatus(int propertyId, String status) throws SQLException{
+
+    public void updatePropertyStatus(int propertyId, String status) throws SQLException {
         st.executeUpdate("UPDATE ASDREAMS.PROPERTY SET STATUS='" + status + "' WHERE PROPERTYID =" + propertyId);
     }
 
     public void createOpenDayListing(int staffId, int propertyId, String date, String startTime, String endTime) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.OPEN_DAY_BOOKING (STAFFID, PROPERTYID, DATE, STARTTIME, ENDTIME, STATUS) VALUES (" + staffId + ", "
-                + propertyId + ", '" + date + "', '" + startTime + "', '" + endTime + "', 'Available)");
+                + propertyId + ", '" + date + "', '" + startTime + "', '" + endTime + "', 'Available')");
     }
 
     public int getOpenDayListingId(int propertyId, String date, String startTime) throws SQLException {
@@ -411,17 +433,42 @@ public class AccessDBManager {
         return listingId;
     }
 
-    public void updateOpenDayListing(int listingId, String date, String startTime, String endTime) throws SQLException {
-        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET DATE='" + date + "', STARTTIME='" + startTime + "', ENDTIME='"
-                + endTime + "' WHERE LISTINGID=" + listingId);
+    public Open_Day_Booking getOpenDayListing(int bookingId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.OPEN_DAY_BOOKING WHERE BOOKINGID=" + bookingId;
+        ResultSet rs = st.executeQuery(fetch);
+        Open_Day_Booking currentBooking;
+        while (rs.next()) {
+            int staffId = rs.getInt(2);
+            int userId = rs.getInt(3);
+            int propertyId = rs.getInt(4);
+            String date = rs.getDate(5).toString();
+            String startTime = rs.getTime(6).toString();
+            String endTime = rs.getTime(7).toString();
+            String status = rs.getString(8);
+            if (userId != 0) {
+                currentBooking = new Open_Day_Booking(bookingId, staffId, userId, propertyId,
+                        date, startTime, endTime, status);
+                return currentBooking;
+            } else {
+                currentBooking = new Open_Day_Booking(bookingId, staffId, propertyId,
+                        date, startTime, endTime, status);
+                return currentBooking;
+            }
+        }
+        return null;
     }
 
-    public void updateOpenDayListingBooked(int listingId, int userId) throws SQLException {
-        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=" + userId + " WHERE LISTINGID=" + listingId);
+    public void updateOpenDayListing(int bookingId, int staffId, String date, String startTime, String endTime) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET STAFFID=" + staffId + ", DATE='" + date + "', STARTTIME='" + startTime + "', ENDTIME='"
+                + endTime + "' WHERE BOOKINGID=" + bookingId);
     }
 
-    public void deleteOpenDayListing(int listingId) throws SQLException {
-        st.executeUpdate("DELETE FROM ASDREAMS.OPEN_DAY_BOOKING WHERE LISTINGID=" + listingId);
+    public void updateOpenDayListingBooked(int bookingId, int userId) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=" + userId + " WHERE BOOKINGID=" + bookingId);
+    }
+
+    public void deleteOpenDayListing(int bookingId) throws SQLException {
+        st.executeUpdate("DELETE FROM ASDREAMS.OPEN_DAY_BOOKING WHERE BOOKINGID=" + bookingId);
     }
 
     public ArrayList<Open_Day_Booking> getAllPropertyOpenDays(int propertyId) throws SQLException {

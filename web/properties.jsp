@@ -32,9 +32,9 @@
         <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
-         <sql:query dataSource = "${snapshot}" var = "result">
-        SELECT * FROM PROPERTY WHERE STATUS = 'approved'
-           </sql:query>
+        <sql:query dataSource = "${snapshot}" var = "result">
+            SELECT * FROM PROPERTY WHERE STATUS = 'approved'
+        </sql:query>
         <table border = "1" width = "80%">
             <tr>
                 <th>Address</th>
@@ -47,31 +47,32 @@
                 <th>Desc</th>
                 <th>Status</th>
                 <th>Auction</th>
+                <th>Open Days</th>
             </tr>      
             <c:forEach var = "row" items = "${result.rows}">
                 <tr>
-                <td><c:out value = "${row.address}"/></td>
-                <td><c:out value = "${row.suburb}"/></td>
-                <td><c:out value = "${row.state}"/></td>
-                <td><c:out value = "${row.postcode}"/></td>
-                <td><c:out value = "${row.bathroom}"/></td>
-                <td><c:out value = "${row.bedroom}"/></td>
-                <td><c:out value = "${row.garage}"/></td>
-                <td><c:out value = "${row.descr}"/></td>
-                <td><c:out value = "${row.status}"/></td>
+                    <td><c:out value = "${row.address}"/></td>
+                    <td><c:out value = "${row.suburb}"/></td>
+                    <td><c:out value = "${row.state}"/></td>
+                    <td><c:out value = "${row.postcode}"/></td>
+                    <td><c:out value = "${row.bathroom}"/></td>
+                    <td><c:out value = "${row.bedroom}"/></td>
+                    <td><c:out value = "${row.garage}"/></td>
+                    <td><c:out value = "${row.descr}"/></td>
+                    <td><c:out value = "${row.status}"/></td>
+                    <td></td>
+                    <td><a href="ViewOpenDayListServlet?id=<c:out value = "${row.propertyid}"/>">View</a></td>
                 </tr>
             </c:forEach>
         </table>
-
         Click <a href="sysMain.jsp">here</a> to go back.
     </body>
-</table>
-<% } else { %>
+    <% } else { %>
 
-<body>
-    <h1>Oops something went wrong</h1>
-    Click <a href="homepage.jsp">here</a> to go back.            
-</body>
+    <body>
+        <h1>Oops something went wrong</h1>
+        Click <a href="homepage.jsp">here</a> to go back.            
+    </body>
 </body>
 </html>
 <% }%>

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uts.asd.model.Auction_Item;
+import uts.asd.model.Open_Day_Booking;
 import uts.asd.model.Property;
 import uts.asd.model.User;
 import uts.asd.model.dao.AccessDBManager;
@@ -24,23 +24,26 @@ import uts.asd.model.dao.AccessDBManager;
  *
  * @author Hamish Lamond
  */
-public class CreateOpenDayServlet extends HttpServlet {
-
+public class UpdateOpenDayServlet extends HttpServlet {
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         //get session
         HttpSession session = request.getSession();
 
         String startDate = request.getParameter("openDayDate");
         String startTime = request.getParameter("openDayStartTime");
         String endTime = request.getParameter("openDayEndTime");
+        Open_Day_Booking openDayBooking = (Open_Day_Booking) session.getAttribute("openDayBooking");
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         Property property = (Property) session.getAttribute("property");
         User user = (User) session.getAttribute("user");
 
         try {
-            manager.createOpenDayListing(user.getUserId(), property.getId(), startDate, startTime, endTime);
+            manager.updateOpenDayListing(openDayBooking.getBookingID(), user.getUserId(), startDate, startTime, endTime);
+            session.removeAttribute("openDayBooking");
             request.getRequestDispatcher("ViewOpenDayListServlet").include(request, response);
 
         } catch (SQLException ex) {

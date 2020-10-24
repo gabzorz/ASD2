@@ -22,12 +22,41 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import uts.asd.model.Property;
 
 /**
  *
  * @author Hamish Lamond
  */
 public class CancelOpenDayServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //get session
+        HttpSession session = request.getSession();
+
+        int bookingId = Integer.parseInt(request.getParameter("bId"));
+        AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
+        User staff = (User) session.getAttribute("user");
+        Property property = (Property) session.getAttribute("property");
+       
+
+        try {
+            Open_Day_Booking booking = manager.getOpenDayListing(bookingId);
+            int bookedUserId = booking.getUserID();
+            if (bookedUserId > 0) {
+                sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
+            }
+            manager.deleteOpenDayListing(booking.getBookingID());
+            session.removeAttribute("booking");
+            request.getRequestDispatcher("ViewOpenDayListServlet?id=" + property.getId()).include(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,15 +67,16 @@ public class CancelOpenDayServlet extends HttpServlet {
         Open_Day_Booking booking = (Open_Day_Booking) session.getAttribute("booking");
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         User staff = (User) session.getAttribute("user");
+        Property property = (Property) session.getAttribute("property");
 
         try {
             int bookedUserId = booking.getUserID();
             if (bookedUserId > 0) {
-                sendCancelEmail(staff, bookedUserId, manager);
+                sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
             }
             manager.deleteOpenDayListing(booking.getBookingID());
             session.removeAttribute("booking");
-            //request.getRequestDispatcher("ViewOpenDayListingServlet").include(request, response);
+            request.getRequestDispatcher("ViewOpenDayListServlet").include(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,28 +84,29 @@ public class CancelOpenDayServlet extends HttpServlet {
         }
     }
 
-    private void sendCancelEmail(User staff, int customerId, AccessDBManager manager) throws SQLException {
+    private void sendCancelEmail(User staff, int customerId, AccessDBManager manager, Property property, String date) throws SQLException {
         User customer = manager.findCustomerById(customerId);
-        String customerEmail = customer.getEmailAddress();
-        String staffEmail = staff.getEmailAddress();
+        String customerEmail = "hamish_lamond@hotmail.co.uk";
+        String staffEmail = "Hamish.Lamond@student.uts.edu.au";
 
         String host = "localhost";
         Properties properties = System.getProperties();
         properties.setProperty("mail.smtp.host", host);
         Session session = Session.getDefaultInstance(properties);
         try {
-         MimeMessage message = new MimeMessage(session);
-         message.setFrom(new InternetAddress(staffEmail));
-         message.addRecipient(Message.RecipientType.TO, new InternetAddress(customerEmail));
-         message.setSubject("Open Day Booking Cancelled");
-         message.setText("This email has been sent to alert you that the open day"
-                 + "booked for xxx has been cancelled. We apologise for any"
-                 + "inconvenience this may cause.");
-         Transport.send(message);
-         System.out.println("Sent message successfully....");
-      } catch (MessagingException mex) {
-         mex.printStackTrace();
-      }
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(staffEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(customerEmail));
+            message.setSubject("Open Day Booking Cancelled");
+            message.setText("This email has been sent to alert you that the open day"
+                    + "booked for " + property.getAddress() + ", " + property.getSuburb() +
+                    " on " + date + " has been cancelled. We apologise for any"
+                    + "inconvenience this may cause.");
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
     }
 
 }
