@@ -19,6 +19,29 @@
 
         <div class="top_right_link_div">
             <a href="LogoutServlet"><button>Logout</button></a>
+            <b>
+                <form class="search" action="SearchServlet" method="get">
+                <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode" >
+                <img class="icon" src="css/icons/icon(bedroom).png" alt=""/>
+                <select name="bedroomselect">
+                    <option value="%">Any</option>
+                    <option value="1">1 Bed</option>
+                    <option value="2">2 Beds</option>
+                    <option value="3">3 Beds</option>
+                    <option value="4">4 Beds</option>
+                    <option value="5">5+ Beds</option>
+                </select>
+                <img class="icon" src="css/icons/icon(garage).png" alt=""/>
+                <select name="garageselect">
+                    <option value="%">Any</option>
+                    <option value="1">1 Car</option>
+                    <option value="2">2 Cars</option>
+                    <option value="3">3 Cars</option>
+                    <option value="4">4+ Cars</option>
+                </select>
+                <input type="submit" value="Search Properties"></input>
+                </form>
+            </b>
         </div>
 
         <p>You're logged in as <%= user.getfName()%></p>
@@ -29,7 +52,11 @@
         <a href="myKeywords.jsp" style="color:black;">My Keywords Auctions</a>
         <a href="properties.jsp" style="color:black;">View all properties</a>
         <a href="calculator.jsp">Calculators</a>
+        <% if(user.getRoleId() == 3) { %>
+            <a href="HelpTicketUserServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
+        <% } %>
         <% if(user.getRoleId() == 2) { %>
+            <a href="HelpTicketStaffServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
             <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
         <% } %>

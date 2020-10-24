@@ -45,10 +45,11 @@ public class LoginServlet extends HttpServlet {
                         if (property != null) {
                             session.setAttribute("property", property);
                         }
+                        /* Corey's Keywords file. Login works without it for now.
                         Keywords keywords = manager.getKeywords(user.getUserId());
                         if (keywords != null) {
                             session.setAttribute("keywords", keywords);
-                        }
+                        }*/
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                     //For staff login
                 } else if (user != null && role == 2) {

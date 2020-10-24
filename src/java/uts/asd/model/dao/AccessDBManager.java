@@ -111,7 +111,13 @@ public class AccessDBManager {
                 + emailAddress + "','" + contactNumber
                 + "','" + password + "'," + roleId + ")");
     }
-
+    
+    //Function to create a new Customer
+    public void createHelpTicket(String CategoryInput, String DetailsInput, int userId, Date date, String SubjectInput) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.HELPTICKET (CATEGORY, DETAILS, USERID, DATESENT, STATUS, SUBJECT) "
+                + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "', 'Pending', '"+SubjectInput+"')");
+    }
+    
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);
@@ -215,6 +221,25 @@ public class AccessDBManager {
         }
         return null;
     }
+    
+    //get user from UserID
+    public User getUser(int UserID) throws SQLException {
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT where USERID = "+UserID+"";
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()) {
+                Integer customerID = rs.getInt(1);
+                String fName = rs.getString(2);
+                String lName = rs.getString(3);
+                String address = rs.getString(4);
+                String dob = rs.getString(5);
+                String customerEmail = rs.getString(6);
+                String contactNumber = rs.getString(7);
+                String password = rs.getString(7);
+                Integer roleId = rs.getInt(9);
+                return new User(customerID, fName, lName, address, dob, customerEmail, contactNumber, password, roleId);
+        }
+        return null;
+    }
 
     public Property getProperty(int UserID) throws SQLException {
         String fetch = "select * from ASDREAMS.PROPERTY where USERID = " + UserID + ""; // AND STATUS <> 'pending'
@@ -264,6 +289,261 @@ public class AccessDBManager {
 
         }
         return null;
+    }
+    
+    /*Get Property from PropertyID*/
+    public Property findProperty(int PropertyID) throws SQLException {
+      String fetch = "select * from ASDREAMS.PROPERTY where PROPERTYID = "+ PropertyID +""; // AND STATUS <> 'pending'
+        ResultSet rs = st.executeQuery(fetch);
+
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            int userID = rs.getInt(10);
+            return new Property(id, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            
+        }
+        return null;
+    }
+    
+    public ArrayList<Property> searchProperties(String SearchInput, String BedroomInput, String GarageInput) throws SQLException {
+        if (!SearchInput.isEmpty()) {
+            switch (BedroomInput) {
+                case "%":
+                    BedroomInput = "BEDROOM LIKE '%'";
+                    break;
+                case "5":
+                    BedroomInput = "BEDROOM NOT IN ('1','2','3','4')";
+                    break;
+                default:
+                    BedroomInput = "BEDROOM = '"+BedroomInput+"'";
+                    break;
+            }
+            switch (GarageInput) {
+                case "%":
+                    GarageInput = "GARAGE LIKE '%'";
+                    break;
+                case "4":
+                    GarageInput = "GARAGE NOT IN ('0','1','2','3')";
+                    break;
+                default:
+                    GarageInput = "GARAGE = '"+GarageInput+"'";
+                    break;
+            }
+        ArrayList<Property> properties = new ArrayList<>();
+        //int bedroominputInt = Integer.parseInt(BedroomInput);
+        String fetch = "select * from ASDREAMS.PROPERTY where "
+                + ""+BedroomInput+" "
+                + "AND "+GarageInput+" "
+                + "AND (UPPER (SUBURB) like UPPER ('%"+SearchInput+"%') "
+                + "OR UPPER (STATE) like UPPER ('%"+SearchInput+"%') "
+                + "or POSTCODE = '"+SearchInput+"')";
+            
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            //int idInt = Integer.parseInt(id);
+            String suburb = rs.getString(2);
+            String address = rs.getString(3);
+            String postcode = rs.getString(4);
+            int postcodeInt = Integer.parseInt(postcode);
+            String state = rs.getString(5);
+            String desc = rs.getString(6);
+            String bathroom = rs.getString(7);
+            int bathroomInt = Integer.parseInt(bathroom);
+            String bedroom = rs.getString(8);
+            int bedroomInt = Integer.parseInt(bedroom);
+            String garage = rs.getString(9);
+            int garageInt = Integer.parseInt(garage);
+            int userID = rs.getInt(10);
+            Property property = new Property(id, suburb, address, state, desc, userID, postcodeInt, bathroomInt, bedroomInt, garageInt);
+            properties.add(property);
+        }
+        if(properties.size() > 0) {
+        return properties;
+    }  
+        else {
+            return null;
+        }
+    }
+        else {
+            return null;
+        }
+    }
+    
+    //Find HelpTicket as a user
+    public ArrayList<HelpTicket> userFindHelpTicket(int userId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE USERID = " + userId + " ORDER BY STATUS, HELPTICKETID DESC";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    //Find HelpTicket as a staff
+    public HelpTicket staffFindHelpTicket(int HelpTicketId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE HELPTICKETID = " + HelpTicketId;
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            return helpticket;
+        }
+        return null;
+    }
+    
+        //Find Pending Help Ticket
+    public ArrayList<HelpTicket> pendingHelpTicket() throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Pending'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
+    
+            //Find In-progress Help Ticket
+    public ArrayList<HelpTicket> inProgressHelpTicket(int staffInput) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Assigned' ORDER BY (CASE WHEN STAFFID = "+staffInput+" THEN 0 ELSE 1 END), HELPTICKETID";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
+    
+            //Find Pending Help Ticket
+    public ArrayList<HelpTicket> completeHelpTicket() throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Complete'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    //Find Cancelled Help Tickets
+    public ArrayList<HelpTicket> cancelledHelpTicket() throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.HELPTICKET WHERE STATUS = 'Cancelled'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<HelpTicket> helptickets = new ArrayList<>();
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String details = rs.getString(2);
+            String subject = rs.getString(3);
+            String category = rs.getString(4);
+            Date datesent = rs.getDate(5);
+            Date datecompleted = rs.getDate(6);
+            String status = rs.getString(7);;
+            int userid = rs.getInt(8);
+            int staffId = rs.getInt(9);
+            String response = rs.getString(10);
+            HelpTicket helpticket = new HelpTicket(id, details, subject, category, datesent, datecompleted, status, userid, staffId, response);
+            helptickets.add(helpticket);
+        }
+        if(helptickets.size() > 0) {
+            return helptickets;
+        }
+        else {
+            return null;
+        }
     }
 
     //Function to update the customer profile
@@ -358,6 +638,22 @@ public class AccessDBManager {
         st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STARTDATE='" + startDate + "', STARTTIME='"
                 + startTime + "', ENDDATE='" + endDate + "', ENDTIME='" + endTime + "', RESERVEPRICE="
                 + reservePrice + ", STARTINGPRICE=" + startingPrice + " WHERE ITEMID=" + itemId);
+    }
+    
+    // Updates a Help Ticket when it is complete
+    public void updateHelpTicketComplete(String StatusInput, String ResponseInput, int StaffId, Date date, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS='" + StatusInput + "', RESPONSE='"
+                + ResponseInput + "', STAFFID=" + StaffId + ", DATECOMPLETED='" + date + "' WHERE HELPTICKETID = "+HelpTicketId+"");
+    }
+    
+    // Updates an Help Ticket when it is assigned
+    public void updateHelpTicketAssigned(String StatusInput, String ResponseInput, int StaffId, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS='" + StatusInput + "', RESPONSE='"
+                + ResponseInput + "', STAFFID=" + StaffId + " WHERE HELPTICKETID = "+HelpTicketId+"");
+    }
+    
+    public void cancelHelpTicket (String StatusInput, int HelpTicketId) throws SQLException {
+        st.execute("UPDATE ASDREAMS.HELPTICKET SET STATUS= '"+StatusInput+"' WHERE HELPTICKETID = "+HelpTicketId+"");
     }
 
     // Returns the Auction with the highest itemId (i.e. the latest created auction)
