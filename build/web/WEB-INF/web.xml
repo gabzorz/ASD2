@@ -57,6 +57,26 @@
         <servlet-class>uts.asd.controller.AdminUpdateServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>JoinAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.JoinAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CreateOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CancelOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EditOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOpenDayListServlet</servlet-name>
+        <servlet-class>uts.asd.controller.ViewOpenDayListServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CalculateEquityServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateEquityServlet</servlet-class>
     </servlet>
@@ -68,7 +88,6 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.CalculateStampDutyServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.ShowStampDutyServlet</servlet-class>
@@ -77,11 +96,6 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <servlet-class>uts.asd.controller.AdjustStampDutyServlet</servlet-class>
     </servlet>
-
-    <servlet-mapping>
-        <servlet-name>viewPropertyServlet</servlet-name>
-        <url-pattern>/viewPropertyServlet</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>CreateAuctionServlet</servlet-name>
         <servlet-class>uts.asd.controller.CreateAuctionServlet</servlet-class>
@@ -102,6 +116,38 @@
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdatePropertyServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.UpdateOpenDayServlet</servlet-class>
+    </servlet>
+        <servlet>
+        <servlet-name>deleteKeywordServlet</servlet-name>
+        <servlet-class>uts.asd.controller.deleteKeywordServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>deleteKeywordServlet</servlet-name>
+        <url-pattern>/deleteKeywordServlet</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>updateKeywordsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.updateKeywordsServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>updateKeywordsServlet</servlet-name>
+        <url-pattern>/updateKeywordsServlet</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>addKeywordsServlet</servlet-name>
+        <servlet-class>uts.asd.controller.addKeywordsServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>addKeywordsServlet</servlet-name>
+        <url-pattern>/addKeywordsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewPropertyServlet</servlet-name>
+        <url-pattern>/viewPropertyServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdatePropertyServlet</servlet-name>
         <url-pattern>/UpdatePropertyServlet</url-pattern>
@@ -175,6 +221,26 @@
         <url-pattern>/PlaceBidServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>JoinAuctionServlet</servlet-name>
+        <url-pattern>/JoinAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOpenDayServlet</servlet-name>
+        <url-pattern>/CreateOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelOpenDayServlet</servlet-name>
+        <url-pattern>/CancelOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditOpenDayServlet</servlet-name>
+        <url-pattern>/EditOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOpenDayListServlet</servlet-name>
+        <url-pattern>/ViewOpenDayListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CalculateEquityServlet</servlet-name>
         <url-pattern>/CalculateEquityServlet</url-pattern>
     </servlet-mapping>
@@ -186,7 +252,6 @@
         <servlet-name>CalculateStampDutyServlet</servlet-name>
         <url-pattern>/CalculateStampDutyServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>ShowStampDutyServlet</servlet-name>
         <url-pattern>/ShowStampDutyServlet</url-pattern>
@@ -195,10 +260,11 @@
         <servlet-name>AdjustStampDutyServlet</servlet-name>
         <url-pattern>/AdjustStampDutyServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>UpdateOpenDayServlet</servlet-name>
+        <url-pattern>/UpdateOpenDayServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>

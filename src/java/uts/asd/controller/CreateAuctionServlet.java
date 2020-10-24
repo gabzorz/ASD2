@@ -66,6 +66,8 @@ public class CreateAuctionServlet extends HttpServlet {
                 Auction_Item auction = new Auction_Item(newId, startDate, startTime, endDate, endTime, Integer.parseInt(reservePrice), Integer.parseInt(startPrice), "ongoing");
                 session.setAttribute("auction", auction);
                 manager.updatePropertyStatus(property.getId(), "approved");
+                int[] usersArray = manager.getKeywordUsers(property);
+               
                 session.removeAttribute("property");
                 request.getRequestDispatcher("auctionPage.jsp").include(request, response);
 

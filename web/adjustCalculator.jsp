@@ -32,8 +32,13 @@
                 </td>
             </tr>
         </table>
+<<<<<<< HEAD
         
     <a class="bttn" href="staffMain.jsp">Go back</a>
+=======
+
+
+>>>>>>> origin/master
 
     </body>
 </html>

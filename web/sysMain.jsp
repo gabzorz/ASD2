@@ -29,10 +29,24 @@
         <div>
          <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
         </div>
+        
+        <div>
+         <a class="bttn" style="text-decoration:none" href="properties.jsp">View all properties</a>
+        </div>
 
         <div>
          <a class="bttn" style="text-decoration:none" href="propertyApprovals.jsp">Property Approvals</a>
         </div>
+        
+                        <div>
+         <a class="bttn" style="text-decoration:none" href="properties.jsp">View all Auctions</a>
+        </div>
+        
+        <div>
+            <a class="bttn" style="text-decoration:none" href="myKeywords.jsp" style="color:black;">My Keywords Auctions</a>
+        </div>
+
+
         
         <a class="bttn" style="text-decoration:none" href="AdminEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>
 

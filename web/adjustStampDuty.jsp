@@ -12,7 +12,7 @@
         <%
             String inputErr = (String) session.getAttribute("inputErr");
         %>
-
+        
 
         <div class="header">
             <h1>Adjust Calculators</h1>
@@ -24,7 +24,7 @@
                 <a href="homepage.jsp"><button>Home</button></a>
             </div>
         </div>
-
+        
         <p>Select a calculator you want to adjust</p>
 
         <table class="calTables">
@@ -36,9 +36,9 @@
                 </td>
             </tr>
         </table>
-
+        
         <p><span><%=(inputErr != null ? inputErr : "")%></span></p>
-
+        
         <form method="post" action="ShowStampDutyServlet">
             <table class="indvCalTables">
                 <tr>
@@ -58,7 +58,7 @@
                 </tr>
             </table>
         </form>
-
+                
         <form method="post" action="AdjustStampDutyServlet">
             <table class="indvCalTables">
                 <tr>
@@ -78,6 +78,8 @@
                 </tr>
             </table>
         </form>
+                
+        
 
     <a class="bttn" href="staffMain.jsp">Go back</a>
 
