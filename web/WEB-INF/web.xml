@@ -380,6 +380,18 @@
         <servlet-name>PaymentRemoveServlet</servlet-name>
         <url-pattern>/PaymentRemoveServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostAddServlet</servlet-name>
+        <url-pattern>/PostAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostEditServlet</servlet-name>
+        <url-pattern>/PostEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostRemoveServlet</servlet-name>
+        <url-pattern>/PostRemoveServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
