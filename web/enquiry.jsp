@@ -26,8 +26,8 @@
         </div>
 
         </div>
-        <div class="helpwrapper">
-            <div class="helpblocksa">
+        <div class="enquirebox">
+            <div class="enquirebox2">
                 <form action="EnquiryServlet" method="post">
                     <input type="hidden" name="receiverId" value="<c:out value ="${sendto}"/>">
                     
