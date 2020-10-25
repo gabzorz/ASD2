@@ -27,11 +27,9 @@ public class EnquiryServlet extends HttpServlet {
         String enquiryuserId = request.getParameter("id");
         int enquiryuseridint = Integer.valueOf(enquiryuserId);
         
-        try {
-            session.setAttribute("sendto", enquiryuseridint);
-            request.getRequestDispatcher("enquiry.jsp").include(request, response);
-        }
-    }
+        session.setAttribute("sendto", enquiryuseridint);
+        request.getRequestDispatcher("enquiry.jsp").include(request, response);
+}
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

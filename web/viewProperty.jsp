@@ -43,10 +43,6 @@
             <input type="hidden" name="hidden">
             <input type="submit" name="Delete" value="Delete">
         </form>
-        <form action="createAuction.jsp" method="post">
-            <input type="hidden" name="hidden">
-            <input type="submit" name="Create Auction" value="Create Auction">
-        </form>
         <% } %>
         <form action="homepage.jsp" method="post">
             <input type="hidden" name="hidden">

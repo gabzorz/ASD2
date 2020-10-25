@@ -33,7 +33,7 @@
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
         <sql:query dataSource = "${snapshot}" var = "result">
-            SELECT * FROM PROPERTY WHERE STATUS = 'approved' AND BATHROOM = '<%=keywords.getNumOfBathrooms()%>' AND BEDROOM = '<%=keywords.getNumOfBedrooms()%>' AND GARAGE = '<%=keywords.getNumOfGarages()%>'
+            SELECT * FROM PROPERTY WHERE STATUS = 'approved' AND BATHROOM = '<%=keywords.getNumOfBedrooms()%>' AND BEDROOM = '<%=keywords.getNumOfBathrooms()%>' AND GARAGE = '<%=keywords.getNumOfGarages()%>'
         </sql:query>
         <table border = "1" width = "80%">
             <tr>
@@ -49,6 +49,7 @@
                 <th>Auction</th>
                 <th>Open Days</th>
             </tr>      
+            <c:if test="keywords!=null">
             <c:forEach var = "row" items = "${result.rows}">
                 <tr>
                     <td><c:out value = "${row.address}"/></td>
@@ -64,6 +65,7 @@
                     <td><a href="ViewOpenDayListServlet?id=<c:out value = "${row.propertyid}"/>">View</a></td>
                 </tr>
             </c:forEach>
+            </c:if>
         </table>
         Click <a href="homepage.jsp">here</a> to go back.
     </body>
