@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import uts.asd.model.Property;
 import uts.asd.model.User;
 import uts.asd.model.dao.AccessDBManager;
 
@@ -37,20 +38,25 @@ public class EnquiryServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
-        User loggedinuser = (User) session.getAttribute("user"); 
-        //int loggedinuserint = loggedinuser.getUserId();
+        //
         //String enquiryuserId = request.getParameter("id");
-        int userId = 1;
-        //int enquiryuseridint = Integer.parseInt(enquiryuserId);
+        
+        String receiverId = request.getParameter("receiverId");
+        int receiverIdint = Integer.parseInt(receiverId);
+        User loggedinuser = (User) session.getAttribute("user"); 
+        
+        
         String EnquiryMessage = request.getParameter("message");
-        int enquiryuseridint = 6;
-        int loggedinuserint = 1;
-        int PropertyId = 1;
+        int loggedinuserint = loggedinuser.getUserId();
+        
         
         try {
-            manager.createEnquiry(enquiryuseridint, loggedinuserint, EnquiryMessage, PropertyId);
+            Property Property = manager.getProperty(receiverIdint);
+            int PropertyId = Property.getId();
+            manager.createEnquiry(receiverIdint, loggedinuserint, EnquiryMessage, PropertyId);
             response.sendRedirect("PropertyDetailsServlet?id="+PropertyId);
         } catch (SQLException ex) {
             Logger.getLogger(EnquiryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+}
 }

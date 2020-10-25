@@ -148,7 +148,7 @@ public class AccessDBManager {
         st.executeUpdate("INSERT INTO ASDREAMS.ENQUIRY (USERIDSENDER, USERIDRECEIVER, SENTMESSAGE, PROPERTYID)"
                 + "VALUES (" + loggedinuser + "," + enquiryuseridint + ",'" + EnquiryMessage + "'," + PropertyId + ")");
     }
-    
+
     
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;

@@ -17,6 +17,10 @@
         <title>Help Ticket</title>
     </head>
     <body>
+        <%
+            User loggedinuser = (User) session.getAttribute("user"); 
+            String enquiryuserId = request.getParameter("id");
+        %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
@@ -25,6 +29,8 @@
         <div class="helpwrapper">
             <div class="helpblocksa">
                 <form action="EnquiryServlet" method="post">
+                    <input type="hidden" name="receiverId" value="<c:out value ="${sendto}"/>">
+                    
                     <a2>Enquiry Details:</a2>
                     <br>
                     <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="message" placeholder="Write up to 1000 characters"></textarea>
