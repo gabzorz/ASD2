@@ -34,7 +34,7 @@
          <sql:query dataSource = "${snapshot}" var = "result">
         SELECT * FROM USER_ACCOUNT
            </sql:query>
-        <table border = "1" width = "80%">
+        <table class="center" border = "1" width = "80%">
             <tr>
 
                 <th>First Name</th>
