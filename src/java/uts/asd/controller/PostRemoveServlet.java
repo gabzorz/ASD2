@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import uts.asd.model.dao.PaymentDAO;
-import uts.asd.model.Payment;
+import uts.asd.model.dao.PostDAO;
+import uts.asd.model.Post;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -25,21 +25,22 @@ import uts.asd.model.User;
  *
  * @author CristinaFidelino
  */
-public class PaymentRemoveServlet extends HttpServlet {
+public class PostRemoveServlet extends HttpServlet {
     @Override
-        protected void doPost (HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            PostDAO pd = (PostDAO) session.getAttribute("pd");
             User user = (User) session.getAttribute("user");
             
-           int paymentId = Integer.parseInt(request.getParameter("paymentId"));
-           
+            int postId = Integer.parseInt(request.getParameter("id"));
+            
             try {
-                pyd.deletePayment(paymentId);
+                pd.deletePost(postId);
                 response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
             } catch (SQLException e){
-               throw new ServletException("Cannot add payment to Database", e); 
+               throw new ServletException("Cannot add post to Database", e); 
             }
         }
+    
 }

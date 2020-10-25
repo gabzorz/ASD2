@@ -19,6 +19,7 @@ import uts.asd.model.Payment;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import uts.asd.model.User;
 
 /**
  *
@@ -31,14 +32,18 @@ public class PaymentAddServlet  extends HttpServlet{
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             //int paymentID = Integer.parseInt(request.getParameter("paymentID"));
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
             int accountNumber = Integer.parseInt(request.getParameter("accountNumber"));
             int bsb = Integer.parseInt(request.getParameter("bsb"));
+            User user = (User) session.getAttribute("user");
+            String firstName = user.getfName();
+            String lastName = user.getlName();
+            int userId = user.getUserId();
+            
+            
             
             try {
-                pyd.addPayment(firstName, lastName, accountNumber, bsb);
-                response.sendRedirect("payment_list.jsp");
+                pyd.addPayment(userId, firstName, lastName, accountNumber, bsb);
+                response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 
             }
