@@ -144,6 +144,12 @@ public class AccessDBManager {
                 + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "', 'Pending', '"+SubjectInput+"')");
     }
     
+    public void createEnquiry(int enquiryuseridint, int loggedinuser, String EnquiryMessage) throws SQLException {
+        st.executeUpdate("INSESRT INTO ASDREAMS.ENQUIRY (USERIDSENDER, USERIDRECEIVER, SENTMESSAGE)"
+                + "VALUES ('" + loggedinuser + "','" + enquiryuseridint + "', " + EnquiryMessage + "')");
+    }
+    
+    
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;
         ResultSet rs = st.executeQuery(fetch);

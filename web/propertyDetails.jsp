@@ -69,7 +69,7 @@
             <img style="border-radius: 70%; width: 45%" src="css/property images/person-icon.jpg" alt=""/>
             <h3>${userEnquire.fName} ${userEnquire.lName}</h3>
             <h3>${userEnquire.emailAddress} | ${userEnquire.contactNumber}</h3>
-            <a href="EnquiryServlet?id='${userEnquire.userId}'"><button>Profile</button></a>
+            <a href="EnquiryServlet?id=${userEnquire.userId}"><button>Enquire</button></a>
             <b>
             </div>
             <br>
