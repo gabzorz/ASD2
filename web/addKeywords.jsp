@@ -30,7 +30,7 @@
 
             <table>
                 <tr>
-                <a class="bttn" href="CancelServlet">Cancel</a>
+                <a class="bttn" href="homepage.jsp">Cancel</a>
                 <a><input class="bttn" type="submit" value="submit"></a>
                 </tr>
 
