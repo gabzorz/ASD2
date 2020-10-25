@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%-- 
     Document   : postReport
     Created on : 23/10/2020, 2:43:36 PM
