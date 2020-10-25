@@ -28,13 +28,14 @@
         <div class="header">
             <h1>Auction List </h1>
         </div>
-    <body>
+        <% if (keywords != null) { %>
         <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
         <sql:query dataSource = "${snapshot}" var = "result">
             SELECT * FROM PROPERTY WHERE STATUS = 'approved' AND BATHROOM = '<%=keywords.getNumOfBedrooms()%>' AND BEDROOM = '<%=keywords.getNumOfBathrooms()%>' AND GARAGE = '<%=keywords.getNumOfGarages()%>'
         </sql:query>
+            <%}%>
         <table border = "1" width = "80%">
             <tr>
                 <th>Address</th>
@@ -49,7 +50,7 @@
                 <th>Auction</th>
                 <th>Open Days</th>
             </tr>      
-            <c:if test="keywords!=null">
+        <% if (keywords != null) { %>
             <c:forEach var = "row" items = "${result.rows}">
                 <tr>
                     <td><c:out value = "${row.address}"/></td>
@@ -65,16 +66,13 @@
                     <td><a href="ViewOpenDayListServlet?id=<c:out value = "${row.propertyid}"/>">View</a></td>
                 </tr>
             </c:forEach>
-            </c:if>
         </table>
         Click <a href="homepage.jsp">here</a> to go back.
     </body>
-    <% } else { %>
-
-    <body>
+    <% } }else { %>      
         <h1>Oops something went wrong</h1>
-        Click <a href="homepage.jsp">here</a> to go back.            
+        Click <a href="homepage.jsp">here</a> to go back. 
+        <%}%>
     </body>
 </body>
 </html>
-<% }%>
