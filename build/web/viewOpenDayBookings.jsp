@@ -35,26 +35,47 @@
                 <th>End Time</th>
                 <th>Status</th>
             </tr>      
-            <c:forEach var = "session" items = "${openDayBookings}">
-                <tr>
-                    <td><c:out value = "${session.getDate()}"/></td>
-                    <td><c:out value = "${session.getStartTime()}"/></td>
-                    <td><c:out value = "${session.getEndTime()}"/></td>
-                    <td><c:out value = "${session.getStatus()}"/></td>
-                    <%
-                        if (user.getRoleId() == 3) {
-                    %>
-                    <td><a href="">Book</a></td>
-                    <%
-                    } else {
-                    %>
-                    <td><a href="CancelOpenDayServlet?bId=<c:out value = "${session.getBookingID()}"/>">Cancel</a></td>
-                    <td><a href="EditOpenDayServlet?bId=<c:out value = "${session.getBookingID()}"/>">Edit</a></td>
-                    <%
-                        }
-                    %>
-                </tr>
-            </c:forEach>
+            <%
+                for (Open_Day_Booking booking : openDayBookings) {
+                       System.out.println(booking.getBookingID());
+            %> 
+            <tr>
+                <td><%=booking.getDate()%></td>
+                <td><%=booking.getStartTime()%></td>
+                <td><%=booking.getEndTime()%></td>
+                <td><%=booking.getStatus()%></td>
+                <%
+                    if (user.getRoleId() == 3) {
+                        if (booking.getStatus().equals("Available")) {
+                %>
+                <td><a href="BookOpenDayServlet?bId=<%=booking.getBookingID()%>">Book Session</a></td>
+                <%
+                    }
+                    if (booking.getStatus().equals("Booked")) {
+                        if (user.getUserId()== booking.getUserID()) {
+                %>
+                <td><a href="CancelOpenDayBookingServlet?bId=<%=booking.getBookingID()%>">Cancel Booking</a></td>
+                <%
+                } else {
+
+                %>
+                <td>Session Booked</td>
+                <%                        }
+
+                    }
+                } else {
+                %>
+                <td><a href="CancelOpenDayServlet?bId=<%=booking.getBookingID()%>">Cancel</a></td>
+                <td><a href="EditOpenDayServlet?bId=<%=booking.getBookingID()%>">Edit</a></td>
+                <%
+                    }
+                %>
+            </tr> 
+
+            <%
+                }
+            %>
+            
         </table>
         <%
             if (user.getRoleId() != 3) {
