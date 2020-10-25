@@ -21,7 +21,6 @@
         <div class="topnav">
             <a href="LogoutServlet"><button>Logout</button></a>
             <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;"><button>Profile</button></a>
-        <a href="viewProperty.jsp" style="color:black;"><button>My Property</button></a>
             <b>
              <form class="search" action="SearchServlet" method="get">
                 <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode">
@@ -48,6 +47,7 @@
         </div>
 
         <a href="addProperty.jsp" style="color:black;">Add property</a>
+        <a href="viewProperty.jsp" style="color:black;">View property</a>
         <a href="addKeywords.jsp" style="color:black;">Add keywords</a>
         <a href="myKeywords.jsp" style="color:black;">My Keywords Auctions</a>
         <a href="properties.jsp" style="color:black;">View all properties</a>
