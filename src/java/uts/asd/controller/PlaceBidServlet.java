@@ -36,7 +36,7 @@ public class PlaceBidServlet extends HttpServlet {
         HttpSession session = request.getSession();
         AuctionValidator validator = new AuctionValidator();
 
-        //all the textfields in the createAuction.jsp
+        
         String newBidStr = request.getParameter("newBid");
         Auction_Item auction = (Auction_Item) session.getAttribute("auction");
         User user = (User) session.getAttribute("user");

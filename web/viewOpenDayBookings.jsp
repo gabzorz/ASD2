@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/REAMS_CSS.css">
+        <link rel="stylesheet" href="css/SEAN_CSS.css">
         <title>Open Day Sessions</title>
     </head>
     <%
@@ -21,68 +21,98 @@
         ArrayList<Open_Day_Booking> openDayBookings = (ArrayList<Open_Day_Booking>) session.getAttribute("openDayBookings");
     %>
     <body>
-        <div class="header">
-            <h1>Open Day Sessions List </h1>
-        </div>
+        <div class="pagewrapper">
+            <p style="float:right; font-size: 12px;"><%= user.getRoleId()%>: You're logged in as <%= user.getfName()%></p>
+            <div class="header-img">
+                <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+            </div>
+            <div class="topnav">
+                <a href="LogoutServlet"><button>Logout</button></a>
+                <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;"><button>Profile</button></a>
+                <a href="homepage.jsp"><button>Homepage</button></a>
+                <b>
+                    <form class="search" action="SearchServlet" method="get">
+                        <input class="searchBox" type="text" name="propertysearch" placeholder="Search by state, suburb or postcode">
+                        <img class="navicon" src="css/icons/icon(bedroom).png" alt=""/>
+                        <select name="bedroomselect">
+                            <option value="%">Any</option>
+                            <option value="1">1 Bed</option>
+                            <option value="2">2 Beds</option>
+                            <option value="3">3 Beds</option>
+                            <option value="4">4 Beds</option>
+                            <option value="5">5+ Beds</option>
+                        </select>
+                        <img class="navicon" src="css/icons/icon(garage).png" alt=""/>
+                        <select name="garageselect">
+                            <option value="%">Any</option>
+                            <option value="1">1 Car</option>
+                            <option value="2">2 Cars</option>
+                            <option value="3">3 Cars</option>
+                            <option value="4">4+ Cars</option>
+                        </select>
+                        <input type="submit" value="Search Properties"></input>
+                    </form>
+                </b>
+            </div>
+            <div class="header">
+                <h1>Open Day Sessions List </h1>
+            </div>
+            <table border = "1" width = "80%">
+                <tr>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Status</th>
+                </tr>      
+                <%
+                    for (Open_Day_Booking booking : openDayBookings) {
+                %> 
+                <tr>
+                    <td><%=booking.getDate()%></td>
+                    <td><%=booking.getStartTime()%></td>
+                    <td><%=booking.getEndTime()%></td>
+                    <td><%=booking.getStatus()%></td>
+                    <%
+                        if (user.getRoleId() == 3) {
+                            if (booking.getStatus().equals("Available")) {
+                    %>
+                    <td><a href="BookOpenDayServlet?bId=<%=booking.getBookingID()%>"><button>Book Session</button></a></td>
+                    <%
+                        }
+                        if (booking.getStatus().equals("Booked")) {
+                            if (user.getUserId() == booking.getUserID()) {
+                    %>
+                    <td><a href="CancelOpenDayBookingServlet?bId=<%=booking.getBookingID()%>"><button>Cancel Booking</button></a></td>
+                    <%
+                    } else {
 
-        <div class="top_right_link_div">
-            <a style="text-decoration:none" href="sysMain.jsp">sysMain</a>
-        </div>
-        <table border = "1" width = "80%">
-            <tr>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Status</th>
-            </tr>      
+                    %>
+                    <td>Session Booked</td>
+                    <%                        }
+
+                        }
+                    } else {
+                    %>
+                    <td><a href="CancelOpenDayServlet?bId=<%=booking.getBookingID()%>"><button>Cancel</button></a></td>
+                    <td><a href="EditOpenDayServlet?bId=<%=booking.getBookingID()%>"><button>Edit</button></a></td>
+                    <%
+                        }
+                    %>
+                </tr> 
+
+                <%
+                    }
+                %>
+
+            </table>
             <%
-                for (Open_Day_Booking booking : openDayBookings) {
-                       System.out.println(booking.getBookingID());
-            %> 
-            <tr>
-                <td><%=booking.getDate()%></td>
-                <td><%=booking.getStartTime()%></td>
-                <td><%=booking.getEndTime()%></td>
-                <td><%=booking.getStatus()%></td>
-                <%
-                    if (user.getRoleId() == 3) {
-                        if (booking.getStatus().equals("Available")) {
-                %>
-                <td><a href="BookOpenDayServlet?bId=<%=booking.getBookingID()%>">Book Session</a></td>
-                <%
-                    }
-                    if (booking.getStatus().equals("Booked")) {
-                        if (user.getUserId()== booking.getUserID()) {
-                %>
-                <td><a href="CancelOpenDayBookingServlet?bId=<%=booking.getBookingID()%>">Cancel Booking</a></td>
-                <%
-                } else {
-
-                %>
-                <td>Session Booked</td>
-                <%                        }
-
-                    }
-                } else {
-                %>
-                <td><a href="CancelOpenDayServlet?bId=<%=booking.getBookingID()%>">Cancel</a></td>
-                <td><a href="EditOpenDayServlet?bId=<%=booking.getBookingID()%>">Edit</a></td>
-                <%
-                    }
-                %>
-            </tr> 
-
+                if (user.getRoleId() != 3) {
+            %>
+            <div class="center">
+                <a href="createNewOpenDay.jsp"><button>Create New Session</button></a>
+            </div>
             <%
                 }
             %>
-            
-        </table>
-        <%
-            if (user.getRoleId() != 3) {
-        %>
-        <a href="createNewOpenDay.jsp">Create New Session</a>
-        <%
-            }
-        %>
     </body>
 </html>

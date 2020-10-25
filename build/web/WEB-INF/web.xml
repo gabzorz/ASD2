@@ -128,6 +128,10 @@
         <servlet-name>PostRemoveServlet</servlet-name>
         <servlet-class>uts.asd.controller.PostRemoveServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CloseAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CloseAuctionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -156,27 +160,27 @@
         <servlet-name>UpdateOpenDayServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdateOpenDayServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>deleteKeywordServlet</servlet-name>
         <servlet-class>uts.asd.controller.deleteKeywordServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>deleteKeywordServlet</servlet-name>
         <url-pattern>/deleteKeywordServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>updateKeywordsServlet</servlet-name>
         <servlet-class>uts.asd.controller.updateKeywordsServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>updateKeywordsServlet</servlet-name>
         <url-pattern>/updateKeywordsServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>addKeywordsServlet</servlet-name>
         <servlet-class>uts.asd.controller.addKeywordsServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addKeywordsServlet</servlet-name>
         <url-pattern>/addKeywordsServlet</url-pattern>
     </servlet-mapping>
@@ -431,6 +435,10 @@
     <servlet-mapping>
         <servlet-name>EditAuctionServlet</servlet-name>
         <url-pattern>/EditAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CloseAuctionServlet</servlet-name>
+        <url-pattern>/CloseAuctionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
