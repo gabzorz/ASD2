@@ -33,7 +33,7 @@
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
          <sql:query dataSource = "${snapshot}" var = "result">
-        SELECT * FROM PROPERTY WHERE STATUS = 'PENDING' OR STATUS = 'Successful' OR STATUS = 'Unsuccessful'
+        SELECT * FROM PROPERTY WHERE STATUS = 'PENDING' OR 'pending' OR STATUS = 'Successful' OR STATUS = 'Unsuccessful'
            </sql:query>
         <table border = "1" width = "80%">
             <tr>

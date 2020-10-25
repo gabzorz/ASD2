@@ -20,7 +20,7 @@ public class AccessDBManager {
     public void addProperty(String suburb, String address, String postcode, String state, String desc,
             String bathroom, String bedroom, String garage, int userID) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, USERID, STATUS) "
-                + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "'," + userID + ",'pending')");
+                + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "'," + userID + ",'PENDING')");
     }
     
     public ArrayList<User> viewUser() throws SQLException {
