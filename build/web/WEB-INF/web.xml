@@ -205,6 +205,22 @@
         <servlet-class>uts.asd.controller.ViewTicketServlet</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>AdminEditUserServlet</servlet-name>
+        <url-pattern>/AdminEditUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminEditUserServlet</servlet-name>
+        <servlet-class>uts.asd.controller.AdminEditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EnquiryServlet</servlet-name>
+        <url-pattern>/EnquiryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EnquiryServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EnquiryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>DeletePropertyServlet</servlet-name>
         <url-pattern>/DeletePropertyServlet</url-pattern>
     </servlet-mapping>

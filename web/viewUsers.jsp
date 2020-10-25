@@ -28,7 +28,6 @@
         <div class="header">
             <h1>User List</h1>
         </div>
-    <body>
         <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
@@ -57,19 +56,15 @@
                 <td><c:out value = "${row.contactnumber}"/></td>
                 <td><c:out value = "${row.password}"/></td>
                 <td><c:out value = "${row.roleid}"/></td>
-                <td><a style="text-decoration:none" >Edit</a></td>
                 </tr>
             </c:forEach>
         </table>
         Click <a href="sysMain.jsp">here</a> to go back.
     </body>
-</table>
 <% } else { %>
 
-<body>
     <h1>There are no registered users</h1>
     Click <a href="sysMain.jsp">here</a> to go back.            
-</body>
 </body>
 </html>
 <% }%>
