@@ -40,13 +40,12 @@ public class CancelOpenDayServlet extends HttpServlet {
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         User staff = (User) session.getAttribute("user");
         Property property = (Property) session.getAttribute("property");
-       
 
         try {
             Open_Day_Booking booking = manager.getOpenDayListing(bookingId);
             int bookedUserId = booking.getUserID();
             if (bookedUserId > 0) {
-                sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
+                //sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
             }
             manager.deleteOpenDayListing(booking.getBookingID());
             session.removeAttribute("booking");
@@ -72,7 +71,7 @@ public class CancelOpenDayServlet extends HttpServlet {
         try {
             int bookedUserId = booking.getUserID();
             if (bookedUserId > 0) {
-                sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
+                //sendCancelEmail(staff, bookedUserId, manager, property, booking.getDate());
             }
             manager.deleteOpenDayListing(booking.getBookingID());
             session.removeAttribute("booking");
@@ -89,18 +88,28 @@ public class CancelOpenDayServlet extends HttpServlet {
         String customerEmail = "hamish_lamond@hotmail.co.uk";
         String staffEmail = "Hamish.Lamond@student.uts.edu.au";
 
-        String host = "localhost";
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
+        String host = "smtp-mail.outlook.com";
+        String user = "hamish_lamond@hotmail.co.uk";
+        String password = "Hamish1704_";
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(properties,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, password);
+            }
+        });
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(staffEmail));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(customerEmail));
             message.setSubject("Open Day Booking Cancelled");
             message.setText("This email has been sent to alert you that the open day"
-                    + "booked for " + property.getAddress() + ", " + property.getSuburb() +
-                    " on " + date + " has been cancelled. We apologise for any"
+                    + "booked for " + property.getAddress() + ", " + property.getSuburb()
+                    + " on " + date + " has been cancelled. We apologise for any"
                     + "inconvenience this may cause.");
             Transport.send(message);
             System.out.println("Sent message successfully....");

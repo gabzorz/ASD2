@@ -60,12 +60,37 @@
                     <td><c:out value = "${row.garage}"/></td>
                     <td><c:out value = "${row.descr}"/></td>
                     <td><c:out value = "${row.status}"/></td>
-                    <td></td>
+                    <c:if test = "${row.status eq 'approved'}">
+                        <%            if (user.getRoleId() != 3) {
+                        %>
+                        <td>
+                            <a href="JoinAuctionServlet?id=<c:out value = "${row.propertyid}"/>">Join Auction</a>
+                            <a href="StartEditAuctionServlet?id=<c:out value = "${row.propertyid}"/>">Edit Auction</a>
+                        </td>
+                        <%
+                        } else {
+                        %>
+                        <td><a href="JoinAuctionServlet?id=<c:out value = "${row.propertyid}"/>">Join Auction</a></td>
+                        <%
+                            }
+                        %>
+                    </c:if>
+                    <c:if test = "${row.status ne 'approved'}">
+                    </c:if>
                     <td><a href="ViewOpenDayListServlet?id=<c:out value = "${row.propertyid}"/>">View</a></td>
                 </tr>
             </c:forEach>
         </table>
+        <%            if (user.getRoleId() == 3) {
+        %>
         Click <a href="homepage.jsp">here</a> to go back.
+        <%
+        } else {
+        %>
+        Click <a href="sysMain.jsp">here</a> to go back.
+        <%
+            }
+        %>
     </body>
     <% } else { %>
 

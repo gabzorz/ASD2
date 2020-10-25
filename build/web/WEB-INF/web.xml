@@ -156,30 +156,50 @@
         <servlet-name>UpdateOpenDayServlet</servlet-name>
         <servlet-class>uts.asd.controller.UpdateOpenDayServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>deleteKeywordServlet</servlet-name>
         <servlet-class>uts.asd.controller.deleteKeywordServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>deleteKeywordServlet</servlet-name>
         <url-pattern>/deleteKeywordServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>updateKeywordsServlet</servlet-name>
         <servlet-class>uts.asd.controller.updateKeywordsServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>updateKeywordsServlet</servlet-name>
         <url-pattern>/updateKeywordsServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>addKeywordsServlet</servlet-name>
         <servlet-class>uts.asd.controller.addKeywordsServlet</servlet-class>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addKeywordsServlet</servlet-name>
         <url-pattern>/addKeywordsServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>BookOpenDayServlet</servlet-name>
+        <servlet-class>uts.asd.controller.BookOpenDayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelOpenDayBookingServlet</servlet-name>
+        <servlet-class>uts.asd.controller.CancelOpenDayBookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StartCreateAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.StartCreateAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StartEditAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.StartEditAuctionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditAuctionServlet</servlet-name>
+        <servlet-class>uts.asd.controller.EditAuctionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPropertyServlet</servlet-name>
         <url-pattern>/viewPropertyServlet</url-pattern>
@@ -391,6 +411,26 @@
     <servlet-mapping>
         <servlet-name>PostRemoveServlet</servlet-name>
         <url-pattern>/PostRemoveServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookOpenDayServlet</servlet-name>
+        <url-pattern>/BookOpenDayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelOpenDayBookingServlet</servlet-name>
+        <url-pattern>/CancelOpenDayBookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartCreateAuctionServlet</servlet-name>
+        <url-pattern>/StartCreateAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StartEditAuctionServlet</servlet-name>
+        <url-pattern>/StartEditAuctionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAuctionServlet</servlet-name>
+        <url-pattern>/EditAuctionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
