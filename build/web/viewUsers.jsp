@@ -34,28 +34,28 @@
          <sql:query dataSource = "${snapshot}" var = "result">
         SELECT * FROM USER_ACCOUNT
            </sql:query>
-        <table class="center" border = "1" width = "80%">
+        <table class="centerTable" border = "1" width = "80%">
             <tr>
 
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>Date of Birth</th>
-                <th>Email</th>
-                <th>Number</th>
-                <th>Password</th>
-                <th>User ID</th>
+                <th style="height: 40px">First Name</th>
+                <th style="height: 40px">Last Name</th>
+                <th style="height: 40px">Address</th>
+                <th style="height: 40px">Date of Birth</th>
+                <th style="height: 40px">Email</th>
+                <th style="height: 40px">Number</th>
+                <th style="height: 40px">Password</th>
+                <th style="height: 40px">User ID</th>
             </tr>        
             <c:forEach var = "row" items = "${result.rows}">
-                <tr>
-                    <td><c:out value = "${row.fName}"/></td>
-                <td><c:out value = "${row.lName}"/></td>
-                <td><c:out value = "${row.address}"/></td>
-                <td><c:out value = "${row.dateofbirth}"/></td>
-                <td><c:out value = "${row.emailaddress}"/></td>
-                <td><c:out value = "${row.contactnumber}"/></td>
-                <td><c:out value = "${row.password}"/></td>
-                <td><c:out value = "${row.roleid}"/></td>
+                <tr:hover>
+                <td style="height: 25px"><c:out value = "${row.fName}"/></td>
+                <td style="height: 25px"><c:out value = "${row.lName}"/></td>
+                <td style="height: 25px"><c:out value = "${row.address}"/></td>
+                <td style="height: 25px"><c:out value = "${row.dateofbirth}"/></td>
+                <td style="height: 25px"><c:out value = "${row.emailaddress}"/></td>
+                <td style="height: 25px"><c:out value = "${row.contactnumber}"/></td>
+                <td style="height: 25px"><c:out value = "${row.password}"/></td>
+                <td style="height: 25px"><c:out value = "${row.roleid}"/></td>
                 </tr>
             </c:forEach>
         </table>
