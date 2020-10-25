@@ -31,6 +31,6 @@ public class DeleteServlet extends HttpServlet {
         //delete the session
         session.invalidate();
         //direct user back to the index page
-        request.getRequestDispatcher("index.jsp").include(request, response);
+        request.getRequestDispatcher("homepage.jsp").include(request, response);
     }
 }

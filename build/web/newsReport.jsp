@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%-- 
     Document   : newsReports
     Created on : 23/10/2020, 3:01:22 PM
@@ -47,14 +46,14 @@
         </table>
         <%}%>
     </body>
-</html>
-=======
+</html><%-- 
+=======--%>
 <%-- 
     Document   : newsReports
     Created on : 23/10/2020, 3:01:22 PM
     Author     : CristinaFidelino
 --%>
-
+<%-- 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.asd.model.Post"%>
 <!DOCTYPE html>
@@ -90,3 +89,4 @@
     </body>
 </html>
 >>>>>>> Cristina
+--%>

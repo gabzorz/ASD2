@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,12 +46,14 @@ public class PostAddServlet extends HttpServlet{
         }
     
 }
+
+/*
 =======
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ *//*
 package uts.asd.controller;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -72,7 +73,7 @@ import java.util.ArrayList;
 /**
  *
  * @author CristinaFidelino
- */
+ *//*
 public class PostAddServlet extends HttpServlet{
     @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -97,3 +98,4 @@ public class PostAddServlet extends HttpServlet{
     
 }
 >>>>>>> Cristina
+*/

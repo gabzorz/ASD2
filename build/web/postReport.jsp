@@ -49,13 +49,15 @@
         </main>
     </body>
 </html>
+
+<%--
 =======
 <%-- 
     Document   : postReport
     Created on : 23/10/2020, 2:43:36 PM
     Author     : CristinaFidelino
 --%>
-
+<%--
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -101,3 +103,4 @@
     </body>
 </html>
 >>>>>>> Cristina
+--%>
