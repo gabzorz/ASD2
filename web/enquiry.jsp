@@ -17,12 +17,6 @@
         <title>Help Ticket</title>
     </head>
     <body>
-        <%
-            String ticketdetailsErr = (String) session.getAttribute("ticketdetailsErr");
-            String detailsSaved = (String) session.getAttribute("detailsSaved");
-            String subjectSaved = (String) session.getAttribute("subjectSaved");
-            
-        %>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
@@ -33,7 +27,7 @@
                 <form action="EnquiryServlet" method="post">
                     <a2>Enquiry Details:</a2>
                     <br>
-                    <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="htdetails" placeholder="Write up to 1000 characters"><%=(detailsSaved != null ? detailsSaved : "")%></textarea>
+                    <textarea style="resize: none; height: 20em; width: 97%; font:12px Arial, sans-serif;;" maxlength="1000" name="message" placeholder="Write up to 1000 characters"></textarea>
                     <br>
                     <div class="helpticketwrapper">
                     <input class="helpticketbutton" type="submit" value="Send Enquiry">

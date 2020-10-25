@@ -144,9 +144,9 @@ public class AccessDBManager {
                 + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "', 'Pending', '"+SubjectInput+"')");
     }
     
-    public void createEnquiry(int enquiryuseridint, int loggedinuser, String EnquiryMessage) throws SQLException {
-        st.executeUpdate("INSESRT INTO ASDREAMS.ENQUIRY (USERIDSENDER, USERIDRECEIVER, SENTMESSAGE)"
-                + "VALUES ('" + loggedinuser + "','" + enquiryuseridint + "', " + EnquiryMessage + "')");
+    public void createEnquiry(int enquiryuseridint, int loggedinuser, String EnquiryMessage, int PropertyId) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.ENQUIRY (USERIDSENDER, USERIDRECEIVER, SENTMESSAGE, PROPERTYID)"
+                + "VALUES (" + loggedinuser + "," + enquiryuseridint + ",'" + EnquiryMessage + "'," + PropertyId + ")");
     }
     
     

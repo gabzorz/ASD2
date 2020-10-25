@@ -18,13 +18,23 @@ public class Enquiry {
     private int UserIdReceiver;
     private String SentMessage;
     private String Reply;
+    private int PropertyId;
     
-    public Enquiry(int EnquiryId, int UserIdSender, String SentMessage, String Reply ){
+    public Enquiry(int EnquiryId, int UserIdSender, String SentMessage, String Reply, int PropertyId ){
         this.EnquiryId = EnquiryId;
         this.UserIdSender = UserIdSender;
         this.UserIdReceiver = UserIdReceiver;
         this.SentMessage = SentMessage;
         this.Reply = Reply;
+        this.PropertyId = PropertyId;
+    }
+
+    public int getPropertyId() {
+        return PropertyId;
+    }
+
+    public void setPropertyId(int PropertyId) {
+        this.PropertyId = PropertyId;
     }
 
     public int getEnquiryId() {

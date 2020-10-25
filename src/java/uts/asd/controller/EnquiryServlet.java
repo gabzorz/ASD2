@@ -38,14 +38,18 @@ public class EnquiryServlet extends HttpServlet {
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
         
         User loggedinuser = (User) session.getAttribute("user"); 
-        int loggedinuserint = loggedinuser.getUserId();
-        String enquiryuserId = request.getParameter("id");
-        int enquiryuseridint = Integer.parseInt(enquiryuserId);
+        //int loggedinuserint = loggedinuser.getUserId();
+        //String enquiryuserId = request.getParameter("id");
+        int userId = 1;
+        //int enquiryuseridint = Integer.parseInt(enquiryuserId);
         String EnquiryMessage = request.getParameter("message");
+        int enquiryuseridint = 6;
+        int loggedinuserint = 1;
+        int PropertyId = 1;
         
         try {
-            manager.createEnquiry(enquiryuseridint, loggedinuserint, EnquiryMessage);
-            response.sendRedirect("propertyDetails.jsp");
+            manager.createEnquiry(enquiryuseridint, loggedinuserint, EnquiryMessage, PropertyId);
+            response.sendRedirect("PropertyDetailsServlet?id="+PropertyId);
         } catch (SQLException ex) {
             Logger.getLogger(EnquiryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
