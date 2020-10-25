@@ -44,7 +44,6 @@
                 <div>
                     <input class="button" type="submit" value="Add Payment"/><br>
                 </div>
-                <a class="bttn" href="customerDetails.jsp">Cancel</a>
             </form>
         </main>
         
