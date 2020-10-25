@@ -14,50 +14,55 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import uts.asd.model.dao.PaymentDAO;
-import uts.asd.model.Payment;
+import uts.asd.model.dao.PostDAO;
+import uts.asd.model.Post;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import uts.asd.model.User;
 
 /**
  *
  * @author CristinaFidelino
  */
-public class PaymentServlet extends HttpServlet{
-    @Override
+public class PostEditServlet extends HttpServlet{
+     @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
+            PostDAO pd = (PostDAO) session.getAttribute("pd");
             User user = (User) session.getAttribute("user");
-            int id = user.getUserId();
-            //String id = request.getParameter("id");
-            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            int userId = user.getUserId();
+            //int id = Integer.parseInt(request.getParameter("id"));
             
-            try {
-                Payment payment = pyd.searchPayments(id);
-                session.setAttribute("payment", payment);
-                request.getRequestDispatcher("payment_list.jsp").include(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                Post post = pd.searchPost(userId).get(0);
+                RequestDispatcher dispatcher = request.getRequestDispatcher(".jsp");
+                request.setAttribute("post", post);
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+            Logger.getLogger(PostEditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+        }
+        
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            PostDAO pd = (PostDAO) session.getAttribute("pd");
+            Post post = (Post) session.getAttribute("post");
             User user = (User) session.getAttribute("user");
             
-            int accountNumber = Integer.parseInt(request.getParameter("accountNumber"));
-            int bsb = Integer.parseInt(request.getParameter("bsb"));
-            int paymentId = Integer.parseInt(request.getParameter("paymentId"));
-            
+            int postID = post.getPostID();
+            String title = request.getParameter("title");
+            String category = request.getParameter("category");
+            String content = request.getParameter("content");
             try {
-                pyd.editPayments(accountNumber, bsb, paymentId);
+                pd.updatePost(postID, title, category, content);
                 response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
             } catch (SQLException ex) {
             Logger.getLogger(PaymentServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
+    
 }

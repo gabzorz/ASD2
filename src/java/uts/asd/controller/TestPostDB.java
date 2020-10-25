@@ -9,30 +9,30 @@ import java.util.*;
 import java.util.logging.*;
 import uts.asd.model.dao.DBConnector;
 import uts.asd.model.dao.AccessDBManager;
-import uts.asd.model.dao.PaymentDAO;
-import uts.asd.model.Payment;
+import uts.asd.model.dao.PostDAO;
+import uts.asd.model.Post;
 
 /**
- **
+ *
  * @author CristinaFidelino
  */
-public class TestPaymentDB {
+public class TestPostDB {
     private static Scanner in = new Scanner(System.in);
     private DBConnector connector;
     private Connection conn;
     private AccessDBManager db;
-    private PaymentDAO pyd;
+    private PostDAO pd;
 
     public static void main(String[] args) throws SQLException {
-        (new TestPaymentDB()).runQueries();
+        (new TestPostDB()).runQueries();
     }
     
-    public TestPaymentDB(){
+    public TestPostDB(){
     try {
         connector = new DBConnector();
         conn = connector.openConnection();
         db = new AccessDBManager(conn);
-        pyd = new PaymentDAO(conn);
+        pd = new PostDAO(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,73 +74,63 @@ private void runQueries() throws SQLException {
 }
 
 private void testAdd(){
-        System.out.print("First Name: ");
-        String firstName = in.nextLine();
+        System.out.print("Post Title: ");
+        String title = in.nextLine();
         
-        System.out.print("Last Name: ");
-        String lastName = in.nextLine();
+        System.out.print("Post Category: ");
+        String category = in.nextLine();
         
-        System.out.print("Account Number: ");
-        int accountNumber = in.nextInt();
-        in.nextLine();
-        
-        System.out.print("BSB: ");
-        int bsb = in.nextInt();
-        in.nextLine();
+        System.out.print("Post Content: ");
+        String content = in.nextLine();
     
         try {
-            pyd.addPayment(firstName, lastName, accountNumber, bsb);
+            pd.addPost(title, category, content);
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Payment is added to the database.");
+        System.out.println("Post is added to the database.");
 } 
 
     private void testRead() throws SQLException {
-        System.out.print("Payment ID: ");
-        int paymentID = in.nextInt();
+        System.out.print("Post ID: ");
+        int postID = in.nextInt();
         in.nextLine();
         
-        ArrayList<Payment> payment = pyd.searchPayment(paymentID);
+        ArrayList<Post> post = pd.searchPost(postID);
         
-        if (payment != null){
-            for(Payment p: payment){
-                System.out.println(p.getPaymentID());
-                System.out.println("Payment ID exists in database");
+        if (post != null){
+            for(Post p: post){
+                System.out.println(p.getPostID());
+                System.out.println("Post ID exists in database");
                 
             }
         }
         else {
-            System.out.println("Payment ID does not exist");
+            System.out.println("Post ID does not exist");
         }  
     }
     
     private void testUpdate() throws SQLException {
-        System.out.print("Payment ID: ");
-        int paymentID = in.nextInt();
+        System.out.print("Post ID: ");
+        int postID = in.nextInt();
         in.nextLine();
         
         try{
-            if(pyd.checkPayment(paymentID)) {
-                System.out.print("First Name: ");
-                String firstName = in.nextLine();
+            if(pd.checkPost(postID)) {
+                System.out.print("Post Title: ");
+                String title = in.nextLine();
+        
+                System.out.print("Post Category: ");
+                String category = in.nextLine();
+
+                System.out.print("Post Content: ");
+                String content = in.nextLine();
                 
-                System.out.print("Last Name: ");
-                String lastName = in.nextLine();
+                pd.updatePost(postID, title, category, content);
                 
-                System.out.print("Account Number: ");
-                int accountNumber = in.nextInt();
-                in.nextLine();
-                
-                System.out.print("BSB: ");
-                int bsb = in.nextInt();
-                in.nextLine();
-                
-                pyd.updatePayment(paymentID, firstName, lastName, accountNumber, bsb);
-                
-                System.out.println("Payment Information successfully updated");
+                System.out.println("Post successfully updated");
             } else {
-                System.out.println("Payment ID does not exist");
+                System.out.println("Post ID does not exist");
             }
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,16 +138,16 @@ private void testAdd(){
     }
     
     private void testDelete() throws SQLException {
-        System.out.print("Payment ID: ");
-        int paymentID = in.nextInt();
+        System.out.print("Post ID: ");
+        int postID = in.nextInt();
         in.nextLine();
         
         try{
-            if(pyd.checkPayment(paymentID)) {
-                pyd.deletePayment(paymentID);
-                System.out.println("Payment Information successfully deleted");
+            if(pd.checkPost(postID)) {
+                pd.deletePost(postID);
+                System.out.println("Post successfully deleted");
             } else {
-                System.out.println("Payment does not exist");
+                System.out.println("Post does not exist");
             }
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -166,10 +156,10 @@ private void testAdd(){
 
     private void testShow() throws SQLException {
         try{
-            ArrayList<Payment> payments = pyd.fetchPayments();
-            System.out.println("PAYMENT TABLE: ");
-            payments.stream().forEach((payment) -> {
-                System.out.printf("%-20s %-30s %-20s %10s %10s\n", payment.getPaymentID(), payment.getFirstName(), payment.getLastName(), payment.getAccountNumber(), payment.getBsb());
+            ArrayList<Post> posts = pd.fetchPosts();
+            System.out.println("POST TABLE: ");
+            posts.stream().forEach((post) -> {
+                System.out.printf("%-20s %-30s %-20s %10s\n", post.getPostID(), post.getTitle(), post.getCategory(), post.getContent());
             });
             System.out.println();
         } catch (SQLException ex) {
@@ -178,20 +168,21 @@ private void testAdd(){
     }
      
     private int testCheck() throws SQLException {
-        System.out.print("Payment ID: ");
-        int paymentID = in.nextInt();
+        System.out.print("Post ID: ");
+        int postID = in.nextInt();
         //in.nextLine();
         
         try{
-            if(pyd.checkPayment(paymentID)) {
-                System.out.println("PaymentID found");
-                return paymentID;
+            if(pd.checkPost(postID)) {
+                System.out.println("Post found");
+                return postID;
             } else {
-                System.out.println("Payment does not exist");
+                System.out.println("Post does not exist");
             }
         } catch (SQLException ex) {
             Logger.getLogger(userTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+    
 }

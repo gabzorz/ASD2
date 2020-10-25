@@ -22,6 +22,32 @@ public class AccessDBManager {
         st.executeUpdate("INSERT INTO ASDREAMS.PROPERTY (SUBURB, ADDRESS, POSTCODE, STATE, DESCR, BATHROOM, BEDROOM, GARAGE, USERID, STATUS) "
                 + "VALUES ('" + suburb + "','" + address + "','" + postcode + "','" + state + "','" + desc + "','" + bathroom + "','" + bedroom + "','" + garage + "'," + userID + ",'pending')");
     }
+    
+    public ArrayList<User> viewUser() throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        String fetch = "select * from ASDREAMS.USER_ACCOUNT";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while (rs.next()) {
+            int id = rs.getInt(1);
+            String fname = rs.getString(2);
+            String lname = rs.getString(3);
+            String address = rs.getString(4);
+            String dob = rs.getString(5);
+            String email = rs.getString(6);
+            String contact = rs.getString(7);
+            String password = rs.getString(8);
+            int role = rs.getInt(9);
+            User user = new User(id, fname, lname, address, dob, email, contact, password, role);
+            users.add(user);
+        }
+        if(users.size() > 0) {
+        return users;
+    }
+        else {
+            return null;
+        }
+    }
 
             public void addKeywords(int userID, int bathroom, int bedroom, int garage) throws SQLException {
         st.executeUpdate("INSERT INTO ASDREAMS.KEYWORDS (USERID, BATHROOM, BEDROOM, GARAGE) "
@@ -117,6 +143,12 @@ public class AccessDBManager {
         st.executeUpdate("INSERT INTO ASDREAMS.HELPTICKET (CATEGORY, DETAILS, USERID, DATESENT, STATUS, SUBJECT) "
                 + "VALUES ('" + CategoryInput + "','" + DetailsInput + "', " + userId + ", '" + date + "', 'Pending', '"+SubjectInput+"')");
     }
+    
+    public void createEnquiry(int enquiryuseridint, int loggedinuser, String EnquiryMessage, int PropertyId) throws SQLException {
+        st.executeUpdate("INSERT INTO ASDREAMS.ENQUIRY (USERIDSENDER, USERIDRECEIVER, SENTMESSAGE, PROPERTYID)"
+                + "VALUES (" + loggedinuser + "," + enquiryuseridint + ",'" + EnquiryMessage + "'," + PropertyId + ")");
+    }
+
     
     public Calculator findValues(int priceCat) throws SQLException {
         String fetch = "SELECT * FROM ASDREAMS.STAMP_DUTY WHERE PRICECAT = " + priceCat;

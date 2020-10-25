@@ -14,32 +14,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import uts.asd.model.dao.PaymentDAO;
-import uts.asd.model.Payment;
+import uts.asd.model.dao.PostDAO;
+import uts.asd.model.Post;
 import uts.asd.model.dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-import uts.asd.model.User;
-
 /**
  *
  * @author CristinaFidelino
  */
-public class PaymentRemoveServlet extends HttpServlet {
+public class PostAddServlet extends HttpServlet{
     @Override
-        protected void doPost (HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            User user = (User) session.getAttribute("user");
+            PostDAO pd = (PostDAO) session.getAttribute("pd");
             
-           int paymentId = Integer.parseInt(request.getParameter("paymentId"));
-           
+            
+            String title = request.getParameter("title");
+            String category = request.getParameter("category");
+            String content = request.getParameter("content");
+            
             try {
-                pyd.deletePayment(paymentId);
-                response.sendRedirect("CustomerEditServlet?email='"+user.getEmailAddress()+"'&password='"+user.getPassword()+"'");
+                pd.addPost(title, category, content);
+                Post post = pd.findPost(title, category);
+                session.setAttribute("post", post);
+                request.getRequestDispatcher("newsReport.jsp").include(request, response);
             } catch (SQLException e){
-               throw new ServletException("Cannot add payment to Database", e); 
+               throw new ServletException("Cannot add post to Database", e); 
             }
         }
+    
 }

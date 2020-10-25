@@ -4,6 +4,8 @@
     Author     : CristinaFidelino
 --%>
 
+<%@page import="uts.asd.model.User"%>
+<%@page import="uts.asd.model.Payment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
     </head>
     <body>
         <div class="header-img">
-          <a href="index.jsp"><img class="logo" src="css/reams_logo.png"/></a>
+          <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
         
         <div class="topnav">
@@ -28,25 +30,21 @@
         </div>
         
         <main>
-            <form method="post" action="payment_list.jsp" style="text-align: center;">
+            <form method="post" action="PaymentAddServlet" style="text-align: center;">
                 <h1>Payment Account Information</h1>
                 <h2 style="color:red">* marks required fields</h2>
                 
-                <label for="firstName">First Name*</label>
-                <input id="firstName" name="firstName" type="text" required="true" placeholder="First Name"/>
-                <label for="lastName">Last Name*</label>
-                <input id="lastName" name="lastName" type="text" required="true" placeholder="Last Name"/>
                 <label for="accountNumber">Account Number*</label>
-                <input id="accountNumber" name="accountNumber" type="text" required="true" placeholder="12345678"/>
+                <input maxlength="8" id="accountNumber" name="accountNumber" type="text" required="true" placeholder="12345678"/>
                 <label for="bsb">BSB*</label>
-                <input id="bsb" name="bsb" type="text" required="true" placeholder="XXYZZZ"/>
+                <input maxlength="7" id="bsb" name="bsb" type="text" required="true" placeholder="XXYZZZ"/>
                 
                 <br>
                 
                 <div>
-                    <a class="button" href="CancelServlet"> Cancel </a>
                     <input class="button" type="submit" value="Add Payment"/><br>
                 </div>
+                <a class="bttn" href="customerDetails.jsp">Cancel</a>
             </form>
         </main>
         

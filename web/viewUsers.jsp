@@ -28,7 +28,6 @@
         <div class="header">
             <h1>User List</h1>
         </div>
-    <body>
         <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
@@ -62,13 +61,10 @@
         </table>
         Click <a href="homepage.jsp">here</a> to go back.
     </body>
-</table>
 <% } else { %>
 
-<body>
     <h1>There are no registered users</h1>
     Click <a href="sysMain.jsp">here</a> to go back.            
-</body>
 </body>
 </html>
 <% }%>

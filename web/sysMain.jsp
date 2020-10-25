@@ -25,10 +25,10 @@
         <div> 
         <a class="bttn" style="text-decoration:none" href="addUser.jsp">Add new user</a>
         </div>
-        
         <div>
          <a class="bttn" style="text-decoration:none" href="viewUsers.jsp">View all users</a>
         </div>
+         
         
         <div>
          <a class="bttn" style="text-decoration:none" href="properties.jsp">View all properties</a>

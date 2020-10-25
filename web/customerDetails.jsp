@@ -48,14 +48,21 @@
                 <a><input class="bttn" type="submit" value="Update"></a>
                 </tr>
             </table>
+            
         </form>
 
         <%if (user.getRoleId() == 3) {%>
 
         <p>If you wish to delete your account click <a href="DeleteServlet"><button class="bttn">Delete</button></a></p>
+        <a class="bttn" href="payment.jsp">Add Payment Details</a>
+        <a class="bttn" href="PaymentServlet?id=<%=user.getUserId()%>">View Payment Details</a>
+        <%} else if (user.getRoleId() == 2) {%>
+        <table>
+            <a class="bttn" href="postReport.jsp">Post Report</a>
+            <a class="bttn" href="newsReport.jsp">View Reports</a>
+        </table>
 
-        <%} else {
-            }%>
+        <%}%>
 
 
 
