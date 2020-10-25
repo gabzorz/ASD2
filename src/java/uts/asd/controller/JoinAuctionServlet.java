@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.asd.model.Auction_Item;
+import uts.asd.model.Bid;
+import uts.asd.model.Property;
 import uts.asd.model.dao.AccessDBManager;
 
 /**
@@ -24,25 +26,60 @@ import uts.asd.model.dao.AccessDBManager;
  */
 public class JoinAuctionServlet extends HttpServlet {
 
-    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
+        String propertyIdString = request.getParameter("id");
+
+        int topBid = 0;
+        if (propertyIdString != null) {
+            int propertyId = Integer.parseInt(propertyIdString);
+            try {
+                Property property = manager.getPropertyByID(propertyId);
+                int auctionId = manager.getNewestAuctionIdByProperty(propertyId);
+                Auction_Item auction = manager.getAuctionItem(auctionId);
+                topBid = manager.readHighestBid(auction.getItemID());
+                if (auction != null) {
+                    session.setAttribute("property", property);
+                    session.setAttribute("auction", auction);
+                    session.setAttribute("bidErr", "");
+                    int auctionStartingPrice = auction.getStartingPrice();
+                    if (auctionStartingPrice > topBid){
+                        topBid = auctionStartingPrice;
+                    }
+                    Bid bid = new Bid(auction.getItemID(), 0, topBid);
+                    session.setAttribute("topBid", bid);
+                    request.getRequestDispatcher("auctionPage.jsp").include(request, response);
+                } else {
+                    request.getRequestDispatcher("homepage.jsp").include(request, response);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JoinAuctionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //get session
         HttpSession session = request.getSession();
         AccessDBManager manager = (AccessDBManager) session.getAttribute("accessManager");
-        
+
         String propertyIdString = request.getParameter("propertyId");
-        
-        if (propertyIdString != null){
-            int propertyId = Integer.getInteger(propertyIdString);
+
+        if (propertyIdString != null) {
+            int propertyId = Integer.parseInt(propertyIdString);
             try {
                 Auction_Item auction = manager.getAuctionItem(propertyId);
-                if (auction != null){
+                if (auction != null) {
                     session.setAttribute("auction", auction);
+                    session.setAttribute("bidErr", "");
                     request.getRequestDispatcher("auctionPage.jsp").include(request, response);
-                }
-                else {
+                } else {
                     request.getRequestDispatcher("homepage.jsp").include(request, response);
                 }
             } catch (SQLException ex) {

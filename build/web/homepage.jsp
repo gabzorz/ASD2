@@ -26,6 +26,7 @@
         <a href="addProperty.jsp" style="color:black;">Add property</a>
         <a href="viewProperty.jsp" style="color:black;">View property</a>
         <a href="calculator.jsp">Calculators</a>
+        <a href="properties.jsp">Property List</a>
         <% if(user.getRoleId() == 2) { %>
             <a href="propertyApprovals.jsp" style="color:black;">View property</a>
             <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>

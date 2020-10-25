@@ -15,11 +15,11 @@ public class Bid {
 
     private int itemId;
     private int userId;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private int amount;
 
-    public Bid(int itemId, int userId, Date date, Time time, int amount) {
+    public Bid(int itemId, int userId, String date, String time, int amount) {
         this.itemId = itemId;
         this.userId = userId;
         this.date = date;
@@ -51,19 +51,19 @@ public class Bid {
         this.userId = userId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

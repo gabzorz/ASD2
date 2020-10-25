@@ -33,7 +33,7 @@
                            url = "jdbc:derby://localhost:1527/REAMS"
                            user = "ASDREAMS"  password = "ASDREAMS"/>
          <sql:query dataSource = "${snapshot}" var = "result">
-        SELECT * FROM PROPERTY WHERE STATUS = 'pending'
+        SELECT * FROM PROPERTY WHERE STATUS = 'pending' OR STATUS = 'Successful' OR STATUS = 'Unsuccessful'
            </sql:query>
         <table border = "1" width = "80%">
             <tr>
@@ -61,7 +61,14 @@
                 <td><c:out value = "${row.status}"/></td>
                 <form action="propertyApproval" method="get">
                 <input type="hidden" value="${row.userid}" name="id">
-                <td><input type="submit" value='Approve' name="Approve"</td>
+                <td>
+                    <c:if test="${row.status == 'pending'}">
+                    <input type="submit" value='Approve' name="Approve">
+                    </c:if>
+                    <c:if test="${row.status == 'Unsuccessful'}">
+                    <input type="submit" value='Approve' name="Approve">
+                    </c:if>
+                </td>
                 </form>
                 </tr>
             </c:forEach>

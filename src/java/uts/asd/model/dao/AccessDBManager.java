@@ -256,6 +256,19 @@ public class AccessDBManager {
         }
         return highestBid;
     }
+    
+    public Bid getHighestBid(int itemId) throws SQLException {
+        String fetch = "SELECT * FROM ASDREAMS.BID WHERE ITEMID=" + itemId + " ORDER BY AMOUNT DESC";
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()){
+            int userId = rs.getInt(2);
+            String date = rs.getString(3);
+            String time = rs.getString(4);
+            int amount = rs.getInt(5);
+            return new Bid(itemId, userId, date, time, amount);
+        }
+        return null;
+    }
 
     // Creates a new Auction Item with Keyword
     public void createAuctionItem(int propertyId, int staffUserId, int sellerId, int keywordId, String startDate, String startTime,
@@ -276,7 +289,7 @@ public class AccessDBManager {
     }
 
     // Updates an AuctionItem database entry
-    public void updateAuctionItem(int itemId, Date startDate, Time startTime, Date endDate, Time endTime, int reservePrice,
+    public void updateAuctionItem(int itemId, String startDate, String startTime, String endDate, String endTime, int reservePrice,
             int startingPrice) throws SQLException {
         st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STARTDATE='" + startDate + "', STARTTIME='"
                 + startTime + "', ENDDATE='" + endDate + "', ENDTIME='" + endTime + "', RESERVEPRICE="
@@ -298,6 +311,11 @@ public class AccessDBManager {
     public void updateAuctionStatus(int itemId, String status) throws SQLException {
         st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET STATUS='" + status
                 + "' WHERE ITEMID=" + itemId);
+    }
+    
+    public void updateAuctionSold(int itemId, int soldTo, int soldFor) throws SQLException{
+        st.execute("UPDATE ASDREAMS.AUCTION_ITEM SET SOLDTO=" + soldTo + ", SOLDFOR=" + soldFor +
+                " WHERE ITEMID=" + itemId);
     }
 
     // Deletes the Auction Item with itemId
@@ -369,6 +387,15 @@ public class AccessDBManager {
                     status);
         }
         return null;
+    }
+    
+    public int getNewestAuctionIdByProperty(int propertyId) throws SQLException {
+        String fetch = "SELECT MAX(ITEMID) FROM ASDREAMS.AUCTION_ITEM WHERE PROPERTYID=" + propertyId;
+        ResultSet rs = st.executeQuery(fetch);
+        while (rs.next()){
+            return rs.getInt(1);
+        }
+        return 0;
     }
 
     public boolean doesAuctionExist(int propertyId) throws SQLException {
@@ -464,7 +491,11 @@ public class AccessDBManager {
     }
 
     public void updateOpenDayListingBooked(int bookingId, int userId) throws SQLException {
-        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=" + userId + " WHERE BOOKINGID=" + bookingId);
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=" + userId + ", STATUS='Booked' WHERE BOOKINGID=" + bookingId);
+    }
+
+    public void updateOpenDayListingBookingCancel(int bookingId) throws SQLException {
+        st.executeUpdate("UPDATE ASDREAMS.OPEN_DAY_BOOKING SET USERID=NULL, STATUS='Available' WHERE BOOKINGID=" + bookingId);
     }
 
     public void deleteOpenDayListing(int bookingId) throws SQLException {
