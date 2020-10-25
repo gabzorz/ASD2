@@ -66,13 +66,14 @@ form{
     padding:0 16px;
     width: 55%;
 }
-label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"]{
+label[for="firstName"], [for="lastName"], [for="accountNumber"], [for="bsb"], [for="title"], [for="category"], [for="content"]{
     display:block;
     margin:8px auto;
     text-align:left !important;
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
     font-size: 16px;
     color: #333;
+}
     
 input[type="text"]{
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
@@ -87,7 +88,6 @@ input[type="text"]{
     position: relative;
     width:95%;
     text-align:left;
-}
 }
 /*end of form styling*/
 

@@ -12,17 +12,27 @@ package uts.asd.model;
 public class Payment {
     
     private int paymentID;
+    private int userId;
     private String firstName;
     private String lastName;
     private int accountNumber;
     private int bsb;
 
-    public Payment(int paymentID, String firstName, String lastName, int accountNumber, int bsb) {
+    public Payment(int paymentID, int userId, String firstName, String lastName, int accountNumber, int bsb) {
         this.paymentID = paymentID;
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
         this.bsb = bsb;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getPaymentID() {

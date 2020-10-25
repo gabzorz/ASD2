@@ -61,13 +61,11 @@
                 </tr>
         </table>
                 <input class="button" type="submit" value="Change"/>
-                <a class="bttn" href="customerDetails.jsp">Return</a>
             </form>
                 <form method="post" action="PaymentRemoveServlet">
                     <input type="hidden" name ="paymentId" value="${payment.getPaymentID()}"/>
                     <input class="button" type="submit" value="Delete"/>
                 </form>
-                    
         </main>
     </body>
 </html>
