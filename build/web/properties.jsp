@@ -81,16 +81,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <%            if (user.getRoleId() == 3) {
-        %>
         Click <a href="homepage.jsp">here</a> to go back.
-        <%
-        } else {
-        %>
-        Click <a href="sysMain.jsp">here</a> to go back.
-        <%
-            }
-        %>
     </body>
     <% } else { %>
 

@@ -47,6 +47,7 @@
         </div>
             <div class="content">
                 <row>
+                <a href="properties.jsp" class="lmaoproperty" style="color:black; background-color:cornflowerblue">View all Auctions</a>
                 
                 <a href="calculator.jsp" class="lmaokeywords" style="color:black; background-color:cadetblue">Calculators</a>
         <% if(user.getRoleId() == 3) { %>
@@ -59,7 +60,6 @@
                 <a href="HelpTicketStaffServlet?id=<%=user.getUserId()%>" class="lmaokeywords" style="color:black; background-color:palevioletred">Help Tickets</a>
                 <a href="addKeywords.jsp" class="lmaokeywords" style="color:black; background-color:orange">Add keywords</a>
                 <a href="myKeywords.jsp" class="lmaokeywords" style="color:black; background-color:orange">My Keywords</a>
-                <a href="properties.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">View all Auctions</a>
                 <a href="propertyApprovals.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">Property Approvals</a>
         <% } %>
         <% if(user.getRoleId() == 1) { %>

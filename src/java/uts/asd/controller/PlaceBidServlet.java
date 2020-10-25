@@ -66,7 +66,7 @@ public class PlaceBidServlet extends HttpServlet {
                 int soldFor = highestBid.getAmount();
                 manager.updateAuctionSold(auction.getItemID(), soldTo, soldFor);
                 if (topBid < reservePrice) {
-                    manager.updateAuctionStatus(auction.getItemID(), "Unsuccessful");
+                    manager.updateAuctionStatus(auction.getItemID(), "Unsuccess");
                     manager.updatePropertyStatus(auction.getPropertyID(), "Unsuccessful");
                 } else {
                     manager.updateAuctionStatus(auction.getItemID(), "Successful");
