@@ -51,15 +51,61 @@ h4 {
     color: black;
 }
 
+.content {
+    width:50%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+}
 
-
+.content row a{
+    text-align: center;
+    background-color: lightgray;
+    border: black;
+    color: black;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    padding: 20px;
+    font-family: sans-serif;
+    font-style: normal;
+    cursor: pointer;
+}
 /*top navigation bar styling*/
 .topnav {
   background-color: #333;
   overflow: hidden;
 }
 
+.pagewrapper {
+    width: 90%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
 
+.lmaoproperty:hover {
+	background-color:seagreen;
+        color:white !important;
+}
+
+.lmaokeywords:hover {
+	background-color:coral;
+        color:white !important;
+}
+.lmaocalculator:hover {
+	background-color:mediumslateblue;
+        color:white;
+            
+}
+
+.lmaoticket:hover {
+	background-color:maroon;
+        color:white !important;
+}
 
 /* Navigation bar link styling */
 .topnav a {
@@ -111,7 +157,7 @@ h4 {
 }
 
 .searchBox {
-    width: 230px;
+    width: 15em;
 }
 
 .navicon {

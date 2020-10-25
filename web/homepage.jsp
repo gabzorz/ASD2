@@ -12,12 +12,12 @@
         %>
     </head>
     <body>
+        <div class="pagewrapper">
         <% if (user != null) {%>
-        <p style="float:right; font-size: 12px;">You're logged in as <%= user.getfName()%></p>
+        <p style="float:right; font-size: 12px;"><%= user.getRoleId()%>: You're logged in as <%= user.getfName()%></p>
         <div class="header-img">
           <a href="homepage.jsp"><img class="logo" src="css/reams_logo.png"/></a>
         </div>
-        
         <div class="topnav">
             <a href="LogoutServlet"><button>Logout</button></a>
             <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;"><button>Profile</button></a>
@@ -45,22 +45,30 @@
                 </form>
                 </b>
         </div>
-
-        <a href="addProperty.jsp" style="color:black;">Add property</a>
-        <a href="viewProperty.jsp" style="color:black;">View property</a>
-        <a href="addKeywords.jsp" style="color:black;">Add keywords</a>
-        <a href="myKeywords.jsp" style="color:black;">My Keywords Auctions</a>
-        <a href="properties.jsp" style="color:black;">View all properties</a>
-        <a href="calculator.jsp">Calculators</a>
+            <div class="content">
+                <row>
+                
+                <a href="calculator.jsp" class="lmaokeywords" style="color:black; background-color:cadetblue">Calculators</a>
         <% if(user.getRoleId() == 3) { %>
-            <a href="HelpTicketUserServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
+                <a href="HelpTicketUserServlet?id=<%=user.getUserId()%>" class="lmaokeywords" style="color:black; background-color:palevioletred">Help Tickets</a>
+                <a href="addProperty.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">Add property</a>
+                <a href="viewProperty.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">View property</a>
         <% } %>
-        <% if(user.getRoleId() == 2) { %>
-            <a href="HelpTicketStaffServlet?id=<%=user.getUserId()%>" style="color:black;">Help Tickets</a>
-            <a href="propertyApprovals.jsp" style="color:black;">View property</a>
-            <a href="adjustCalculator.jsp">Adjust Calculator Variables</a>
+        <% if(user.getRoleId() == 1 || user.getRoleId() == 2) { %>
+                <a href="adjustCalculator.jsp" class="lmaokeywords" style="color:black; background-color:cadetblue">Adjust Calculator Variables</a>
+                <a href="HelpTicketStaffServlet?id=<%=user.getUserId()%>" class="lmaokeywords" style="color:black; background-color:palevioletred">Help Tickets</a>
+                <a href="addKeywords.jsp" class="lmaokeywords" style="color:black; background-color:orange">Add keywords</a>
+                <a href="myKeywords.jsp" class="lmaokeywords" style="color:black; background-color:orange">My Keywords</a>
+                <a href="properties.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">View all Auctions</a>
+                <a href="propertyApprovals.jsp" class="lmaoproperty" style="color:black; background-color:#99cc00">Property Approvals</a>
         <% } %>
-        
+        <% if(user.getRoleId() == 1) { %>
+        <a href="viewUsers.jsp" class="lmaoproperty" style="color:black; background-color:#9966ff">View all Users</a>
+                <a href="addUser.jsp" class="lmaoproperty" style="color:black; background-color:#9966ff">Add new user</a>
+        <%}%>
+                </row>
+            </div>
+        </div>
 
         <%
         } else {

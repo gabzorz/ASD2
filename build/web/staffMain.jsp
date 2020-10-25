@@ -25,7 +25,7 @@
                 <div>
          <a class="bttn" style="text-decoration:none" href="propertyApprovals.jsp">Property Approvals</a>
         </div>
-
+ 
         <p>You're logged in as <%= user.getfName()%></p>
 
         <a href="CustomerEditServlet?email='<%=user.getEmailAddress()%>'&password='<%=user.getPassword()%>'" style="color:black;">View Profile</a>

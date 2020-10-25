@@ -67,7 +67,7 @@
             </c:forEach>
         </table>
 
-        Click <a href="sysMain.jsp">here</a> to go back.
+        Click <a href="homepage.jsp">here</a> to go back.
     </body>
 </table>
 <% } else { %>

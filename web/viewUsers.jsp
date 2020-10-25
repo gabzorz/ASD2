@@ -57,11 +57,10 @@
                 <td><c:out value = "${row.contactnumber}"/></td>
                 <td><c:out value = "${row.password}"/></td>
                 <td><c:out value = "${row.roleid}"/></td>
-                <td><a style="text-decoration:none" >Edit</a></td>
                 </tr>
             </c:forEach>
         </table>
-        Click <a href="sysMain.jsp">here</a> to go back.
+        Click <a href="homepage.jsp">here</a> to go back.
     </body>
 </table>
 <% } else { %>

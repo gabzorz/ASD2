@@ -34,7 +34,7 @@
         </table>
 
         
-    <a class="bttn" href="staffMain.jsp">Go back</a>
+    <a class="bttn" href="homepage.jsp">Go back</a>
 
 
     </body>
